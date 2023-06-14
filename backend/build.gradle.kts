@@ -6,7 +6,8 @@ plugins {
 
 group = "com._42kh"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
+
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 
 repositories {
     mavenCentral()
