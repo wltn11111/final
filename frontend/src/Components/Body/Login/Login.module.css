@@ -1,0 +1,51 @@
+
+
+a {
+  text-decoration: none;
+}
+
+
+.login_container {
+  border: none;
+  width: 400px;
+  height: 500px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-radius: 10%;
+}
+
+.login_box {
+  margin-top: 50px;
+}
+
+.login_title {
+  margin-top: 30px;
+  font-size: 32px;
+}
+
+
+.pwbox {
+  margin-top: 30px;
+}
+
+.login_input {
+  padding-left: 10px;
+  width: 380px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+
+.btn_box {
+  margin-top: 60px;
+}
+
+
+.btn_box button{
+  border-radius: 15px;
+  height: 50px;
+  width: 382px;
+  text-align: center;
+}
