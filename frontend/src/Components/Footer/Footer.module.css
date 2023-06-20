@@ -1,0 +1,26 @@
+.footer {
+  font-family: 'Jost', sans-serif;
+  background-color: black;
+  color: aliceblue;
+}
+
+.logoBox {
+  border: 1px solid rgb(249, 249, 249);
+  text-align: center;
+  width: 100px;
+  height: 100px;
+}
+
+.footer_list li {
+  font-size: 9px;
+  list-style: none;
+}
+
+.copyRight {
+  font-size: 12px;
+}
+
+.footer_t {
+  border-bottom: 1px solid #e4e4e4;
+}
+
