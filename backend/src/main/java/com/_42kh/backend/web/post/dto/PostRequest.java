@@ -1,5 +1,6 @@
 package com._42kh.backend.web.post.dto;
 
+import com._42kh.backend.domain.post.Post;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -13,5 +14,12 @@ public class PostRequest {
     public PostRequest(String title, String contents) {
         this.title = title;
         this.contents = contents;
+    }
+
+    public Post toEntity() {
+        return Post.builder()
+            .title(title)
+            .contents(contents)
+            .build();
     }
 }
