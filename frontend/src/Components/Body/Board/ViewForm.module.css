@@ -1,0 +1,17 @@
+
+
+.view_title {
+  border-bottom: 1px solid #ccc;
+  width: 800px;
+  margin: auto;
+}
+
+.view_content {
+  margin-top: 10px;
+  width: 800px;
+  height: 600px;
+  border: 1px solid #ccc;
+  margin: auto;
+  word-break: break-all;
+  overflow: scroll;
+}
