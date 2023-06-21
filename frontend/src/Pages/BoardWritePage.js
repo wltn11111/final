@@ -1,8 +1,15 @@
-import Editor from "../Components/Body/Board/Editor";
+import WriteForm from "../Components/Body/Board/WriteForm"
+import Header from "../Components/Header/Header"
+import Footer from "../Components/Footer/Footer"
 
 export default function () {
 
   return (
-    <Editor></Editor>
+<>
+<Header></Header>
+<WriteForm></WriteForm>
+<Footer></Footer>
+</>
+
   )
 }
