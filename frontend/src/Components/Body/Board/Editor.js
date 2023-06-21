@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import React, { Component, useState } from "react";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -22,9 +23,8 @@ export default class Editor extends React.Component {
 
   render () {
     return (
-      <div style={{width : "600px", height : "600px"}}>
         <ReactQuill
-          style={{width:"100%" , height: "100%"}}
+          style={{width:"800px" , height: "600px" , margin : "auto"}}
           onChange={this.handleChange}
           value={this.state.editorHtml}
           modules={Editor.modules}
@@ -33,7 +33,7 @@ export default class Editor extends React.Component {
           placeholder={"관심사를 공유해주세요"}
          />
 
-       </div>
+
      )
   }
 }
