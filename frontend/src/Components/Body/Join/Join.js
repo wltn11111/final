@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 export default function () {
 
   return (
-
             <div className={style.join_container}>
             <div>
             <span className={`${style.join_title } d-flex justify-content-center`}>회원가입</span>
