@@ -1,0 +1,16 @@
+
+
+.container {
+  text-align: center;
+  height: 230px;
+  background-color: bisque;
+}
+
+.category {
+  width: 226px;
+  height: 226px;
+  border-radius: 10%;
+  background-color: black;
+  float: left;
+  margin-right: 10px;
+}
