@@ -1,0 +1,17 @@
+
+.circle{
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 120px;
+  z-index: 50;
+  width: 6px;
+  height: 6px;
+  background-color: black;
+  border-radius: 50%;
+  opacity: 0;
+  transition-duration: 1s;
+}
+
+.navi:hover .circle{
+  opacity: 100;
+}
