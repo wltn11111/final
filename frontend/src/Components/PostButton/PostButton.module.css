@@ -1,0 +1,17 @@
+.post {
+  background-color: white;
+  width: 6.5rem;
+  height: 6.5rem;
+  position: fixed;
+  top: 400px;
+  left: 12px;
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+  transition-duration: 3s;
+}
+
+.post:hover {
+  cursor: pointer;
+  transform: rotate(360deg);
+}
