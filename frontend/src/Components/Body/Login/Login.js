@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import style from './Login.module.css';
 
 
-export default function () {
+export default function () {  
+  
+  const [loginUser, setLoginUser] = useState ({id : "" , password : ""})
 
   return (
     <div className={style.login_container}>
