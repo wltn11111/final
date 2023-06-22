@@ -32,9 +32,9 @@
 
 ### REPLIES(PAGING)
 
-| HTTP Method | URL Path                               | Description |
-|:-----------:|:---------------------------------------|:-----------:|
-|     GET     | /api/v1/replies/{board_id}?page={page} |    댓글 조회    |
-|    POST     | /api/v1/replies                        |    댓글 등록    |
-|     PUT     | /api/v1/replies/{id}                   |    댓글 수정    |
-|   DELETE    | /api/v1/replies/{id}                   |    댓글 삭제    |
+| HTTP Method | URL Path                              | Description |
+|:-----------:|:--------------------------------------|:-----------:|
+|     GET     | /api/v1/replies/{post_id}?page={page} |    댓글 조회    |
+|    POST     | /api/v1/replies/{post_id}             |    댓글 등록    |
+|     PUT     | /api/v1/replies/{id}                  |    댓글 수정    |
+|   DELETE    | /api/v1/replies/{id}                  |    댓글 삭제    |
