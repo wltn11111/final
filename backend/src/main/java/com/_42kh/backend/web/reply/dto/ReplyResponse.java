@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 import com._42kh.backend.domain.reply.Reply;
 
-import jakarta.persistence.Entity;
 import lombok.Getter;
 
 @Getter
