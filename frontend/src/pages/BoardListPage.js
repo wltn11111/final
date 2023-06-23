@@ -1,6 +1,6 @@
-import List from "../Components/Body/Board/List";
-import Header from "../Components/Header/Header";
-import Footer from "../Components/Footer/Footer";
+import List from "../components/body/board/List";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 
 
 export default function ({posts}) {

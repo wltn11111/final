@@ -1,6 +1,6 @@
-import Header from '../Components/Header/Header';
-import Footer from '../Components/Footer/Footer';
-import Sidebar from '../Components/Body/MyPage/Sidebar';
+import Header from '../components/header/Header';
+import Footer from '../components/footer/Footer';
+import Sidebar from '../components/body/mypage/Sidebar'
 import 'bootstrap/dist/css/bootstrap.css';
 import { Outlet } from 'react-router-dom';
 

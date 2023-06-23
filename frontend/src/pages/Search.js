@@ -1,4 +1,4 @@
-import Search from "../Components/Header/Navi/Search";
+import Search from "../components/header/Navi/Search";
 
 
 export default function () {

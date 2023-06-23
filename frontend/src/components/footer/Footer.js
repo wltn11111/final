@@ -2,7 +2,7 @@ import style from './Footer.module.css';
 
 function Footer () {
   return (
-    <div className={`${style.footer} container-flud`}>
+    <div className={`${style.footer} container-flud mt-4`}>
       <div className={`${style.footer_t} row`} style={{marginTop : "40px"}}>
         <div className="col-4 footer-l">
         <ul className={`${style.footer_list} mt-3`}>

@@ -1,6 +1,6 @@
-import WriteForm from "../Components/Body/Board/WriteForm"
-import Header from "../Components/Header/Header"
-import Footer from "../Components/Footer/Footer"
+import WriteForm from "../components/body/board/WriteForm"
+import Header from "../components/header/Header"
+import Footer from "../components/footer/Footer"
 
 export default function () {
 

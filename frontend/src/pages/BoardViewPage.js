@@ -1,7 +1,7 @@
-import ViewForm from "../Components/Body/Board/ViewForm";
+import ViewForm from "../components/body/board/ViewForm";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from "../Components/Header/Header";
-import Footer from "../Components/Footer/Footer";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 
 export default function () {
 

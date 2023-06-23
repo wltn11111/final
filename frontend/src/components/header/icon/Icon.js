@@ -2,68 +2,65 @@ import style from './Icon.module.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function LogOutIcon () {
-  return (
-<>
-<div className={`${style.icon} d-none d-sm-block mt-4`}>
-    <ul className={style.icon_list}>
-      <Link to = "/login">
-        <li className='mt-2'>
-          <i class="ri-user-6-line"></i>
-          <span className={style.icon_text}>Login</span>
-        </li>
-        </Link>
-        <Link to = "/join">
-        <li className='mt-2'>
-        <i class="ri-user-add-fill"></i>
-        <span className={style.icon_text}>Join</span>
-        </li>
-        </Link>
-      </ul>
-    </div>
-
-    <div className = {`${style.search_icon} d-block d-sm-none`}>
-    <ul className={`${style.search_list} mt-3`}>
-    <Link to = "/search"> <li>
-     <i class={`${style.search_icon} ri-search-2-line`}/>
-      </li></Link>
-      </ul>
-    </div>
-</>
-  )
-}
-
-
-function LoginIcon () {
+function LogOutIcon() {
   return (
     <>
-<div className={`${style.icon} d-none d-sm-block mt-4`}>
-    <ul className={style.icon_list}>
-      <Link to = "/mypage">
-        <li className='mt-2'>
-        <i class="ri-hearts-fill"></i>
-          <span className={style.icon_text}>Mypage</span>
-        </li>
-        </Link>
-        <Link to = "/">
-        <li className='mt-2'>
-        <i class="ri-user-4-line"></i>
-        <span className={style.icon_text}>Logout</span>
-        </li>
-        </Link>
-      </ul>
-    </div>
+      <div className={`${style.icon} d-none d-sm-block mt-4`}>
+        <ul className={style.icon_list}>
+          <Link to="/login">
+            <li className='mt-2'>
+              <i class="ri-user-6-line"></i>
+              <span className={style.icon_text}>Login</span>
+            </li>
+          </Link>
+          <Link to="/join">
+            <li className='mt-2'>
+              <i class="ri-user-add-fill"></i>
+              <span className={style.icon_text}>Join</span>
+            </li>
+          </Link>
+        </ul>
+      </div>
+      <div className={`${style.search_icon} d-block d-sm-none`}>
+        <ul className={`${style.search_list} mt-3`}>
+          <Link to="/search"> <li>
+            <i class={`${style.search_icon} ri-search-2-line`} />
+          </li></Link>
+        </ul>
+      </div>
+    </>
+  )
+}
 
-    <div className = {`${style.search_icon} d-block d-sm-none`}>
-    <ul className={`${style.search_list} mt-3`}>
-    <Link to = "/search">
-    <li>
-     <i class={`${style.search_icon} ri-search-2-line`}/>
-      </li>
-    </Link>
-      </ul>
-    </div>
-</>
+function LoginIcon() {
+  return (
+    <>
+      <div className={`${style.icon} d-none d-sm-block mt-4`}>
+        <ul className={style.icon_list}>
+          <Link to="/mypage">
+            <li className='mt-2'>
+              <i class="ri-hearts-fill"></i>
+              <span className={style.icon_text}>Mypage</span>
+            </li>
+          </Link>
+          <Link to="/">
+            <li className='mt-2'>
+              <i class="ri-user-4-line"></i>
+              <span className={style.icon_text}>Logout</span>
+            </li>
+          </Link>
+        </ul>
+      </div>
+      <div className={`${style.search_icon} d-block d-sm-none`}>
+        <ul className={`${style.search_list} mt-3`}>
+          <Link to="/search">
+            <li>
+              <i class={`${style.search_icon} ri-search-2-line`} />
+            </li>
+          </Link>
+        </ul>
+      </div>
+    </>
   )
 }
 
@@ -71,4 +68,4 @@ function LoginIcon () {
 
 
 
-export {LogOutIcon,LoginIcon};
+export { LogOutIcon, LoginIcon };
