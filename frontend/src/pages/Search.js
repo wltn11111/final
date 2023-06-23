@@ -1,10 +1,7 @@
-import Search from "../components/header/Navi/Search";
-
+import Search from "../components/header/navi/Search";
 
 export default function () {
-
   return (
     <Search></Search>
   )
-
 }

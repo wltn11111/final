@@ -5,11 +5,11 @@ import Footer from "../components/footer/Footer"
 export default function () {
 
   return (
-<>
-<Header></Header>
-<WriteForm></WriteForm>
-<Footer></Footer>
-</>
+    <>
+      <Header></Header>
+      <WriteForm></WriteForm>
+      <Footer></Footer>
+    </>
 
   )
 }

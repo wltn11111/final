@@ -6,11 +6,9 @@ export default function () {
 
   return (
     <>
-    <Header></Header>
-    <Login></Login>
-    <Footer></Footer>
+      <Header></Header>
+      <Login></Login>
+      <Footer></Footer>
     </>
-
   )
-
 }

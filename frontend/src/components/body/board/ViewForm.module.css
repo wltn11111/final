@@ -1,9 +1,13 @@
 
+.view_container{
+  margin-top: 60px;
+}
 
 .view_title {
   border-bottom: 1px solid #ccc;
   width: 800px;
   margin: auto;
+  font-size: 32px;
 }
 
 .view_content {

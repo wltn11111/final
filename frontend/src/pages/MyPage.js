@@ -7,20 +7,18 @@ import { Outlet } from 'react-router-dom';
 export default function () {
   return (
     <>
-  <Header></Header>
-    <div className="container-flud">
-      <div className="row">
-        <div className="col-2">
-          <Sidebar></Sidebar>
-        </div>
-        <div className="col-10">
+      <Header></Header>
+      <div className="container-flud">
+        <div className="row">
+          <div className="d-none d-md-block col-2">
+            <Sidebar></Sidebar>
+          </div>
+          <div className="co1-12 col-md-10">
             <Outlet></Outlet>
+          </div>
         </div>
       </div>
-    </div>
       <Footer></Footer>
     </>
-
-
   )
 }

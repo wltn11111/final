@@ -6,26 +6,24 @@ import { Link } from 'react-router-dom';
 export default function () {
 
   return (
-            <div className={style.join_container}>
-            <div>
-            <span className={`${style.join_title } d-flex justify-content-center`}>회원가입</span>
-            <hr></hr>
-          <Link to = "/joinbyemail">
+    <div className={style.join_container}>
+      <div>
+        <span className={`${style.join_title} d-flex justify-content-center`}>회원가입</span>
+        <hr></hr>
+        <Link to="/joinbyemail">
           <p className={style.join_mail}>
             <i class={`${style.mail_icon} ri-mail-send-line`}></i>
-          이메일 인증으로 가입
+            이메일 인증으로 가입
           </p>
-          </Link>
-          <Link to = "/joinbyphone">
+        </Link>
+        <Link to="/joinbyphone">
           <p className={style.join_phone}>
-          <i class={`${style.phone_icon} ri-smartphone-line`}></i>
-     핸드폰 인증으로 가입
+            <i class={`${style.phone_icon} ri-smartphone-line`}></i>
+            핸드폰 인증으로 가입
           </p>
-          </Link>
-
-          </div>
-          </div>
-
+        </Link>
+      </div>
+    </div>
   )
 
 }

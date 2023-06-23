@@ -6,35 +6,30 @@ import "react-quill/dist/quill.snow.css";
 
 export default class Editor extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = { editorHtml: '' }
     this.handleChange = this.handleChange.bind(this)
-
   }
 
 
-  handleChange (html) {
-  	this.setState({ editorHtml: html });
-    this.props.setPost(prev => ({...prev,content : this.state.editorHtml}))
+  handleChange(html) {
+    this.setState({ editorHtml: html });
+    this.props.setPost(prev => ({ ...prev, contents: this.state.editorHtml }))
   }
 
-
-
-  render () {
+  render() {
     return (
-        <ReactQuill
-          style={{width:"800px" , height: "600px" , margin : "auto"}}
-          onChange={this.handleChange}
-          value={this.state.editorHtml}
-          modules={Editor.modules}
-          formats={Editor.formats}
-          bounds={'.app'}
-          placeholder={"관심사를 공유해주세요"}
-         />
-
-
-     )
+      <ReactQuill
+        style={{ width: "800px", height: "600px", margin: "auto" }}
+        onChange={this.handleChange}
+        value={this.state.editorHtml}
+        modules={Editor.modules}
+        formats={Editor.formats}
+        bounds={'.app'}
+        placeholder={"관심사를 공유해주세요"}
+      />
+    )
   }
 }
 
@@ -45,11 +40,11 @@ export default class Editor extends React.Component {
 Editor.modules = {
 
   toolbar: [
-    [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
-    [{size: []}],
+    [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+    [{ size: [] }],
     ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-    [{'list': 'ordered'}, {'list': 'bullet'},
-     {'indent': '-1'}, {'indent': '+1'}],
+    [{ 'list': 'ordered' }, { 'list': 'bullet' },
+    { 'indent': '-1' }, { 'indent': '+1' }],
     ['link', 'image'],
     ['clean']
   ],

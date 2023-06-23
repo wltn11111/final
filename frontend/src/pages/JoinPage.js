@@ -6,10 +6,9 @@ import Join from "../components/body/join/Join"
 export default function () {
   return (
     <>
-    <Header></Header>
-    <Join></Join>
-    <Footer></Footer>
+      <Header></Header>
+      <Join></Join>
+      <Footer></Footer>
     </>
-
   )
 }

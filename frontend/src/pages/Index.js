@@ -1,18 +1,19 @@
+
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import Category from "../components/body/category/Category";
-import PostButton from "../components/postbutton/PostButton";
+import PostButton from "../components/postButton/PostButton";
+import Banner from "../components/body/banner/Banner";
 
 export default function () {
 
   return (
     <>
       <Header></Header>
+      <Banner></Banner>
       <Category></Category>
       <Footer></Footer>
       <PostButton></PostButton>
     </>
-
   )
-
 }
