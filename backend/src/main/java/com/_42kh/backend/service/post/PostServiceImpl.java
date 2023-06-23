@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class PostServiceImpl implements PostService {
@@ -25,6 +27,15 @@ public class PostServiceImpl implements PostService {
     public PostResponse findById(Long id) {
         Post post = postRepository.findById(id).orElseThrow();
         return new PostResponse(post);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<PostResponse> findAll() {
+        List<Post> posts = postRepository.findAll();
+        return posts.stream()
+            .map(PostResponse::new)
+            .toList();
     }
 
     @Override
