@@ -18,14 +18,14 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/replies")
 public class ReplyController {
 
-    private final ReplyService replySerivce;
+    private final ReplyService replyService;
 
     @PostMapping("/{post_id}")
     public Long save(
         @PathVariable("post_id") Long postId,
         @RequestBody ReplyRequest replyRequest
     ) {
-        return replySerivce.save(postId, replyRequest);
+        return replyService.save(postId, replyRequest);
     }
 
     @PutMapping("/{id}")
@@ -33,11 +33,11 @@ public class ReplyController {
         @PathVariable("id") Long id,
         @RequestBody ReplyRequest replyRequest
     ) {
-        return replySerivce.update(id, replyRequest);
+        return replyService.update(id, replyRequest);
     }
 
     @DeleteMapping("/{id}")
     public Long delete(@PathVariable("id") Long id) {
-        return replySerivce.delete(id);
+        return replyService.delete(id);
     }
 }
