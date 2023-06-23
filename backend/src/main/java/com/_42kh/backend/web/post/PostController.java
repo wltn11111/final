@@ -1,4 +1,4 @@
-package com._42kh.backend.web;
+package com._42kh.backend.web.post;
 
 import com._42kh.backend.service.post.PostService;
 import com._42kh.backend.web.post.dto.PostRequest;
