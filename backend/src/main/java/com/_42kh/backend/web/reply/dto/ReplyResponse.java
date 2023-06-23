@@ -8,7 +8,6 @@ import jakarta.persistence.Entity;
 import lombok.Getter;
 
 @Getter
-@Entity
 public class ReplyResponse {
 
 	private final Long id;
