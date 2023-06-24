@@ -3,6 +3,9 @@ package com._42kh.backend.web.post;
 import com._42kh.backend.service.post.PostService;
 import com._42kh.backend.web.post.dto.PostRequest;
 import com._42kh.backend.web.post.dto.PostResponse;
+import com._42kh.backend.web.post.dto.PostSaveResponse;
+import com._42kh.backend.web.post.dto.PostUpdateResponse;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +19,7 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping
-    public Long save(@RequestBody PostRequest postRequest) {
+    public PostSaveResponse save(@RequestBody PostRequest postRequest) {
         return postService.save(postRequest);
     }
 
@@ -31,7 +34,7 @@ public class PostController {
     }
 
     @PutMapping("/{id}")
-    public Long update(@PathVariable("id") Long id, @RequestBody PostRequest postRequest) {
+    public PostUpdateResponse update(@PathVariable("id") Long id, @RequestBody PostRequest postRequest) {
         return postService.update(id, postRequest);
     }
 

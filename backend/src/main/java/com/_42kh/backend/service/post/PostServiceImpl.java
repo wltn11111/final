@@ -4,6 +4,9 @@ import com._42kh.backend.domain.post.Post;
 import com._42kh.backend.domain.post.PostRepository;
 import com._42kh.backend.web.post.dto.PostRequest;
 import com._42kh.backend.web.post.dto.PostResponse;
+import com._42kh.backend.web.post.dto.PostSaveResponse;
+import com._42kh.backend.web.post.dto.PostUpdateResponse;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,8 +21,9 @@ public class PostServiceImpl implements PostService {
 
     @Override
     @Transactional
-    public Long save(PostRequest postRequest) {
-        return postRepository.save(postRequest.toEntity()).getId();
+    public PostSaveResponse save(PostRequest postRequest) {
+        Post post = postRepository.save(postRequest.toEntity());
+        return new PostSaveResponse(post);
     }
 
     @Override
@@ -40,10 +44,10 @@ public class PostServiceImpl implements PostService {
 
     @Override
     @Transactional
-    public Long update(Long id, PostRequest postRequest) {
+    public PostUpdateResponse update(Long id, PostRequest postRequest) {
         Post post = postRepository.findById(id).orElseThrow();
         post.update(postRequest.getTitle(), postRequest.getContents());
-        return id;
+        return new PostUpdateResponse(post);
     }
 
     @Override
