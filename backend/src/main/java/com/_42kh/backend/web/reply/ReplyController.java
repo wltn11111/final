@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com._42kh.backend.service.reply.ReplyService;
 import com._42kh.backend.web.reply.dto.ReplyRequest;
 import com._42kh.backend.web.reply.dto.ReplyResponse;
+import com._42kh.backend.web.reply.dto.ReplySaveResponse;
+import com._42kh.backend.web.reply.dto.ReplyUpdateResponse;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,7 +27,7 @@ public class ReplyController {
     private final ReplyService replyService;
 
     @PostMapping("/{post_id}")
-    public Long save(
+    public ReplySaveResponse save(
         @PathVariable("post_id") Long postId,
         @RequestBody ReplyRequest replyRequest
     ) {
@@ -38,7 +40,7 @@ public class ReplyController {
     }
 
     @PutMapping("/{id}")
-    public Long update(
+    public ReplyUpdateResponse update(
         @PathVariable("id") Long id,
         @RequestBody ReplyRequest replyRequest
     ) {

@@ -11,6 +11,8 @@ import com._42kh.backend.domain.reply.Reply;
 import com._42kh.backend.domain.reply.ReplyRepository;
 import com._42kh.backend.web.reply.dto.ReplyRequest;
 import com._42kh.backend.web.reply.dto.ReplyResponse;
+import com._42kh.backend.web.reply.dto.ReplySaveResponse;
+import com._42kh.backend.web.reply.dto.ReplyUpdateResponse;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,9 +25,10 @@ public class ReplyServiceImpl implements ReplyService {
 	
 	@Override
 	@Transactional
-	public Long save(Long postId, ReplyRequest replyRequest) {
+	public ReplySaveResponse save(Long postId, ReplyRequest replyRequest) {
 		Post post = postRepository.findById(postId).orElseThrow();
-		return replyRepository.save(replyRequest.toEntity(post)).getId();
+		Reply reply = replyRepository.save(replyRequest.toEntity(post));
+		return new ReplySaveResponse(reply);
 	}
 	
 	@Override
@@ -39,10 +42,10 @@ public class ReplyServiceImpl implements ReplyService {
 
 	@Override
 	@Transactional
-	public Long update(Long id, ReplyRequest replyRequest) {
+	public ReplyUpdateResponse update(Long id, ReplyRequest replyRequest) {
 		Reply reply = replyRepository.findById(id).orElseThrow();
 		reply.update(replyRequest.getContents());
-		return id;
+		return new ReplyUpdateResponse(reply);
 	} 
 
 	@Override

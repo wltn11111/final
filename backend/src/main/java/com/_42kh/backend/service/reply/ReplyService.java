@@ -4,14 +4,16 @@ import java.util.List;
 
 import com._42kh.backend.web.reply.dto.ReplyRequest;
 import com._42kh.backend.web.reply.dto.ReplyResponse;
+import com._42kh.backend.web.reply.dto.ReplySaveResponse;
+import com._42kh.backend.web.reply.dto.ReplyUpdateResponse;
 
 public interface ReplyService {
 
-    Long save(Long postId, ReplyRequest replyRequest);
+    ReplySaveResponse save(Long postId, ReplyRequest replyRequest);
     
     List<ReplyResponse> findAll();
     
-    Long update(Long id, ReplyRequest replyRequest);
+    ReplyUpdateResponse update(Long id, ReplyRequest replyRequest);
     
     Long delete(Long id);
 }
