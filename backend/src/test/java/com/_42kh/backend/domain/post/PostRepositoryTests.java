@@ -1,6 +1,6 @@
 package com._42kh.backend.domain.post;
 
-import com._42kh.backend.config.JpaConfiguration;
+import com._42kh.backend.config.JpaConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +23,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
-@Import(JpaConfiguration.class)
+@Import(JpaConfig.class)
 class PostRepositoryTests {
 
     @Autowired

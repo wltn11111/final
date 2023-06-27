@@ -20,3 +20,5 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create
+  profiles:
+    include: oauth
