@@ -10,10 +10,10 @@ import com._42kh.backend.web.reply.dto.ReplyUpdateResponse;
 public interface ReplyService {
 
     ReplySaveResponse save(Long postId, ReplyRequest replyRequest);
-    
+
     List<ReplyResponse> findAll();
-    
+
     ReplyUpdateResponse update(Long id, ReplyRequest replyRequest);
-    
-    Long delete(Long id);
+
+    void delete(Long id);
 }

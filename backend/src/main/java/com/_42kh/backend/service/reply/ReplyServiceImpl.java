@@ -22,7 +22,7 @@ public class ReplyServiceImpl implements ReplyService {
 
     private final PostRepository postRepository;
 	private final ReplyRepository replyRepository;
-	
+
 	@Override
 	@Transactional
 	public ReplySaveResponse save(Long postId, ReplyRequest replyRequest) {
@@ -30,7 +30,7 @@ public class ReplyServiceImpl implements ReplyService {
 		Reply reply = replyRepository.save(replyRequest.toEntity(post));
 		return new ReplySaveResponse(reply);
 	}
-	
+
 	@Override
 	@Transactional(readOnly = true)
     public List<ReplyResponse> findAll() {
@@ -46,13 +46,12 @@ public class ReplyServiceImpl implements ReplyService {
 		Reply reply = replyRepository.findById(id).orElseThrow();
 		reply.update(replyRequest.getContents());
 		return new ReplyUpdateResponse(reply);
-	} 
+	}
 
 	@Override
 	@Transactional
-	public Long delete(Long id) {
+	public void delete(Long id) {
 		Reply reply = replyRepository.findById(id).orElseThrow();
 		replyRepository.delete(reply);
-		return id;
 	}
 }

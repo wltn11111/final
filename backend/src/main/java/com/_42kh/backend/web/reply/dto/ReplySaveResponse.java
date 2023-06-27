@@ -10,11 +10,13 @@ import lombok.Getter;
 public class ReplySaveResponse {
 
     private final Long id;
-    private final LocalDateTime createdDate; 
-    private final LocalDateTime modifiedDate; 
+    private final String contents;
+    private final LocalDateTime createdDate;
+    private final LocalDateTime modifiedDate;
 
     public ReplySaveResponse(Reply reply) {
         this.id = reply.getId();
+        this.contents = reply.getContents();
         this.createdDate = reply.getCreatedDate();
         this.modifiedDate = reply.getModifiedDate();
     }

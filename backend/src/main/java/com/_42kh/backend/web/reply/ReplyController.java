@@ -2,14 +2,8 @@ package com._42kh.backend.web.reply;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import com._42kh.backend.service.reply.ReplyService;
 import com._42kh.backend.web.reply.dto.ReplyRequest;
@@ -26,6 +20,7 @@ public class ReplyController {
 
     private final ReplyService replyService;
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{post_id}")
     public ReplySaveResponse save(
         @PathVariable("post_id") Long postId,
@@ -48,7 +43,7 @@ public class ReplyController {
     }
 
     @DeleteMapping("/{id}")
-    public Long delete(@PathVariable("id") Long id) {
-        return replyService.delete(id);
+    public void delete(@PathVariable("id") Long id) {
+        replyService.delete(id);
     }
 }
