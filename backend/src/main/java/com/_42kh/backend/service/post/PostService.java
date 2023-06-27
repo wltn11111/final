@@ -17,5 +17,5 @@ public interface PostService {
 
     PostUpdateResponse update(Long id, PostRequest postRequest);
 
-    Long delete(Long id);
+    void delete(Long id);
 }

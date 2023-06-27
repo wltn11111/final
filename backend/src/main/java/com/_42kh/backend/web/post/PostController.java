@@ -7,6 +7,7 @@ import com._42kh.backend.web.post.dto.PostSaveResponse;
 import com._42kh.backend.web.post.dto.PostUpdateResponse;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class PostController {
 
     private final PostService postService;
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public PostSaveResponse save(@RequestBody PostRequest postRequest) {
         return postService.save(postRequest);
@@ -39,7 +41,7 @@ public class PostController {
     }
 
     @DeleteMapping("/{id}")
-    public Long delete(@PathVariable("id") Long id) {
-        return postService.delete(id);
+    public void delete(@PathVariable("id") Long id) {
+        postService.delete(id);
     }
 }

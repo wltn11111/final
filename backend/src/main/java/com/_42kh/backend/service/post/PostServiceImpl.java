@@ -52,9 +52,8 @@ public class PostServiceImpl implements PostService {
 
     @Override
     @Transactional
-    public Long delete(Long id) {
+    public void delete(Long id) {
         Post post = postRepository.findById(id).orElseThrow();
         postRepository.delete(post);
-        return id;
     }
 }

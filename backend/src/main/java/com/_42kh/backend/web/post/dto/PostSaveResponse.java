@@ -10,11 +10,15 @@ import lombok.Getter;
 public class PostSaveResponse {
 
     private final Long id;
+    private final String title;
+    private final String contents;
     private final LocalDateTime createdDate;
     private final LocalDateTime modifiedDate;
 
     public PostSaveResponse(Post post) {
         this.id = post.getId();
+        this.title = post.getTitle();
+        this.contents = post.getContents();
         this.createdDate = post.getCreatedDate();
         this.modifiedDate = post.getModifiedDate();
     }
