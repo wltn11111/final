@@ -1,10 +1,12 @@
 import style from './PostButton.module.css'
 import { Link } from 'react-router-dom'
 import img from '../../assets/./images/button.png';
+import Aos from 'aos';
 
 
 
 export default function () {
+
   return (
     <Link to="/newpost">
       <div className={style.post}>

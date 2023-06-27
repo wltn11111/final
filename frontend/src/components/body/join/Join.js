@@ -12,13 +12,13 @@ export default function () {
         <hr></hr>
         <Link to="/joinbyemail">
           <p className={style.join_mail}>
-            <i class={`${style.mail_icon} ri-mail-send-line`}></i>
+            <i className={`${style.mail_icon} ri-mail-send-line`}></i>
             이메일 인증으로 가입
           </p>
         </Link>
         <Link to="/joinbyphone">
           <p className={style.join_phone}>
-            <i class={`${style.phone_icon} ri-smartphone-line`}></i>
+            <i className={`${style.phone_icon} ri-smartphone-line`}></i>
             핸드폰 인증으로 가입
           </p>
         </Link>

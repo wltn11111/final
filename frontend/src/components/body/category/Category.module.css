@@ -1,6 +1,6 @@
 
 .container {
-  margin-top: 70px;
+  margin-top: 50px;
   text-align: center;
   height: 230px;
 }
@@ -9,7 +9,7 @@
   width: 226px;
   height: 226px;
   border-radius: 10%;
-  background-color: black;
+  border: 1px solid black;
   float: left;
   margin-right: 10px;
 }

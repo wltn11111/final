@@ -1,10 +1,23 @@
+.container {
+  background-color: #fbfbfb;
+  padding-top: 15px;
+  padding-bottom: 80px;
+}
 
 .content{
   width: 60%;
   margin: auto;
   height: 200px;
-  background-color: aqua  ;
+  background-color: #fff;
+  transition-duration: 1s;
+  padding-top: 28px;
 }
+
+.content:hover {
+    cursor: pointer;
+    box-shadow: 10px 10px 20px rgb(209, 208, 208);
+  }
+
 
 .content_box {
   height: 80%;
@@ -17,6 +30,12 @@
   font-size: 20px;
   text-align: center;
   width: 50%;
+  color: black;
+}
+
+.title:hover {
+  cursor: pointer;
+  text-decoration : underline;
 }
 
 .sub_content p{
@@ -24,6 +43,7 @@
   padding: 0px;
   margin: 0px;
   width: 100%;
+  color: black;
   text-overflow: ellipsis;
   overflow: hidden;
   word-break: break-word;
@@ -31,3 +51,5 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical
 }
+
+

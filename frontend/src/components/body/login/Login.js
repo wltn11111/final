@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import style from './Login.module.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import google from '../../../assets/images/google_icon.png'
+import naver from '../../../assets/images/naver_icon.png'
+import { useNavigate } from 'react-router-dom';
 
 
 export default function () {
-
+  const Navigate = useNavigate();
   const [loginUser, setLoginUser] = useState({ id: "", password: "" })
   return (
     <div className={style.login_container}>
@@ -13,19 +16,34 @@ export default function () {
       <div className={style.login_box}>
         <div className={style.idbox}>
           <p style={{ marginBottom: "8px", fontSize: "14px" }}>아이디</p>
-          <input type='text' placeholder='아이디를 입력해주세요'
+          <input type='text' placeholder='아이디를 입력해주세요' readOnly
             className={style.login_input}></input>
         </div>
         <div className={style.pwbox}>
           <p style={{ marginBottom: "8px", fontSize: "14px" }}>비밀번호</p>
-          <input type='text' placeholder='비밀번호를 입력해주세요'
+          <input type='text' placeholder='비밀번호를 입력해주세요' readOnly
             className={style.login_input}></input>
         </div>
         <div className={style.btn_box}>
           <button className='btn btn-dark'>로그인</button>
         </div>
+        <div className={`${style.social_login} d-flex justify-content-center`}>
+          <div className={style.social_icon}
+            onClick={() => {
+              Navigate("/http://localhost:8080/oauth2/authorization/google");
+            }}>
+            <img src={google}></img>
+          </div>
+          <div className={style.social_icon}></div>
+          <div className={style.social_icon}
+            onClick={() => {
+              Navigate("http://localhost:8080/oauth2/authorization/naver")
+            }}
+          >
+            <img src={naver}></img>
+          </div>
+        </div>
       </div>
     </div>
-
   )
 }

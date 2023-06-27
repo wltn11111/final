@@ -12,7 +12,7 @@ export default function () {
       <Header></Header>
       <Banner></Banner>
       <Category></Category>
-      <Footer></Footer>
+      <div style={{marginTop:"100px"}}><Footer></Footer> </div>
       <PostButton></PostButton>
     </>
   )

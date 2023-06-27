@@ -3,7 +3,7 @@ import 'remixicon/fonts/remixicon.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import BoardWritePage from './pages/BoardWritePage';
 import BoardViewPage from './pages/BoardViewPage';
@@ -18,19 +18,45 @@ import CheckPw from './components/body/mypage/CheckPw';
 import UserInfoMod from './components/body/mypage/UserInfoMod';
 import UserOut from './components/body/mypage/UserOut';
 import MyComunity from './components/body/mypage/MyComunity';
+import BoardModPage from './pages/BoardModPage';
+import ScrollToTop from './ScrollToTop';
+
+
+const test = null;
 
 function App() {
 
   const [posts, setPosts] = useState([])
+  const [replys, setReplys] = useState([])
 
+
+  // useEffect(() => {
+  //   axios({
+  //     method: 'get',
+  //     url: '/api/v1/posts'
+  //   }).then(resp => {
+  //     setPosts(resp.data);
+  //   });
+  // }, [])
+
+  // useEffect(()=>{
+  //   getPost();
+  // },[])
+
+
+  console.log(posts);
 
   return (
     <div className="container-flud">
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Index></Index>} />
         <Route path="/posts" element={<BoardListPage posts={posts} setPosts={setPosts}></ BoardListPage>} />
-        <Route path='/newpost' element={<BoardWritePage></BoardWritePage>} />
-        <Route path='/post' element={<BoardViewPage posts={posts}></BoardViewPage>} />
+        <Route path='/newpost' element={<BoardWritePage setPosts={setPosts}></BoardWritePage>} />
+        <Route path='/post/:id' element={<BoardViewPage
+          replys={replys} setReplys={setReplys} ></BoardViewPage>} />
+        <Route path='/modpost/:id' element={<BoardModPage
+          setPosts={setPosts} posts={posts}></BoardModPage>}></Route>
         <Route path="/search" element={<Search></Search>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/join" element={<JoinPage></JoinPage>}></Route>
@@ -43,7 +69,6 @@ function App() {
         </Route>
       </Routes>
     </div>
-
   );
 }
 

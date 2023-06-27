@@ -8,12 +8,12 @@ export default class Editor extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = { editorHtml: '' }
+    this.state = {}
     this.handleChange = this.handleChange.bind(this)
   }
 
-
   handleChange(html) {
+    console.log(this.state.editorHtml);
     this.setState({ editorHtml: html });
     this.props.setPost(prev => ({ ...prev, contents: this.state.editorHtml }))
   }
@@ -26,8 +26,6 @@ export default class Editor extends React.Component {
         value={this.state.editorHtml}
         modules={Editor.modules}
         formats={Editor.formats}
-        bounds={'.app'}
-        placeholder={"관심사를 공유해주세요"}
       />
     )
   }

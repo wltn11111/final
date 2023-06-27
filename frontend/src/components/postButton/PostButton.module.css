@@ -3,11 +3,10 @@
   width: 6.5rem;
   height: 6.5rem;
   position: fixed;
-  top: 660px;
-  left: 20px;
+  top: 650px;
+  left: 30px;
   border-radius: 50%;
   text-align: center;
-  color: white;
   transition-duration: 3s;
 }
 

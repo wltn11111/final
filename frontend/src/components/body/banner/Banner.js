@@ -24,7 +24,7 @@ export default function () {
         data-aos-duration="1000"
         data-aos-easing="ease-in-out"
         style={{ margin: "auto", fontSize: "48px", textAlign: "center" }}>
-        나의 성장과 행복을 위해 과몰입하는 공간
+        나의 성장과 행복을 위한 공간
       </div>
 
       {/* <div className={style.banner_img2}

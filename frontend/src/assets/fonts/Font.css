@@ -1,0 +1,42 @@
+
+@font-face {
+  font-family: 'S-CoreDream-1Light';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./SCDream1.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'S-CoreDream-2Light';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./SCDream2.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'S-CoreDream-3Light';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./SCDream3.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'S-CoreDream-6Bold';
+  font-weight: bold;
+  font-style: normal;
+  src: url('./SCDream6.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'S-CoreDream-7Bold';
+  font-weight: bold;
+  font-style: normal;
+  src: url('./SCDream7.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'S-CoreDream-8Bold';
+  font-weight: bold;
+  font-style: normal;
+  src: url('./SCDream8.woff') format('woff');
+}

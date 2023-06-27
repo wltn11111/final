@@ -8,7 +8,7 @@ export default function () {
     <>
       <Header></Header>
       <Login></Login>
-      <Footer></Footer>
+      <div style={{marginTop : "100px"}}><Footer></Footer></div>
     </>
   )
 }

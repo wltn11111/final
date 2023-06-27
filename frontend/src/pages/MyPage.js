@@ -5,7 +5,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Outlet } from 'react-router-dom';
 
 export default function () {
+  console.log("123");
   return (
+
     <>
       <Header></Header>
       <div className="container-flud">
@@ -17,8 +19,9 @@ export default function () {
             <Outlet></Outlet>
           </div>
         </div>
+      <div style={{marginTop : "40px"}}><Footer></Footer></div>
       </div>
-      <Footer></Footer>
+
     </>
   )
 }

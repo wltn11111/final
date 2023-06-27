@@ -2,31 +2,50 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import style from './ViewForm.module.css';
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Editor from './Editor';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
-const Button = () => {
+const Button = ({id}) => {
+  const Navigate = useNavigate();
+  const delPost = async () => {
+    console.log(id);
+    if (window.confirm('정말 삭제하시겠습니까?')){
+     await axios.delete(`/api/v1/posts/${id}`)
+      Navigate('/posts')
+    }
+    return;
+  }
+
   return (
-    <div className='d-flex justify-content-end mt-3' style={{ width: "800px", margin: "auto" }}>
-      <button class="btn btn-dark">수정</button>
-      <button class="ms-2 btn btn-dark">삭제</button>
+    <div className='d-flex justify-content-end mt-3' style={{ width: "800px", margin: "auto"}}>
+      <button className={`${style.btn} btn btn-dark`}
+        onClick={() => {
+          Navigate('/modpost/' + id)
+        }}
+      >수정</button>
+      <button className={`${style.btn} btn btn-dark ms-2`}
+      onClick={delPost}
+      >삭제</button>
     </div>
   )
 }
 
 
-export default function ViewForm({ posts }) {
+export default function ViewForm({post}) {
+  let { id } = parseInt(useParams());
+
   return (
     <>
       <div className={style.view_container}>
         <div className={`${style.view_title} mt-4`}>
-
+          {post.title}
         </div>
         <div className={`${style.view_content} mt-4`}>
-          {posts.contents}
+           <div dangerouslySetInnerHTML={{ __html:post.contents}}></div>
         </div>
-        <Button></Button>
+        <Button id = {post.id}></Button>
       </div>
-
     </>
 
   )
