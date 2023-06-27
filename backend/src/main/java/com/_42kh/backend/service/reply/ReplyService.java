@@ -11,6 +11,8 @@ public interface ReplyService {
 
     ReplySaveResponse save(Long postId, ReplyRequest replyRequest);
 
+    List<ReplyResponse> findByPostId(Long postId);
+
     List<ReplyResponse> findAll();
 
     ReplyUpdateResponse update(Long id, ReplyRequest replyRequest);

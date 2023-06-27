@@ -29,6 +29,11 @@ public class ReplyController {
         return replyService.save(postId, replyRequest);
     }
 
+    @GetMapping("/{post_id}")
+    public List<ReplyResponse> findByPostId(@PathVariable("post_id") Long postId) {
+        return replyService.findByPostId(postId);
+    }
+
     @GetMapping
     public List<ReplyResponse> findAll() {
         return replyService.findAll();

@@ -31,7 +31,16 @@ public class ReplyServiceImpl implements ReplyService {
 		return new ReplySaveResponse(reply);
 	}
 
-	@Override
+    @Override
+    @Transactional(readOnly = true)
+    public List<ReplyResponse> findByPostId(Long postId) {
+        List<Reply> replies = replyRepository.findByPostId(postId);
+        return replies.stream()
+            .map(ReplyResponse::new)
+            .toList();
+    }
+
+    @Override
 	@Transactional(readOnly = true)
     public List<ReplyResponse> findAll() {
         List<Reply> replies = replyRepository.findAll();
