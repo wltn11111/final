@@ -34,11 +34,6 @@ public class ReplyController {
         return replyService.findByPostId(postId);
     }
 
-    @GetMapping
-    public List<ReplyResponse> findAll() {
-        return replyService.findAll();
-    }
-
     @PutMapping("/{id}")
     public ReplyUpdateResponse update(
         @PathVariable("id") Long id,
