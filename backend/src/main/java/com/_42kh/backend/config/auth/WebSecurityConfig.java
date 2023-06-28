@@ -24,7 +24,7 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
+        return http
             .csrf(AbstractHttpConfigurer::disable)
             .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
             .authorizeHttpRequests(requests -> requests
@@ -33,8 +33,7 @@ public class WebSecurityConfig {
             .oauth2Login(oauth2LoginCustomizer -> oauth2LoginCustomizer
                 .userInfoEndpoint(config -> config.userService(customOAuth2UserService))
                 .defaultSuccessUrl(defaultSuccessUrl)
-            );
-
-        return http.build();
+            )
+            .build();
     }
 }
