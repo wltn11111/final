@@ -21,31 +21,31 @@ import lombok.NoArgsConstructor;
 @Table(name = "replies")
 public class Reply extends BaseTime {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(nullable = false)
-	private String contents;
+    @Column(nullable = false)
+    private String contents;
 
-	private String author;
+    private String author;
 
-	@ManyToOne
-	@JoinColumn(name = "post_id", nullable = false)
-	private Post post;
+    @ManyToOne
+    @JoinColumn(name = "post_id", nullable = false)
+    private Post post;
 
-	@Builder
-	public Reply(
-		String contents,
-		String author,
-		Post post
-	) {
-		this.contents = contents;
-		this.author = author;
-		this.post = post;
-	}
+    @Builder
+    public Reply(
+        String contents,
+        String author,
+        Post post
+    ) {
+        this.contents = contents;
+        this.author = author;
+        this.post = post;
+    }
 
-	public void update(String contents) {
-		this.contents = contents;
-	}
+    public void update(String contents) {
+        this.contents = contents;
+    }
 }
