@@ -1,6 +1,9 @@
 package com._42kh.backend.domain.user;
 
 import com._42kh.backend.domain.BaseTime;
+import com._42kh.backend.domain.like.Like;
+import com._42kh.backend.domain.post.Post;
+
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -52,5 +55,12 @@ public class User extends BaseTime {
 
     public String getRoleKey() {
         return this.role.getKey();
+    }
+
+    public Like like(Post post) {
+        return Like.builder()
+            .post(post)
+            .user(this)
+            .build();
     }
 }
