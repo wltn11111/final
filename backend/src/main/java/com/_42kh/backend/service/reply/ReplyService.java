@@ -13,8 +13,6 @@ public interface ReplyService {
 
     List<ReplyResponse> findByPostId(Long postId);
 
-    List<ReplyResponse> findAll();
-
     ReplyUpdateResponse update(Long id, ReplyRequest replyRequest);
 
     void delete(Long id);

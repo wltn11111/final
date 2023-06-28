@@ -40,15 +40,6 @@ public class ReplyServiceImpl implements ReplyService {
             .toList();
     }
 
-    @Override
-	@Transactional(readOnly = true)
-    public List<ReplyResponse> findAll() {
-        List<Reply> replies = replyRepository.findAll();
-        return replies.stream()
-            .map(ReplyResponse::new)
-            .toList();
-    }
-
 	@Override
 	@Transactional
 	public ReplyUpdateResponse update(Long id, ReplyRequest replyRequest) {
