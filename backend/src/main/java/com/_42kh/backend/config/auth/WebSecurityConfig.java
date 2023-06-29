@@ -19,7 +19,7 @@ public class WebSecurityConfig {
 
     private final CustomOAuth2UserService customOAuth2UserService;
 
-    @Value("${web.security.config.oauth2Login.defaultSuccessUrl}")
+    @Value("${defaultSuccessUrl}")
     private String defaultSuccessUrl;
 
     @Bean
@@ -34,6 +34,7 @@ public class WebSecurityConfig {
                 .userInfoEndpoint(config -> config.userService(customOAuth2UserService))
                 .defaultSuccessUrl(defaultSuccessUrl)
             )
+            .logout(logoutCustomizer -> logoutCustomizer.logoutSuccessUrl(defaultSuccessUrl))
             .build();
     }
 }
