@@ -1,4 +1,4 @@
-package com._42kh.backend.domain.reply;
+package com._42kh.backend.domain.comment;
 
 import com._42kh.backend.domain.BaseTime;
 import com._42kh.backend.domain.post.Post;
@@ -18,8 +18,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "replies")
-public class Reply extends BaseTime {
+@Table(name = "comments")
+public class Comment extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class Reply extends BaseTime {
     private Post post;
 
     @Builder
-    public Reply(
+    public Comment(
         String contents,
         String author,
         Post post

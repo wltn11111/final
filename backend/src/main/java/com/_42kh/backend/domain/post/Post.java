@@ -1,7 +1,7 @@
 package com._42kh.backend.domain.post;
 
 import com._42kh.backend.domain.BaseTime;
-import com._42kh.backend.domain.reply.Reply;
+import com._42kh.backend.domain.comment.Comment;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,7 +29,7 @@ public class Post extends BaseTime {
     private String author;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private final Set<Reply> replies = new HashSet<>();
+    private final Set<Comment> comments = new HashSet<>();
 
     @Builder
     public Post(
