@@ -30,6 +30,13 @@ public class WebSecurityConfig {
             .authorizeHttpRequests(requests -> requests
                 .requestMatchers("/**").permitAll()
             )
+            .sessionManagement(sessionManager -> sessionManager
+                .invalidSessionUrl("/login?invalid=true")
+                .sessionFixation()
+                .migrateSession()
+                .maximumSessions(1)
+                .expiredUrl("/login?expired=true")
+            )
             .oauth2Login(oauth2LoginCustomizer -> oauth2LoginCustomizer
                 .userInfoEndpoint(config -> config.userService(customOAuth2UserService))
                 .defaultSuccessUrl(defaultSuccessUrl)
