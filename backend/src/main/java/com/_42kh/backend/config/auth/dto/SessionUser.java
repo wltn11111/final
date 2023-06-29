@@ -3,8 +3,10 @@ package com._42kh.backend.config.auth.dto;
 import com._42kh.backend.domain.user.User;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 @Getter
-public class SessionUser {
+public class SessionUser implements Serializable {
 
     private final String name;
     private final String email;
