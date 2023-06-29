@@ -1,8 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import style from './MyComunity.module.css'
-import { useEffect, useState } from 'react';
+import { Pagination } from 'react-js-pagination'
+import { useState } from 'react';
 import { Nav } from 'react-bootstrap';
-
 
 export default function () {
 
@@ -60,18 +60,8 @@ const Reply = () => {
 
 
 function Tab(props) {
-  // tab state는 부모인 detail 컴포넌트 안에 있어서 prop으로 전송해줘야한다
-  // let [effect, setEffect] = useState('');
 
-  // 탭 전환 효과 적용
-  // useEffect(() => {
-  //   setTimeout(() => { setEffect('end') }, 100)
-  //   return (() => {
-  //     setEffect('');
-  //   })
-  // }, [props.tab])
   return (
-    // <div className={`start ${effect}`}>
     <div>
       {[<Post></Post>,
       <Reply></Reply>][props.tab]}

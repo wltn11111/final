@@ -1,8 +1,20 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import style from './UserOut.module.css'
 import 'bootstrap/dist/css/bootstrap.css';
 
 export default function () {
+  const [check, setCheck] = useState(false);
+
+  const checkedHandler = (checked, id) => {
+    if (checked) {
+      setCheck(true);
+    } else {
+      setCheck(false);
+    }
+  }
+
+
   return (
     <div className={`${style.container} container`}>
       <div className={style.title_box}>
@@ -19,7 +31,8 @@ export default function () {
       </div>
       <hr></hr>
       <div>
-        <input type='checkbox' className='mt-2'></input>
+        <input type='checkbox' className='mt-2' id = 'check'
+        onChange={(e) => checkedHandler(e.target.checked,'check')}></input>
         <span className={style.span}>위 내용을 모두 확인했습니다 (필수)</span>
       </div>
       <div className='mt-3'>
@@ -27,7 +40,15 @@ export default function () {
         <button className='btn btn-dark ms-4'
           style={{ fontSize: "14px" }}
           onClick={() => {
-            window.confirm("정말 탈퇴하시겠습니까?")
+            if(check == false) {
+              alert('약관 동의 후 회원탈퇴를 진행할 수 있습니다.')
+              return;
+            }
+            if (window.confirm("정말 탈퇴하시겠습니까?")) {
+              alert('회원 탈퇴가 완료되었습니다.')
+            } else {
+              return;
+            }
           }}
         >탈퇴</button>
       </div>

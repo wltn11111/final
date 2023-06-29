@@ -11,6 +11,7 @@ export default function () {
         <Link to="/mypage/info"><li className={style.side_list}>내 정보</li> </Link>
         <Link to="/mypage/reconfirm"><li className={style.side_list}>내 정보 수정</li> </Link>
         <Link to="/mypage/mycommunity"><li className={style.side_list}>커뮤니티</li></Link>
+        <Link to="/mypage/bookmark"><li className={style.side_list}>북마크</li></Link>
         <Link to="/mypage/userout"><li className={style.side_list}>회원 탈퇴</li> </Link>
       </ul>
     </div>

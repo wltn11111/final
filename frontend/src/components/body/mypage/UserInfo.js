@@ -16,9 +16,6 @@ export default function () {
             <div className={style.l}>이름</div>
             <div className={style.r}>user.name</div></li>
           <li className={style.info_li}>
-            <div className={style.l}>아이디</div>
-            <div className={style.r}>user.id</div></li>
-          <li className={style.info_li}>
             <div className={style.l}>이메일</div>
             <div className={style.r}>user.email</div>
           </li>

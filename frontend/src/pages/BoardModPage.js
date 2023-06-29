@@ -10,6 +10,5 @@ export default function ({setPosts,posts}) {
       <ModForm setPosts = {setPosts} posts={posts}></ModForm>
       <div style={{marginTop : "60px"}}> <Footer></Footer> </div>
     </>
-
   )
 }

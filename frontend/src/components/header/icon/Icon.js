@@ -63,10 +63,8 @@ function LoginIcon () {
               </li>
               </Link>
               </ul>
-              </div>
+            </div>
      </>
-
-
   )
 }
 

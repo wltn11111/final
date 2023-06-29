@@ -8,10 +8,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const Button = ({id}) => {
   const Navigate = useNavigate();
-  const delPost = async () => {
+
+  const delPost = () => {
     console.log(id);
     if (window.confirm('정말 삭제하시겠습니까?')){
-     await axios.delete(`/api/v1/posts/${id}`)
+      axios.delete(`/api/v1/posts/${id}`)
       Navigate('/posts')
     }
     return;

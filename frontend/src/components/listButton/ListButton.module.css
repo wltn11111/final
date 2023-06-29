@@ -1,0 +1,25 @@
+.list {
+  border: 1px solid black;
+  width: 6rem;
+  height: 6rem;
+  position: fixed;
+  top: 600px;
+  right: 30px;
+  overflow: hidden;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 20px;
+  font-weight: lighter;
+  font-size: 36px;
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+
+}
+
+.list:hover {
+  background-color: white;
+  color: black;
+}
+
+

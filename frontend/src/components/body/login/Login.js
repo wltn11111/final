@@ -28,20 +28,19 @@ export default function () {
           <button className='btn btn-dark'>로그인</button>
         </div>
         <div className={`${style.social_login} d-flex justify-content-center`}>
+          <a href='http://localhost:8080/oauth2/authorization/google'>
           <div className={style.social_icon}
             onClick={() => {
-              Navigate("/http://localhost:8080/oauth2/authorization/google");
             }}>
             <img src={google}></img>
           </div>
+          </a>
           <div className={style.social_icon}></div>
-          <div className={style.social_icon}
-            onClick={() => {
-              Navigate("http://localhost:8080/oauth2/authorization/naver")
-            }}
-          >
+          <a href = "http://localhost:8080/oauth2/authorization/naver">
+          <div className={style.social_icon}>
             <img src={naver}></img>
           </div>
+          </a>
         </div>
       </div>
     </div>

@@ -11,14 +11,9 @@ import axios from "axios";
 
 export default function ({posts,setPosts}) {
 
-  // useEffect (()=>{
-  //   axios({
-  //     method: 'get',
-  //     url: '/api/v1/posts'
-  //   }).then(resp => {
-  //     setPosts(resp.data);
-  //   });
-  // },[])
+  const [page, setPage] = useState();
+
+
   const getPost = async () => {
     try {
       await axios({
@@ -26,19 +21,19 @@ export default function ({posts,setPosts}) {
         url: '/api/v1/posts'
       }).then(resp => {
         setPosts(resp.data);
+        setPage(1);
       });
     } catch (err) {
       alert(err);
     }
   }
 
-
   useEffect(()=>{
     getPost();
   },[])
 
 
-  let[fade,setFade] = useState('')
+const [fade,setFade] = useState('')
   useEffect(()=>{
     setTimeout(()=>{
       setFade('end')
@@ -48,12 +43,14 @@ export default function ({posts,setPosts}) {
     })
 },[])
 
+
+
   return (
    <div className={`start ${fade}`}>
       <Header></Header>
       <BoardBanner></BoardBanner>
       <BannerSearch></BannerSearch>
-      <List posts={posts}></List>
+      <List posts={posts} page = {page} setPage={setPage}></List>
       <Footer></Footer>
       <PostButton></PostButton>
     </div>

@@ -13,6 +13,16 @@ function Button({ post, setPosts }) {
 
   const Navigate = useNavigate();
   const sendPost = async () => {
+    if (post.title == "") {
+      alert("제목을 입력해주세요.")
+      return;
+    }
+
+    if (post.contents == "") {
+      alert("내용을 입력해주세요.")
+      return;
+    }
+
 
     try { await axios({
       method : "post",

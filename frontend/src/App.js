@@ -20,41 +20,20 @@ import UserOut from './components/body/mypage/UserOut';
 import MyComunity from './components/body/mypage/MyComunity';
 import BoardModPage from './pages/BoardModPage';
 import ScrollToTop from './ScrollToTop';
-
-
-const test = null;
+import BookMark from './components/body/mypage/BookMark';
 
 function App() {
+  const [posts, setPosts] = useState([]);
 
-  const [posts, setPosts] = useState([])
-  const [replys, setReplys] = useState([])
-
-
-  // useEffect(() => {
-  //   axios({
-  //     method: 'get',
-  //     url: '/api/v1/posts'
-  //   }).then(resp => {
-  //     setPosts(resp.data);
-  //   });
-  // }, [])
-
-  // useEffect(()=>{
-  //   getPost();
-  // },[])
-
-
-  console.log(posts);
 
   return (
     <div className="container-flud">
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Index></Index>} />
-        <Route path="/posts" element={<BoardListPage posts={posts} setPosts={setPosts}></ BoardListPage>} />
+        <Route path="/posts" element={<BoardListPage posts = {posts} setPosts = {setPosts}></ BoardListPage>} />
         <Route path='/newpost' element={<BoardWritePage setPosts={setPosts}></BoardWritePage>} />
-        <Route path='/post/:id' element={<BoardViewPage
-          replys={replys} setReplys={setReplys} ></BoardViewPage>} />
+        <Route path='/post/:id' element={<BoardViewPage></BoardViewPage>} />
         <Route path='/modpost/:id' element={<BoardModPage
           setPosts={setPosts} posts={posts}></BoardModPage>}></Route>
         <Route path="/search" element={<Search></Search>}></Route>
@@ -63,6 +42,7 @@ function App() {
         <Route path="/mypage" element={<MyPage></MyPage>}>
           <Route path="info" element={<UserInfo></UserInfo>}></Route>
           <Route path="reconfirm" element={<CheckPw></CheckPw>}></Route>
+          <Route path="bookmark" element={<BookMark></BookMark>}></Route>
           <Route path="infomod" element={<UserInfoMod></UserInfoMod>}></Route>
           <Route path="userout" element={<UserOut></UserOut>}></Route>
           <Route path="mycommunity" element={<MyComunity></MyComunity>}></Route>

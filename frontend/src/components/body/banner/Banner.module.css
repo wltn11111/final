@@ -1,3 +1,30 @@
+/* @keyframes left {
+  0% {transform:translateX(-100px);
+  }
+  100% {transform:translateX(0);
+  }
+} */
+
+@media (max-width : 1030px ) {
+  .banner_img1 {
+    display: none;
+  }
+  .banner_img2 {
+    display: none;
+  }
+  .banner_img3 {
+    display: none;
+  }
+  .banner_center {
+    display: none;
+  }
+  .banner_img4 {
+    display: none;
+  }
+  .banner_img5 {
+    display: none;
+  }
+}
 
 .banner_container {
   padding-top: 60px;
@@ -5,17 +32,124 @@
   height: 500px;
 }
 
+.text {
+  margin: auto;
+  font-size: 34px;
+  font-style: italic;
+  text-align: center;
+  margin-top: 65px;
+}
+.text1 {
+  margin: auto;
+  font-size: 34px;
+  font-style: italic;
+  text-align: center;
+  margin-top: 9px;
+}
+
+.text2{
+  margin: auto;
+  font-size: 48px;
+  text-align: center;
+  padding-right: 90px;
+  margin-top: 55px;
+}
+
+
 .banner_img1{
-  margin-left: 1100px;
-  display: inline-block;
-  width: 140px;
-  height: 140px;
+  position: absolute;
+  z-index: 1000;
+  left: 70%;
+  width: 160px;
+  height: 160px;
+  top: 100px;
+}
+
+.banner_img1 img {
+  width: 100%;
+  height: 100%;
 }
 
 .banner_img2{
-  margin-left: 400px;
-  display: inline-block;
-  width: 140px;
-  height: 140px;
-  translate: 10deg;
+  position: absolute;
+  z-index: 1000;
+  left: 1100px;
+  width: 150px;
+  height: 150px;
+  top: 400px;
 }
+
+
+.banner_img2 img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.banner_img3{
+  position: absolute;
+  z-index: 1000;
+  left: 80px;
+  width: 200px;
+  height: 200px;
+  top: 100px;
+}
+
+.banner_img3 img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.banner_img4{
+  position: absolute;
+  z-index: 1000;
+  left: 150px;
+  width: 200px;
+  height: 200px;
+  top: 320px;
+}
+
+.banner_img4 img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.banner_img5{
+  position: absolute;
+  z-index: 1000;
+  left: 300px;
+  width: 200px;
+  height: 200px;
+  top: 110px;
+}
+
+
+.banner_img5 img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.banner_center{
+  position: absolute;
+  z-index:5 1000;
+  left: 56%;
+  width: 170px;
+  height: 170px;
+  top: 300px;
+}
+
+
+.banner_center img{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* div {
+  border: 1px solid black;
+  box-sizing: border-box;
+} */

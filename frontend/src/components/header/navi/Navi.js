@@ -8,11 +8,12 @@ return (
   <div className="container-fluid">
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
-        <li className={style.navi +" " +"nav-item"} id='test'>
+        <li className={`${style.first_navi} nav-item`} id='test'>
         <div className={style.circle} ></div>
         <Link to = "/" className='nav-link active' aria-current = 'page'>Magazine Story </Link>
         </li>
-        <li className="nav-item">
+        <li className={`${style.second_navi} nav-item`}>
+        <div className={style.circle2} ></div>
           <Link to = "/posts" className='nav-link active'>Contents</Link>
         </li>
       </ul>
