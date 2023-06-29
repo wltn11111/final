@@ -13,16 +13,16 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "likes")
-public class Like {
+@Table(name = "post_likes")
+public class PostLike {
 
 
     @EmbeddedId
-    private LikeId likeId;
-    
+    private PostLikeId postLikeId;
+
     @Builder
-    public Like(Post post, User user) {
-        likeId = LikeId.builder()
+    public PostLike(Post post, User user) {
+        postLikeId = PostLikeId.builder()
             .post(post)
             .user(user)
             .build();

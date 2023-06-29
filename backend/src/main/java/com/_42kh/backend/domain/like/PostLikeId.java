@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 @Getter
 @Embeddable
-public class LikeId implements Serializable {
+public class PostLikeId implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,7 +31,7 @@ public class LikeId implements Serializable {
     private User user;
 
     @Builder
-    public LikeId(Post post, User user) {
+    public PostLikeId(Post post, User user) {
         this.post = post;
         this.user = user;
     }

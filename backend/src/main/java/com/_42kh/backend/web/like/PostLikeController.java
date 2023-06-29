@@ -9,39 +9,39 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com._42kh.backend.config.auth.LoginUser;
 import com._42kh.backend.config.auth.dto.SessionUser;
-import com._42kh.backend.service.like.LikeService;
-import com._42kh.backend.web.like.dto.LikeResponse;
+import com._42kh.backend.service.like.PostLikeService;
+import com._42kh.backend.web.like.dto.PostLikeResponse;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1/likes")
-public class LikeController {
-    
-    private final LikeService likeService;
-    
+@RequestMapping("/api/v1/likes/posts")
+public class PostLikeController {
+
+    private final PostLikeService postLikeService;
+
     @GetMapping("/{post_id}")
-    public LikeResponse findByPostId(
+    public PostLikeResponse findByPostId(
         @PathVariable("post_id") Long postId,
         @LoginUser SessionUser user
     ) {
-        return likeService.findByPostId(postId, user.getEmail());
+        return postLikeService.findByPostId(postId, user.getEmail());
     }
-    
+
     @PostMapping("/{post_id}")
-    public LikeResponse like(
+    public PostLikeResponse like(
         @PathVariable("post_id") Long postId,
         @LoginUser SessionUser user
     ) {
-        return likeService.like(postId, user.getEmail());
+        return postLikeService.like(postId, user.getEmail());
     }
-    
+
     @DeleteMapping("/{post_id}")
-    public LikeResponse likeCancel(
+    public PostLikeResponse likeCancel(
         @PathVariable("post_id") Long postId,
         @LoginUser SessionUser user
     ) {
-        return likeService.likeCancel(postId, user.getEmail());
+        return postLikeService.likeCancel(postId, user.getEmail());
     }
 }
