@@ -46,7 +46,7 @@ public class PostServiceImpl implements PostService {
     @Transactional
     public PostUpdateResponse update(Long id, PostRequest postRequest) {
         Post post = postRepository.findById(id).orElseThrow();
-        post.update(postRequest.getTitle(), postRequest.getContents());
+        post.update(postRequest.getTitle(), postRequest.getContents(), postRequest.getCategory());
         return new PostUpdateResponse(post);
     }
 

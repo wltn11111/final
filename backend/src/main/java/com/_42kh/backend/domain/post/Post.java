@@ -2,6 +2,7 @@ package com._42kh.backend.domain.post;
 
 import com._42kh.backend.domain.BaseTime;
 import com._42kh.backend.domain.comment.Comment;
+
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,6 +28,10 @@ public class Post extends BaseTime {
     private String contents;
 
     private String author;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Category category;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private final Set<Comment> comments = new HashSet<>();
@@ -35,15 +40,18 @@ public class Post extends BaseTime {
     public Post(
         String title,
         String contents,
-        String author
+        String author,
+        Category category
     ) {
         this.title = title;
         this.contents = contents;
         this.author = author;
+        this.category = category;
     }
 
-    public void update(String title, String contents) {
+    public void update(String title, String contents, Category category) {
         this.title = title;
         this.contents = contents;
+        this.category = category;
     }
 }

@@ -1,5 +1,6 @@
 package com._42kh.backend.web.post.dto;
 
+import com._42kh.backend.domain.post.Category;
 import com._42kh.backend.domain.post.Post;
 import lombok.Getter;
 
@@ -12,6 +13,7 @@ public class PostResponse {
     private final String title;
     private final String contents;
     private final String author;
+    private final Category category;
     private final LocalDateTime createdDate;
     private final LocalDateTime modifiedDate;
     
@@ -20,6 +22,7 @@ public class PostResponse {
         this.title = post.getTitle();
         this.contents = post.getContents();
         this.author = post.getAuthor();
+        this.category = post.getCategory();
         this.createdDate = post.getCreatedDate();
         this.modifiedDate = post.getModifiedDate();
     }
