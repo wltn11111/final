@@ -27,6 +27,9 @@ public class User extends BaseTime {
 
     private String picture;
 
+    @Column(nullable = false, updatable = false)
+    private String vendor;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
@@ -36,11 +39,13 @@ public class User extends BaseTime {
         String name,
         String email,
         String picture,
+        String vendor,
         Role role
     ) {
         this.name = name;
         this.email = email;
         this.picture = picture;
+        this.vendor = vendor;
         this.role = role;
     }
 

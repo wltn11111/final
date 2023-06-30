@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @GetMapping
-    public UserResponse myProfile(@LoginUser SessionUser user) {
+    public UserResponse userDetails(@LoginUser SessionUser user) {
         return new UserResponse(user);
     }
 }

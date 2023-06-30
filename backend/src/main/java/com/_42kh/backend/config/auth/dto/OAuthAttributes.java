@@ -15,6 +15,7 @@ public class OAuthAttributes {
     private final String name;
     private final String email;
     private final String picture;
+    private final String vendor;
 
     @Builder
     public OAuthAttributes(
@@ -22,13 +23,15 @@ public class OAuthAttributes {
         String nameAttributeKey,
         String name,
         String email,
-        String picture
+        String picture,
+        String vendor
     ) {
         this.attributes = attributes;
         this.nameAttributeKey = nameAttributeKey;
         this.name = name;
         this.email = email;
         this.picture = picture;
+        this.vendor = vendor;
     }
 
     public static OAuthAttributes of(
@@ -50,6 +53,7 @@ public class OAuthAttributes {
             .name((String) attributes.get("name"))
             .email((String) attributes.get("email"))
             .picture((String) attributes.get("picture"))
+            .vendor("google")
             .attributes(attributes)
             .nameAttributeKey(userNameAttributeName)
             .build();
@@ -65,6 +69,7 @@ public class OAuthAttributes {
             .name((String) response.get("name"))
             .email((String) response.get("email"))
             .picture((String) response.get("profile_image"))
+            .vendor("naver")
             .attributes(response)
             .nameAttributeKey(userNameAttributeName)
             .build();
@@ -75,6 +80,7 @@ public class OAuthAttributes {
             .name(name)
             .email(email)
             .picture(picture)
+            .vendor(vendor)
             .role(Role.GUEST)
             .build();
     }
