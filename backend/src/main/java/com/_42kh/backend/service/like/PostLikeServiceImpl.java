@@ -1,16 +1,14 @@
 package com._42kh.backend.service.like;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com._42kh.backend.domain.like.PostLikeRepository;
 import com._42kh.backend.domain.post.Post;
 import com._42kh.backend.domain.post.PostRepository;
 import com._42kh.backend.domain.user.User;
 import com._42kh.backend.domain.user.UserRepository;
 import com._42kh.backend.web.like.dto.PostLikeResponse;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -24,7 +22,8 @@ public class PostLikeServiceImpl implements PostLikeService {
     @Transactional(readOnly = true)
     public PostLikeResponse findByPostId(Long postId, String userEmail) {
         Long count = postLikeRepository.countByPostLikeIdPostId(postId);
-        Boolean isLike = postLikeRepository.existsByPostLikeIdUserEmail(userEmail);
+        User user = userRepository.findByEmail(userEmail).orElseThrow();
+        Boolean isLike = postLikeRepository.existsByPostLikeIdPostIdAndPostLikeIdUserId(postId, user.getId());
 
         return new PostLikeResponse(postId, count, isLike);
     }
