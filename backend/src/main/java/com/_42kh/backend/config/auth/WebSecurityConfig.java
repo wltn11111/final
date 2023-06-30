@@ -19,8 +19,11 @@ public class WebSecurityConfig {
 
     private final CustomOAuth2UserService customOAuth2UserService;
 
-    @Value("${defaultSuccessUrl}")
-    private String defaultSuccessUrl;
+    @Value("${defaultLoginSuccessUrl}")
+    private String defaultLoginSuccessUrl;
+
+    @Value("${defaultLogoutSuccessUrl}")
+    private String defaultLogoutSuccessUrl;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -39,9 +42,9 @@ public class WebSecurityConfig {
             )
             .oauth2Login(oauth2LoginCustomizer -> oauth2LoginCustomizer
                 .userInfoEndpoint(config -> config.userService(customOAuth2UserService))
-                .defaultSuccessUrl(defaultSuccessUrl)
+                .defaultSuccessUrl(defaultLoginSuccessUrl)
             )
-            .logout(logoutCustomizer -> logoutCustomizer.logoutSuccessUrl(defaultSuccessUrl))
+            .logout(logoutCustomizer -> logoutCustomizer.logoutSuccessUrl(defaultLogoutSuccessUrl))
             .build();
     }
 }
