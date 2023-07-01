@@ -6,6 +6,7 @@ import com._42kh.backend.service.like.CommentLikeService;
 import com._42kh.backend.web.like.dto.CommentLikeResponse;
 import com._42kh.backend.web.like.dto.CommentLikeWithIdResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class CommentLikeController {
         return commentLikeService.findAllByPostId(postId, sessionUser);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{comment_id}")
     public CommentLikeResponse like(
         @PathVariable("comment_id") Long commentId,

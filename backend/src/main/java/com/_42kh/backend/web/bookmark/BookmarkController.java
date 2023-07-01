@@ -6,6 +6,7 @@ import com._42kh.backend.service.bookmark.BookmarkService;
 import com._42kh.backend.web.bookmark.dto.BookmarkResponse;
 import com._42kh.backend.web.bookmark.dto.BookmarkWithIdResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class BookmarkController {
         return bookmarkService.findAll(sessionUser);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{post_id}")
     public BookmarkResponse subscribe(
         @PathVariable("post_id") Long postId,

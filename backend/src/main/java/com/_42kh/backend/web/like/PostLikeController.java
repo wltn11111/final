@@ -6,6 +6,7 @@ import com._42kh.backend.service.like.PostLikeService;
 import com._42kh.backend.web.like.dto.PostLikeResponse;
 import com._42kh.backend.web.like.dto.PostLikeWithIdResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class PostLikeController {
         return postLikeService.findAll(sessionUser);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{post_id}")
     public PostLikeResponse like(
         @PathVariable("post_id") Long postId,
