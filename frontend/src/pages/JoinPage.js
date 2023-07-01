@@ -4,11 +4,12 @@ import Join from "../components/body/join/Join"
 
 
 export default function () {
+
   return (
     <>
-      <Header></Header>
       <Join></Join>
-      <Footer></Footer>
+      <div style={{marginTop : "95px"}}><Footer></Footer></div>
     </>
   )
+
 }

@@ -1,23 +1,35 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navi from './navi/Navi';
 import { LogOutIcon, LoginIcon } from './icon/Icon';
+import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
+import logo from '../../assets/images/logo.png'
 
-export default function ({ setHeaderView, setSearchView }) {
+export default function ({ user }) {
 
+  useEffect(() => {
+    console.log(user);
+  }, [user])
+
+  const Header = () => {
+    return (
+      <div className="row sticky-top header" style={{ margin: "0px", backgroundColor: "white" }}>
+        <div className="col-6 col-md-2 mt-2" style={{ margin: "auto", width: "7rem", height: "5rem"}}>
+          <img src = {logo}style={{ width: "100%", height: "100%" }} className='d-none d-md-block' />
+        </div>
+        <div className="d-none d-md-block col-md-8">
+          <Navi></Navi>
+        </div>
+        <div className="col-6 col-sm-none col-md-2" id="icon_area">
+          {user ? <LoginIcon></LoginIcon> : <LogOutIcon></LogOutIcon>}
+        </div>
+      </div>
+    )
+  }
   return (
-
-    <div className="row sticky-top header" style={{ margin: "0px", backgroundColor: "white" }}>
-      <div className="col-6 col-md-2"></div>
-      <div className="d-none d-md-block col-md-8">
-        <Navi> </Navi>
-      </div>
-      <div className="col-6 col-sm-none col-md-2" id="icon_area">
-        {/* <LogOutIcon setHeaderView ={setHeaderView} setSearchView = {setSearchView}></LogOutIcon> */}
-
-         <LoginIcon setHeaderView={setHeaderView} setSearchView={setSearchView}></LoginIcon>
-      </div>
-
-    </div>
-
+    <>
+      <Header></Header>
+      <Outlet></Outlet>
+    </>
   )
 }

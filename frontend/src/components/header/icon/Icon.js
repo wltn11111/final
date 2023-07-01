@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function LogOutIcon () {
  return (
     <>
-      <div className={`${style.icon} d-none d-sm-block mt-4`}>
+      <div className={`${style.icon} d-none d-sm-block`}>
         <ul className={style.icon_list}>
           <Link to="/login">
             <li className='mt-2'>
@@ -39,7 +39,7 @@ function LogOutIcon () {
 function LoginIcon () {
   return (
     <>
-      <div className={`${style.icon} d-none d-sm-block mt-4`}>
+      <div className={`${style.icon} d-none d-sm-block`}>
         <ul className={style.icon_list}>
           <Link to="/mypage/info">
             <li className='mt-2'>

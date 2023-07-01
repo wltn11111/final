@@ -6,9 +6,9 @@ export default function () {
 
   return (
     <>
-      <Header></Header>
       <Login></Login>
       <div style={{marginTop : "100px"}}><Footer></Footer></div>
     </>
   )
+
 }

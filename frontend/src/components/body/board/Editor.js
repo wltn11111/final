@@ -13,7 +13,6 @@ export default class Editor extends React.Component {
   }
 
   handleChange(html) {
-    console.log(this.state.editorHtml);
     this.setState({ editorHtml: html });
     this.props.setPost(prev => ({ ...prev, contents: this.state.editorHtml }))
   }

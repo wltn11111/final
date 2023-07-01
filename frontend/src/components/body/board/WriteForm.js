@@ -13,6 +13,7 @@ function Button({ post, setPosts }) {
 
   const Navigate = useNavigate();
   const sendPost = async () => {
+    console.log(post)
     if (post.title == "") {
       alert("제목을 입력해주세요.")
       return;
@@ -23,8 +24,7 @@ function Button({ post, setPosts }) {
       return;
     }
 
-
-    try { await axios({
+    try {await axios({
       method : "post",
       url : "/api/v1/posts",
       data : post
@@ -41,9 +41,9 @@ function Button({ post, setPosts }) {
 
   return (
     <div className="d-flex justify-content-end"
-      style={{ width: "800px", height: "40px", margin: "auto", marginTop: "48px", }}>
+      style={{ width: "800px", height: "40px", margin: "auto", marginTop: "60px", }}>
         <div>
-      <button className="btn btn-light"
+      <button className="btn btn-dark"
         onClick={sendPost}>글 작성</button>
         </div>
         </div>
@@ -51,19 +51,17 @@ function Button({ post, setPosts }) {
 }
 
 function Category({ post, setPost }) {
-  useEffect(() => {
-    setPost(prev => ({ ...prev, category: "자유" }))
-  }, [])
+
   return (
     <div style={{ width: "800px", margin: "auto", marginTop: "10px", marginBottom: "10px" }}>
       <select
         style={{ width: "140px", height: "36px" }}
         class="form-select" aria-label="Default select example"
-        defaultValue={"자유"} onChange={(e) => { setPost(prev => ({ ...prev, category: e.target.value })) }}>
-        <option key={"라이프"} value={"라이프"}>라이프</option>
-        <option key={"스포츠"} value={"스포츠"}>스포츠</option>
-        <option key={"연예"} value={"연예"}>연예</option>
-        <option key={"자유"} value={"자유"}>자유</option>
+        defaultValue={"FREEDOM"} onChange={(e) => { setPost(prev => ({ ...prev, category: e.target.value })) }}>
+        <option key={"라이프"} value={"FREEDOM"}>자유</option>
+        <option key={"스포츠"} value={"IT"}>IT</option>
+        <option key={"연예"} value={"SPORTS"}>운동</option>
+        <option key={"자유"} value={"FASHION"}>패션</option>
       </select>
     </div>
   )
@@ -87,7 +85,7 @@ function Title({ post, setPost }) {
 
 
 export default function WriteForm({setPosts}) {
-  const [post, setPost] = useState({ title: "", contents: "", author: "" })
+  const [post, setPost] = useState({ title: "", contents: "", category : ""})
   return (
     <div className="container mt-4">
       <Category post={post} setPost={setPost}></Category>

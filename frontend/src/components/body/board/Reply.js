@@ -5,80 +5,74 @@ import profile from '../../../assets/images/reply_profile.jpg'
 import axios from 'axios';
 
 
+const Btn = ({ replyView, setReplyView, post_id, replys, setLiked, liked }) => {
 
-const Btn = ({ replyView, setReplyView, post_id }) => {
-
-  const [liked,setLiked] = useState(false);
-  const [bookmarked,setBookMarked] = useState(false);
-
+  const [bookmarked, setBookMarked] = useState(false);
   const likeHandle = async () => {
-    if(liked){
-      console.log("post id : " + post_id)
+
+
+    if (liked.isLike) {
       try {
-        await axios.post(`/api/v1/likes/${post_id}`)
+        await axios.delete(`/api/v1/likes/posts/${post_id}`).then((resp) => {
+          setLiked({isLike : resp.data.isLike, count : resp.data.count})
+        })
+      } catch (err) {
+        console.log("like delete err : " + err)
+      }
+    } else {
+      try {
+        await axios.post(`/api/v1/likes/posts/${post_id}`).then((resp) => {
+          setLiked({isLike : resp.data.isLike, count : resp.data.count})
+        })
       } catch (err) {
         console.log("like post err : " + err)
       }
-    } else {
-     try {
-      await axios.delete(`/api/v1/likes/${post_id}`)
-    } catch (err) {
-      console.log("like delete err : " + err)
     }
   }
-}
 
 
-
-useEffect(()=> {
-  likeHandle();
-  console.log(liked)
-},[liked])
-
-
-useEffect(() => {
-// bookmarHandle 북마크 함수 기능 구현
-},[bookmarked])
-
+  useEffect(() => {
+    // bookmarHandle 북마크 함수 기능 구현
+  }, [bookmarked])
   return (
     <div className={style.btn_container}>
       <div style={{ float: "left", marginRight: "10px" }}>
         <button className={style.reply_btn}
           onClick={() => { setReplyView(!replyView) }}>
           <i className="ri-message-3-line me-1"></i>
-          댓글
+          댓글 <span style={{ fontSize: "14px" }}>{replys.length}</span>
         </button>
       </div>
       <div style={{ float: "left", marginRight: "10px" }}>
         <button className={style.bookmark_btn}
-        onClick={()=>{
-          setBookMarked(!bookmarked)
-        }}>
-        <i class="ri-bookmark-fill" style = {{color : bookmarked ? "#FFD228" : "grey" , transitionDuration : "1s"}}></i>
+          onClick={() => {
+            setBookMarked(!bookmarked)
+          }}>
+          <i className="ri-bookmark-fill" style={{ color: bookmarked ? "#FFD228" : "grey", transitionDuration: "1s" }}></i>
           북마크
         </button>
       </div>
       <div>
         <button className={style.like_btn}
-          onClick={()=>{
-            setLiked(!liked)
-          }}>
-          <i class="ri-heart-3-fill me-1" style={{color : liked ? "#9B111E" : "grey",
-          transitionDuration : "1s"}}
+          onClick={likeHandle}>
+          <i className="ri-heart-3-fill me-1 like_i" style={{
+            color: liked.isLike ? "#9B111E" : "grey",
+            transitionDuration: "1s"
+          }}
           ></i>
-          좋아요
+          좋아요 {liked.count}
         </button>
       </div>
     </div>
   )
 }
 
-const Reply = ({ replys, setReplys, post_id }) => {
+const Reply = ({ replys, setReplys, post_id, like }) => {
 
-  const [reply, setReply] = useState({contents : ""});
+  const [reply, setReply] = useState({ contents: "" });
   const handleChange = (e) => {
     const { name, value } = e.target
-    setReply(prev => ({...prev,[name] : value}))
+    setReply(prev => ({ ...prev, [name]: value }))
   }
 
   const sendReply = async () => {
@@ -88,7 +82,7 @@ const Reply = ({ replys, setReplys, post_id }) => {
     }
     axios({
       method: "post",
-      url: `/api/v1/replies/${post_id}`,
+      url: `/api/v1/comments/${post_id}`,
       data: reply
     }).then((resp) => {
       setReplys(prev => [...prev, resp.data])
@@ -136,17 +130,16 @@ const ReplyList = ({ replys, setReplys }) => {
 const Comment = ({ reply, setReplys, replys }) => {
   const [recommentView, setRecommentView] = useState(false);
   const [replyModView, setReplyModView] = useState(false);
-  const [fade, setFade] = useState('')
 
   const delReply = async () => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
-      await axios.delete(`/api/v1/replies/${reply.id}`)
+      await axios.delete(`/api/v1/comments/${reply.id}`)
       setReplys(replys.filter((e) => (e.id !== reply.id)))
     }
   }
 
   return (
-    <div className={`start ${fade}`}>
+    <div className>
       <div className={style.replys}>
         <div className={style.profile_box}>
           <div className={style.profile}>
@@ -155,7 +148,13 @@ const Comment = ({ reply, setReplys, replys }) => {
         </div>
         <div className={style.reply_content}>
           <div className={style.content_t}>
-            <div className={style.user_info}>username</div>
+            <div className={style.user_info}>
+            <span>user.name</span>
+            <span className={style.reply_like}>
+            <i class={`${style.like_i} ri-chat-heart-line me-1`}/>
+            like_count
+              </span>
+            </div>
             <div className={style.mod_btn}>
               <ul className={style.ul}>
                 <li className={style.li} onClick={() => {
@@ -193,15 +192,14 @@ const ReplyMod = ({ setReplyModView, setReplys, reply, replys }) => {
   }
 
   const Modreply = async () => {
-
-    if(modReply.contents == null) {
+    if (modReply.contents == null) {
       alert("댓글을 입력해주세요")
       return;
     }
     try {
       await axios({
         method: 'put',
-        url: `/api/v1/replies/${reply.id}`,
+        url: `/api/v1/comments/${reply.id}`,
         data: modReply
       }).then((resp) => {
         let copy = [...replys];
@@ -279,12 +277,17 @@ const Recomment_list = () => {
   )
 }
 
-export default function ({ replys, setReplys, id }) {
+export default function ({ replys, setReplys, id, liked, setLiked, likeCount }) {
   const [replyView, setReplyView] = useState(false);
+
   return (
     <>
-      <Btn replyView={replyView} setReplyView={setReplyView} post_id={id}></Btn>
-      {replyView ? <Reply replys={replys} setReplys={setReplys} post_id={id}></Reply> : null}
+      <Btn replyView={replyView} setReplyView={setReplyView} post_id={id}
+        replys={replys} liked={liked} setLiked={setLiked} likeCount={likeCount} ></Btn>
+      {replyView ?
+        <Reply replys={replys} setReplys={setReplys} post_id={id} >
+        </Reply>
+        : null}
     </>
   )
 }

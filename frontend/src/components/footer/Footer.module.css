@@ -1,15 +1,17 @@
-.footer {
 
+/* md 이상 사이즈 Footer */
+
+.footer {
   font-family: 'Jost', sans-serif;
   background-color: black;
   color: aliceblue;
 }
 
 .logoBox {
-  border: 1px solid rgb(249, 249, 249);
-  text-align: center;
-  width: 100px;
-  height: 100px;
+  margin-top: 1rem;
+  margin-left: 17rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 .footer_list li {
@@ -18,12 +20,19 @@
 }
 
 .copyRight {
-  font-size: 12px;
+  font-size: 0.7rem;
 }
 
 .footer_t {
-  border-bottom: 1px solid #e4e4e4;
   margin: 0px;
-
 }
 
+/* md 이하 Footer */
+
+.footer_min {
+  background-color: black;
+  height: 4.3rem;
+  line-height: 4.3em;
+  color: #fff;
+  text-align: center;
+}

@@ -6,12 +6,8 @@ import { Outlet } from 'react-router-dom';
 
 export default function () {
 
-
-
-
   return (
     <>
-      <Header></Header>
       <div className="container-flud">
         <div className="row">
           <div className="d-none d-md-block col-2">
@@ -21,7 +17,7 @@ export default function () {
             <Outlet></Outlet>
           </div>
         </div>
-      <div style={{marginTop : "50px"}}><Footer></Footer></div>
+      <div style={{marginTop : "70px"}}><Footer></Footer></div>
       </div>
     </>
   )

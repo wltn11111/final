@@ -6,7 +6,7 @@
 
 .reply_btn {
   border-radius: 20px;
-  width: 80px;
+  width: 90px;
   height: 40px;
   border: 1px solid #ccc;
   background-color: #FFFF;
@@ -17,7 +17,9 @@
 .reply_btn:hover {
   cursor: pointer;
   border: 1px solid black;
+  transform: scale(0.9);
 }
+
 
 .bookmark_btn {
   border-radius: 20px;
@@ -25,19 +27,21 @@
   height: 40px;
   border: 1px solid #ccc;
   background-color: #FFFF;
-  transition-duration: 1s;
+  transition-duration: 0.7s;
 }
 
 
 .bookmark_btn:hover {
   cursor: pointer;
+  background-color: #FFd732;
   border: 1px solid #FFD732;
   transform: scale(0.9);
 }
 
+
 .like_btn {
   border-radius: 20px;
-  width: 90px;
+  width: 100px;
   height: 40px;
   border: 1px solid #ccc;
   background-color: #FFFF;
@@ -46,8 +50,13 @@
 
 .like_btn:hover {
   cursor: pointer;
-  border: 1px solid palevioletred;
+  background-color: rgb(248, 214, 225);
+  border: 1px solid rgb(248, 214, 225);
   transform: scale(0.9);
+}
+
+.like_btn:hover .like_btn i{
+    color: black;
 }
 
 
@@ -134,6 +143,19 @@
   flex: 1;
   font-size: 13px;
 }
+
+.reply_like{
+  margin-left: 0.6rem;
+}
+
+.like_i:hover{
+  cursor: pointer;
+}
+
+.reply_like:hover .like_i {
+  color: #9B111E;
+}
+
 
 .mod_btn {
   float: left;

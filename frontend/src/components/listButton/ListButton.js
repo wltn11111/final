@@ -10,14 +10,13 @@ export default function () {
   }, []);
 
   return (
-    <Link to = "/posts">
+    <Link to="/posts">
       <div className={style.list}
-            data-aos="fade-in"
-            data-aos-delay="100"
-            data-aos-duration="1200">
-      <i class="ri-file-list-line"></i>
+        data-aos="fade-in"
+        data-aos-delay="100"
+        data-aos-duration="1200">
+        <i className={`${style.icon} ri-file-list-line`}></i>
       </div>
     </Link>
-
   )
 }

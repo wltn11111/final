@@ -13,7 +13,7 @@ export default function List({ posts, page, setPage }) {
 
   const getItem = (page) => {
     setItem(posts.slice(0, page))
-   }
+  }
 
   useEffect(() => {
     getItem(page);
@@ -22,20 +22,20 @@ export default function List({ posts, page, setPage }) {
   }, [page])
 
 
-   const loadMore = () => {
-     setPage(prev => prev + 3);
-   }
+  const loadMore = () => {
+    setPage(prev => prev + 3);
+  }
 
-   useEffect(()=>{
-    if(loading) {
-      const observer = new IntersectionObserver ((entries,observer) =>{
-      loadMore();})
+  useEffect(() => {
+    if (loading) {
+      const observer = new IntersectionObserver((entries, observer) => {
+        loadMore();
+      })
       observer.observe(pageEnd.current);
     }
-   },[loading])
+  }, [loading])
 
-
-   // useEffect(() => {
+  // useEffect(() => {
   //   if (loading) {
   //     console.log("test2");
   //     const observer = new IntersectionObserver(
@@ -76,8 +76,7 @@ export default function List({ posts, page, setPage }) {
                       <div className={style.author_box}>
                         by author 정보 •
                       </div>
-
-                  </div>
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -85,7 +84,7 @@ export default function List({ posts, page, setPage }) {
           </>
         )
       })}
-      <div ref={pageEnd}/>
+      <div ref={pageEnd} />
     </div>
   )
 }

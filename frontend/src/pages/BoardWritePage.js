@@ -6,9 +6,8 @@ export default function ({setPosts}) {
 
   return (
     <>
-      <Header></Header>
       <WriteForm setPosts={setPosts}></WriteForm>
-      <div style={{marginTop : "40px"}}> <Footer></Footer> </div>
+      <div style={{marginTop : "90px"}}> <Footer></Footer> </div>
     </>
 
   )

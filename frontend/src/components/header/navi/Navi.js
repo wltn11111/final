@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Navi () {
 return (
-<nav className="navbar d-none d-md-block navbar-expand-lg mt-3">
+<nav className={`${style.navi_container} navbar d-none d-md-block navbar-expand-lg`}>
   <div className="container-fluid">
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">

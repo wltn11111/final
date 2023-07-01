@@ -17,12 +17,14 @@ export default function () {
         data-aos="zoom-out-up"
         data-aos-delay="500"
         data-aos-duration="900"
-        data-aos-easing="ease-in-out"
-      >
+        data-aos-easing="ease-in-out" >
         <div className={`${style.search_box} d-flex justify-content-center`}>
           <div className={style.category_box}>
-            <select className={style.category}>
-              <option>카테고리</option>
+            <select className={`${style.category}`}>
+              <option>자유</option>
+              <option>운동</option>
+              <option>IT</option>
+              <option>패션</option>
             </select>
           </div>
           <div className={style.input_box}>

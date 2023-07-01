@@ -6,9 +6,9 @@ export default function ({setPosts,posts}) {
 
   return (
     <>
-      <Header></Header>
       <ModForm setPosts = {setPosts} posts={posts}></ModForm>
       <div style={{marginTop : "60px"}}> <Footer></Footer> </div>
     </>
   )
+
 }

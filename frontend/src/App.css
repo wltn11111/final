@@ -18,3 +18,13 @@ input {
   opacity: 1;
   transition: opacity 2s;
   }
+
+  a {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  /* div {
+    border: 1px solid black;
+    box-sizing: border-box;
+  } */

@@ -12,13 +12,12 @@
 .search_top {
   line-height: 50px;
   background-color: white;
-  margin: auto;
   text-align: center;
 }
 
 .search_input {
-    width: 350px;
-    height: 32px;
+    width: 19rem;
+    height: 2rem;
     font-size: 15px;
     border: 0;
     border-radius: 15px;
@@ -39,7 +38,6 @@
   margin-left: 10px;
   color: black;
   font-size: 18px;
-
 }
 
 .search_icon,.search_close:hover {
@@ -55,7 +53,7 @@
 
 .search_text span{
   font-size: 16px;
-  font-weight: 800;
+  font-weight: bolder;
   margin-left: 20px;
 }
 

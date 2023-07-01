@@ -5,11 +5,38 @@ import Category from "../components/body/category/Category";
 import PostButton from "../components/postButton/PostButton";
 import Banner from "../components/body/banner/Banner";
 import { useState, useEffect } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
+import axios from "axios";
 
-export default function () {
+export default function ({user, setUser}) {
+
+  let[searchParams,setSearchParams] = useSearchParams();
+  const success = searchParams.get("success");
+  // let users = null;
+
+
+  const getUser = ()=> {
+    axios({
+      url: "/api/v1/users",
+      method: "get"
+    }).then((resp)=>{
+      setUser(resp.data);
+    })
+  }
+
+  useEffect(()=> {
+    if (success === '') {
+      getUser();
+    }
+  },[])
+
+  useEffect(() => {
+    console.log(user);
+  }, [user])
+
+
 
   const [fade,setFade] = useState('')
-
   useEffect(()=>{
     setTimeout(()=>{
       setFade('end')
@@ -21,11 +48,13 @@ export default function () {
 
   return (
     <>
-      <Header></Header>
        <div className={`start ${fade}`}> <Banner></Banner></div>
       <Category></Category>
-      <div style={{marginTop:"100px"}}><Footer></Footer> </div>
-      <PostButton></PostButton>
+      {user ? <PostButton></PostButton> : null}
+      <div style={{marginTop : "7rem"}}>
+      <Footer></Footer>
+      </div>
+
     </>
   )
 }

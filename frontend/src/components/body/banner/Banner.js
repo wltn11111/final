@@ -7,14 +7,15 @@ import banner_img2 from '../../../assets/./images/banner_img2.png'
 import banner_img3 from '../../../assets/images/banner_img3.png'
 import banner_img4 from '../../../assets/images/banner_img4.png'
 import banner_img5 from '../../../assets/images/banner_img5.png'
-import banner_center from '../../../assets/images/banner_center.png'
+import plant from '../../../assets/images/plant.png'
+import women from '../../../assets/images/women.png'
+import men from '../../../assets/images/banner_center.png'
 
 
 export default function () {
   useEffect(() => {
     Aos.init();
   }, []);
-
   return (
     <div className={`${style.banner_container} container-flud`}>
       <div className={style.banner_img1}
@@ -38,18 +39,6 @@ export default function () {
         className={style.text1}>
         <span>나에게만 몰입할 수 있는 <strong>공간</strong></span>
       </div>
-      <div className={style.text2}
-        data-aos="fade-up"
-        data-aos-delay="700"
-        data-aos-duration="1300"
-        data-aos-easing="ease-in-out"
-      >
-        <span><strong>방구석 매거진</strong>
-
-        </span>
-
-      </div>
-
       <div className={style.banner_img3}
         data-aos="fade-right"
         data-aos-delay="100"
@@ -63,7 +52,6 @@ export default function () {
         data-aos-delay="100"
         data-aos-duration="1000"
         data-aos-easing="ease-in-out"
-
       >
         <img src={banner_img2} />
       </div>
@@ -75,28 +63,32 @@ export default function () {
       >
         <img src={banner_img4} />
       </div>
-
-      <div className={style.banner_center}
-        data-aos="fade-in-out"
-        data-aos-delay="1500"
-        data-aos-duration="1200"
-        data-aos-easing="ease-in-out"
-      >
-        <img src={banner_center} />
-      </div>
-
-
-
-      <div className={style.banner_img5}
+      <div className={style.banner_plant}
         data-aos="fade-up-right"
         data-aos-delay="200"
         data-aos-duration="1000"
         data-aos-easing="ease-in-out"
       >
-        <img src={banner_img5} />
+        <img src={plant} />
       </div>
-
-      {/* <div><h3>방구석 매거진</h3></div> */}
+      <div className={style.banner_img5}
+        data-aos="fade-left"
+        data-aos-delay="100"
+        data-aos-duration="1200">
+        <img src = {banner_img5}></img>
+      </div>
+      <div className={style.women}
+       data-aos="fade-out-in"
+       data-aos-delay="1200"
+       data-aos-duration="1200">
+        <img src = {women}></img>
+      </div>
+      <div className={style.men}
+       data-aos="fade-out-in"
+       data-aos-delay="1300"
+       data-aos-duration="1200">
+        <img src = {men}></img>
+      </div>
     </div>
   )
 }

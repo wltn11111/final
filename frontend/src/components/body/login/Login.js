@@ -3,6 +3,7 @@ import style from './Login.module.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import google from '../../../assets/images/google_icon.png'
 import naver from '../../../assets/images/naver_icon.png'
+import logo from '../../../assets/images/logo.png'
 import { useNavigate } from 'react-router-dom';
 
 
@@ -35,7 +36,9 @@ export default function () {
             <img src={google}></img>
           </div>
           </a>
-          <div className={style.social_icon}></div>
+          <div className={style.social_icon}>
+            <img src={logo} style={{height : "93%"}}></img>
+          </div>
           <a href = "http://localhost:8080/oauth2/authorization/naver">
           <div className={style.social_icon}>
             <img src={naver}></img>

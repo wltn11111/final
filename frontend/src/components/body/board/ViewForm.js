@@ -6,13 +6,11 @@ import Editor from './Editor';
 import { useNavigate, useParams } from 'react-router-dom';
 
 
-const Button = ({id}) => {
+const Button = ({post}) => {
   const Navigate = useNavigate();
-
   const delPost = () => {
-    console.log(id);
     if (window.confirm('정말 삭제하시겠습니까?')){
-      axios.delete(`/api/v1/posts/${id}`)
+      axios.delete(`/api/v1/posts/${post.id}`)
       Navigate('/posts')
     }
     return;
@@ -22,7 +20,7 @@ const Button = ({id}) => {
     <div className='d-flex justify-content-end mt-3' style={{ width: "800px", margin: "auto"}}>
       <button className={`${style.btn} btn btn-dark`}
         onClick={() => {
-          Navigate('/modpost/' + id)
+          Navigate('/modpost/' + post.id , {state : post})
         }}
       >수정</button>
       <button className={`${style.btn} btn btn-dark ms-2`}
@@ -33,19 +31,34 @@ const Button = ({id}) => {
 }
 
 
+const convertToKorean = (category) => {
+  return [
+    ["FREEDOM", "자유"],
+    ["IT", "IT"],
+    ["SPORTS", "운동"],
+    ["FASHION", "패션"]
+  ].filter(c => c[0] === category)
+  .map(c => c[1]);
+}
+
+
 export default function ViewForm({post}) {
-  let { id } = parseInt(useParams());
 
   return (
     <>
       <div className={style.view_container}>
+      <div className={style.category_box}>
+      <div className={`${style.view_category} d-flex justify-content-start`}>
+        {convertToKorean(post.category)}
+      </div>
+      </div>
         <div className={`${style.view_title} mt-4`}>
           {post.title}
         </div>
         <div className={`${style.view_content} mt-4`}>
            <div dangerouslySetInnerHTML={{ __html:post.contents}}></div>
         </div>
-        <Button id = {post.id}></Button>
+        <Button post = {post}></Button>
       </div>
     </>
 

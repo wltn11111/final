@@ -1,10 +1,10 @@
 .list {
-  border: 1px solid black;
   width: 6rem;
   height: 6rem;
+  z-index: 100;
   position: fixed;
-  top: 600px;
-  right: 30px;
+  bottom: 40px;
+  right: 100px;
   overflow: hidden;
   border-radius: 50%;
   text-align: center;
@@ -13,13 +13,27 @@
   font-size: 36px;
   color: white;
   background-color: black;
-  border: 1px solid black;
-
 }
 
-.list:hover {
-  background-color: white;
+.list:hover{
+  cursor: pointer;
+  background-color:  #f9f8f3;
   color: black;
 }
 
+.list:hover .icon {
+  color: black;
+}
+
+.icon {
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+
+
+a {
+  margin: 0px;
+  padding: 0px;
+}
 

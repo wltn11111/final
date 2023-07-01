@@ -19,6 +19,7 @@
   }
 
 
+
 .content_box {
   height: 80%;
   width: 90%;
@@ -65,7 +66,7 @@
   width: auto;
   height: 100%;
   float: left;
-  font-size: 9px;
+  font-size: 0.6rem;
 }
 
 .author_box {
@@ -75,7 +76,7 @@
   width: auto;
   height: 100%;
   float: left;
-  font-size: 9px;
+  font-size: 0.6rem;
 }
 
 

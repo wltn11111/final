@@ -3,14 +3,14 @@ import style from './CheckPw.module.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-export default function () {
+export default function ({user}) {
 
   const Navigate = useNavigate();
 
   const BtnHandler = () => {
     Navigate("/mypage/infomod")
   }
-  
+
   return (
     <div style={{ marginTop: "30px", height: "500px", marginLeft: "10px", width: "100%" }}>
       <div style={{ borderBottom: "3px solid black", width: "960px", paddingBottom: "12px" }}>
@@ -19,7 +19,7 @@ export default function () {
       </div>
       <div style={{ marginTop: "20px" }}>
         <div className={style.l}>아이디</div>
-        <div className={style.r}>user.ID</div>
+        <div className={style.r}>{user.email}</div>
       </div>
       <div style={{ marginTop: "12px", width: "960px", borderBottom: "1px solid #d4d4d4", paddingBottom: "22px" }}>
         <div className={style.l}>비밀번호</div>
