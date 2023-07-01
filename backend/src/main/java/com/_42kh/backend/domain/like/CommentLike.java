@@ -1,6 +1,6 @@
 package com._42kh.backend.domain.like;
 
-import com._42kh.backend.domain.post.Post;
+import com._42kh.backend.domain.comment.Comment;
 import com._42kh.backend.domain.user.User;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -11,13 +11,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Entity
-@Table(name = "post_likes")
-public class PostLike {
+@Table(name = "comment_likes")
+public class CommentLike {
 
     @EmbeddedId
-    private PostLikeId postLikeId;
+    private CommentLikeId commentLikeId;
 
-    public PostLike(Post post, User user) {
-        postLikeId = new PostLikeId(post, user);
+    public CommentLike(Comment comment, User user) {
+        commentLikeId = new CommentLikeId(comment, user);
     }
 }

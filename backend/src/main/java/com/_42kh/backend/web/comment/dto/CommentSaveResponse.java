@@ -1,10 +1,9 @@
 package com._42kh.backend.web.comment.dto;
 
-import java.time.LocalDateTime;
-
 import com._42kh.backend.domain.comment.Comment;
-
 import lombok.Getter;
+
+import java.time.LocalDateTime;
 
 @Getter
 public class CommentSaveResponse {

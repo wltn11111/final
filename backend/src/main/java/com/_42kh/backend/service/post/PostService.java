@@ -1,5 +1,6 @@
 package com._42kh.backend.service.post;
 
+import com._42kh.backend.config.auth.dto.SessionUser;
 import com._42kh.backend.web.post.dto.PostRequest;
 import com._42kh.backend.web.post.dto.PostResponse;
 import com._42kh.backend.web.post.dto.PostSaveResponse;
@@ -9,13 +10,13 @@ import java.util.List;
 
 public interface PostService {
 
-    PostSaveResponse save(PostRequest postRequest);
+    PostSaveResponse save(PostRequest postRequest, SessionUser sessionUser);
 
-    PostResponse findById(Long id);
+    PostResponse findById(Long postId);
 
     List<PostResponse> findAll();
 
-    PostUpdateResponse update(Long id, PostRequest postRequest);
+    PostUpdateResponse update(Long postId, PostRequest postRequest, SessionUser sessionUser);
 
-    void delete(Long id);
+    void delete(Long postId, SessionUser sessionUser);
 }

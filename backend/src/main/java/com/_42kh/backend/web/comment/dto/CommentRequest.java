@@ -1,31 +1,24 @@
 package com._42kh.backend.web.comment.dto;
 
 import com._42kh.backend.domain.comment.Comment;
-import com._42kh.backend.domain.post.Post;
-
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @Getter
 public class CommentRequest {
 
-    private final String contents;
-    private final String author;
+    private String contents;
 
     @Builder
-    public CommentRequest(
-        String contents,
-        String author
-    ) {
+    public CommentRequest(String contents) {
     	this.contents = contents;
-    	this.author = author;
     }
 
-	public Comment toEntity(Post post) {
+	public Comment toEntity() {
 		return Comment.builder()
 			.contents(contents)
-			.author(author)
-			.post(post)
             .build();
 	}
 }

@@ -1,10 +1,9 @@
 package com._42kh.backend.web.comment.dto;
 
-import java.time.LocalDateTime;
-
 import com._42kh.backend.domain.comment.Comment;
-
 import lombok.Getter;
+
+import java.time.LocalDateTime;
 
 @Getter
 public class CommentResponse {
@@ -16,10 +15,10 @@ public class CommentResponse {
 	private final LocalDateTime modifiedDate;
 
 	public CommentResponse(Comment comment) {
-		this.id = comment.getId();
-		this.contents = comment.getContents();
-		this.author = comment.getAuthor();
-		this.createdDate = comment.getCreatedDate();
-		this.modifiedDate = comment.getModifiedDate();
+		id = comment.getId();
+		contents = comment.getContents();
+		author = comment.getUser().getNickname();
+		createdDate = comment.getCreatedDate();
+		modifiedDate = comment.getModifiedDate();
 	}
 }

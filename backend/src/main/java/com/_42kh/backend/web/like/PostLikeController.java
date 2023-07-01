@@ -1,18 +1,14 @@
 package com._42kh.backend.web.like;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com._42kh.backend.config.auth.LoginUser;
 import com._42kh.backend.config.auth.dto.SessionUser;
 import com._42kh.backend.service.like.PostLikeService;
 import com._42kh.backend.web.like.dto.PostLikeResponse;
-
+import com._42kh.backend.web.like.dto.PostLikeWithIdResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -24,24 +20,29 @@ public class PostLikeController {
     @GetMapping("/{post_id}")
     public PostLikeResponse findByPostId(
         @PathVariable("post_id") Long postId,
-        @LoginUser SessionUser user
+        @LoginUser SessionUser sessionUser
     ) {
-        return postLikeService.findByPostId(postId, user.getEmail());
+        return postLikeService.findByPostId(postId, sessionUser);
+    }
+
+    @GetMapping
+    public List<PostLikeWithIdResponse> findAll(@LoginUser SessionUser sessionUser) {
+        return postLikeService.findAll(sessionUser);
     }
 
     @PostMapping("/{post_id}")
     public PostLikeResponse like(
         @PathVariable("post_id") Long postId,
-        @LoginUser SessionUser user
+        @LoginUser SessionUser sessionUser
     ) {
-        return postLikeService.like(postId, user.getEmail());
+        return postLikeService.addLike(postId, sessionUser);
     }
 
     @DeleteMapping("/{post_id}")
     public PostLikeResponse likeCancel(
         @PathVariable("post_id") Long postId,
-        @LoginUser SessionUser user
+        @LoginUser SessionUser sessionUser
     ) {
-        return postLikeService.likeCancel(postId, user.getEmail());
+        return postLikeService.removeLike(postId, sessionUser);
     }
 }

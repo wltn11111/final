@@ -12,17 +12,17 @@ public class PostResponse {
     private final Long id;
     private final String title;
     private final String contents;
-    private final String author;
     private final Category category;
+    private final String author;
     private final LocalDateTime createdDate;
     private final LocalDateTime modifiedDate;
-    
+
     public PostResponse(Post post) {
         this.id = post.getId();
         this.title = post.getTitle();
         this.contents = post.getContents();
-        this.author = post.getAuthor();
         this.category = post.getCategory();
+        this.author = post.getUser().getNickname();
         this.createdDate = post.getCreatedDate();
         this.modifiedDate = post.getModifiedDate();
     }

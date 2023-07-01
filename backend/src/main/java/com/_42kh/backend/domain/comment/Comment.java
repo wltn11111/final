@@ -2,21 +2,16 @@ package com._42kh.backend.domain.comment;
 
 import com._42kh.backend.domain.BaseTime;
 import com._42kh.backend.domain.post.Post;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import com._42kh.backend.domain.user.User;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
+import java.util.NoSuchElementException;
+
 @NoArgsConstructor
+@Getter
 @Entity
 @Table(name = "comments")
 public class Comment extends BaseTime {
@@ -28,24 +23,38 @@ public class Comment extends BaseTime {
     @Column(nullable = false)
     private String contents;
 
-    private String author;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false, updatable = false)
+    private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "post_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id", nullable = false, updatable = false)
     private Post post;
 
     @Builder
-    public Comment(
-        String contents,
-        String author,
-        Post post
-    ) {
+    public Comment(String contents) {
         this.contents = contents;
-        this.author = author;
-        this.post = post;
     }
 
-    public void update(String contents) {
+    public Comment setContents(String contents) {
         this.contents = contents;
+        return this;
+    }
+
+    public Comment setUser(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public Comment setPost(Post post) {
+        this.post = post;
+        return this;
+    }
+
+    public Comment validateUser(User user) {
+        if (!this.user.getId().equals(user.getId())) {
+            throw new NoSuchElementException();
+        }
+        return this;
     }
 }

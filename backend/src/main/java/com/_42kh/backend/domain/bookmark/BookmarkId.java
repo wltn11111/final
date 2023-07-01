@@ -1,4 +1,4 @@
-package com._42kh.backend.domain.like;
+package com._42kh.backend.domain.bookmark;
 
 import com._42kh.backend.domain.post.Post;
 import com._42kh.backend.domain.user.User;
@@ -16,7 +16,7 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @Getter
 @Embeddable
-public class PostLikeId implements Serializable {
+public class BookmarkId implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
@@ -26,7 +26,7 @@ public class PostLikeId implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public PostLikeId(Post post, User user) {
+    public BookmarkId(Post post, User user) {
         this.post = post;
         this.user = user;
     }

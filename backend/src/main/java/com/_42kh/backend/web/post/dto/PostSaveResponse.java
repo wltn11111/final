@@ -1,11 +1,10 @@
 package com._42kh.backend.web.post.dto;
 
-import java.time.LocalDateTime;
-
 import com._42kh.backend.domain.post.Category;
 import com._42kh.backend.domain.post.Post;
-
 import lombok.Getter;
+
+import java.time.LocalDateTime;
 
 @Getter
 public class PostSaveResponse {

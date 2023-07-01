@@ -12,7 +12,7 @@ public class OAuthAttributes {
 
     private final Map<String, Object> attributes;
     private final String nameAttributeKey;
-    private final String name;
+    private final String nickname;
     private final String email;
     private final String picture;
     private final String vendor;
@@ -21,14 +21,14 @@ public class OAuthAttributes {
     public OAuthAttributes(
         Map<String, Object> attributes,
         String nameAttributeKey,
-        String name,
+        String nickname,
         String email,
         String picture,
         String vendor
     ) {
         this.attributes = attributes;
         this.nameAttributeKey = nameAttributeKey;
-        this.name = name;
+        this.nickname = nickname;
         this.email = email;
         this.picture = picture;
         this.vendor = vendor;
@@ -50,7 +50,7 @@ public class OAuthAttributes {
         Map<String, Object> attributes
     ) {
         return OAuthAttributes.builder()
-            .name((String) attributes.get("name"))
+            .nickname((String) attributes.get("name"))
             .email((String) attributes.get("email"))
             .picture((String) attributes.get("picture"))
             .vendor("google")
@@ -66,7 +66,7 @@ public class OAuthAttributes {
         Map<String, Object> response = (Map<String, Object>) attributes.get("response");
 
         return OAuthAttributes.builder()
-            .name((String) response.get("name"))
+            .nickname((String) response.get("name"))
             .email((String) response.get("email"))
             .picture((String) response.get("profile_image"))
             .vendor("naver")
@@ -77,7 +77,7 @@ public class OAuthAttributes {
 
     public User toEntity() {
         return User.builder()
-            .name(name)
+            .nickname(nickname)
             .email(email)
             .picture(picture)
             .vendor(vendor)

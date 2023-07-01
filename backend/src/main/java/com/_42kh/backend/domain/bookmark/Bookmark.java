@@ -1,4 +1,4 @@
-package com._42kh.backend.domain.like;
+package com._42kh.backend.domain.bookmark;
 
 import com._42kh.backend.domain.post.Post;
 import com._42kh.backend.domain.user.User;
@@ -11,13 +11,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Entity
-@Table(name = "post_likes")
-public class PostLike {
+@Table(name = "bookmarks")
+public class Bookmark {
 
     @EmbeddedId
-    private PostLikeId postLikeId;
+    private BookmarkId bookmarkId;
 
-    public PostLike(Post post, User user) {
-        postLikeId = new PostLikeId(post, user);
+    public Bookmark(Post post, User user) {
+        bookmarkId = new BookmarkId(post, user);
     }
 }

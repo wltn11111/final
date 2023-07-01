@@ -13,7 +13,11 @@ public class PostRequest {
     private final Category category;
 
     @Builder
-    public PostRequest(String title, String contents, Category category) {
+    public PostRequest(
+        String title,
+        String contents,
+        Category category
+    ) {
         this.title = title;
         this.contents = contents;
         this.category = category;

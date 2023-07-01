@@ -1,11 +1,12 @@
 package com._42kh.backend.web.post;
 
+import com._42kh.backend.config.auth.LoginUser;
+import com._42kh.backend.config.auth.dto.SessionUser;
 import com._42kh.backend.service.post.PostService;
 import com._42kh.backend.web.post.dto.PostRequest;
 import com._42kh.backend.web.post.dto.PostResponse;
 import com._42kh.backend.web.post.dto.PostSaveResponse;
 import com._42kh.backend.web.post.dto.PostUpdateResponse;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,13 +22,16 @@ public class PostController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public PostSaveResponse save(@RequestBody PostRequest postRequest) {
-        return postService.save(postRequest);
+    public PostSaveResponse save(
+        @RequestBody PostRequest postRequest,
+        @LoginUser SessionUser sessionUser
+    ) {
+        return postService.save(postRequest, sessionUser);
     }
 
-    @GetMapping("/{id}")
-    public PostResponse findById(@PathVariable("id") Long id) {
-        return postService.findById(id);
+    @GetMapping("/{post_id}")
+    public PostResponse findById(@PathVariable("post_id") Long postId) {
+        return postService.findById(postId);
     }
 
     @GetMapping
@@ -35,13 +39,20 @@ public class PostController {
         return postService.findAll();
     }
 
-    @PutMapping("/{id}")
-    public PostUpdateResponse update(@PathVariable("id") Long id, @RequestBody PostRequest postRequest) {
-        return postService.update(id, postRequest);
+    @PutMapping("/{post_id}")
+    public PostUpdateResponse update(
+        @PathVariable("post_id") Long postId,
+        @RequestBody PostRequest postRequest,
+        @LoginUser SessionUser sessionUser
+    ) {
+        return postService.update(postId, postRequest, sessionUser);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") Long id) {
-        postService.delete(id);
+    @DeleteMapping("/{postId}")
+    public void delete(
+        @PathVariable("postId") Long postId,
+        @LoginUser SessionUser sessionUser
+    ) {
+        postService.delete(postId, sessionUser);
     }
 }

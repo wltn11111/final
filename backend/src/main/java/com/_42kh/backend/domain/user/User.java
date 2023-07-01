@@ -1,16 +1,13 @@
 package com._42kh.backend.domain.user;
 
 import com._42kh.backend.domain.BaseTime;
-import com._42kh.backend.domain.like.PostLike;
-import com._42kh.backend.domain.post.Post;
-
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
 @NoArgsConstructor
+@Getter
 @Entity
 @Table(name = "users")
 public class User extends BaseTime {
@@ -19,15 +16,15 @@ public class User extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
-
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = false)
+    private String nickname;
+
     private String picture;
 
-    @Column(nullable = false, updatable = false)
+    @Column(updatable = false)
     private String vendor;
 
     @Enumerated(EnumType.STRING)
@@ -36,36 +33,29 @@ public class User extends BaseTime {
 
     @Builder
     public User(
-        String name,
         String email,
+        String nickname,
         String picture,
         String vendor,
         Role role
     ) {
-        this.name = name;
         this.email = email;
+        this.nickname = nickname;
         this.picture = picture;
         this.vendor = vendor;
         this.role = role;
     }
 
     public User update(
-        String name,
+        String nickname,
         String picture
     ) {
-        this.name = name;
+        this.nickname = nickname;
         this.picture = picture;
         return this;
     }
 
     public String getRoleKey() {
-        return this.role.getKey();
-    }
-
-    public PostLike like(Post post) {
-        return PostLike.builder()
-            .post(post)
-            .user(this)
-            .build();
+        return role.getKey();
     }
 }

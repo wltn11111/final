@@ -3,8 +3,8 @@ package com._42kh.backend.domain.user;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-@Getter
 @RequiredArgsConstructor
+@Getter
 public enum Role {
 
     GUEST("ROLE_GUEST", "손님"),

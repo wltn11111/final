@@ -1,12 +1,12 @@
 package com._42kh.backend.domain.like;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
 
 public interface PostLikeRepository extends JpaRepository<PostLike, PostLikeId> {
 
-    List<PostLike> findByPostLikeIdPostId(Long id);
+    Optional<PostLike> findByPostLikeIdPostIdAndPostLikeIdUserId(Long postId, Long userId);
 
     Long countByPostLikeIdPostId(Long postId);
 
