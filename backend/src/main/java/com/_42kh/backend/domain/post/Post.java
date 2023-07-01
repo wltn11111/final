@@ -1,13 +1,17 @@
 package com._42kh.backend.domain.post;
 
 import com._42kh.backend.domain.BaseTime;
+import com._42kh.backend.domain.comment.Comment;
+import com._42kh.backend.domain.like.PostLike;
 import com._42kh.backend.domain.user.User;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 @NoArgsConstructor
 @Getter
@@ -32,6 +36,12 @@ public class Post extends BaseTime {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false, updatable = false)
     private User user;
+
+    @OneToMany(mappedBy = "postLikeId.post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private final Set<PostLike> postLikes = new HashSet<>();
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private final Set<Comment> comments = new HashSet<>();
 
     @Builder
     public Post(
