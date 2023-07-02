@@ -49,7 +49,7 @@ public class PostServiceImpl implements PostService {
     @Override
     @Transactional(readOnly = true)
     public List<PostResponse> findAll() {
-        List<Post> posts = postRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+        List<Post> posts = postRepository.findAll(Sort.by(Sort.Direction.DESC, "createdDate"));
 
         return posts.stream()
             .map(PostResponse::new)
