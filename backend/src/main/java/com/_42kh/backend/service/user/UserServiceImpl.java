@@ -21,4 +21,12 @@ public class UserServiceImpl implements UserService {
 
         return new UserResponse(user);
     }
+
+    @Override
+    @Transactional
+    public void deleteUser(SessionUser sessionUser) {
+        User user = userRepository.findById(sessionUser.getUserId()).orElseThrow();
+
+        userRepository.delete(user);
+    }
 }
