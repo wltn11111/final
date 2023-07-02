@@ -1,8 +1,10 @@
 import style from './Footer.module.css';
 import logo from '../../assets/images/footer_logo.png'
+import { Outlet } from 'react-router-dom';
 
 function Footer() {
   return (
+
     <>
       <div className={`${style.footer} d-none d-md-block`}>
         <div className={`${style.footer_t} row`} >

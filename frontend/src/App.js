@@ -29,7 +29,6 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState();
 
-  console.log(user);
 
   return (
     <div className="container-flud">
@@ -39,9 +38,9 @@ function App() {
           <Route path="/" element={<Index user={user} setUser={setUser} />} />
           <Route path="/posts" element={<BoardListPage posts={posts} setPosts={setPosts} user = {user}></BoardListPage>}></Route>
           <Route path='/newpost' element={<BoardWritePage setPosts={setPosts}></BoardWritePage>} />
-          <Route path='/post/:id' element={<BoardViewPage></BoardViewPage>} />
+          <Route path='/post/:id' element={<BoardViewPage user = {user}></BoardViewPage>} />
           <Route path='/modpost/:id' element={<BoardModPage
-            setPosts={setPosts} posts={posts}></BoardModPage>}></Route>
+          setPosts={setPosts} posts={posts}></BoardModPage>}></Route>
           <Route path="/login" element={<LoginPage></LoginPage>}></Route>
           <Route path="/join" element={<JoinPage></JoinPage>}></Route>
           <Route path="/mypage" element={<MyPage></MyPage>}>
@@ -59,8 +58,6 @@ function App() {
     </div>
   );
 }
-
-
 
 
 export default App;

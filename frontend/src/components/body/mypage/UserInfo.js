@@ -38,7 +38,7 @@ export default function ({user , setUser}) {
           <li className={style.info_li}><strong>회원정보</strong></li>
           <li className={style.info_li}>
             <div className={style.l}>닉네임</div>
-            <div className={style.r}>{user.name}</div></li>
+            <div className={style.r}>{user.nickname}</div></li>
           <li className={style.info_li}>
             <div className={style.l}>이메일</div>
             <div className={style.r}>{user.email}</div>

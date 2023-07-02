@@ -9,9 +9,11 @@ import axios from "axios";
 
 
 
+
 export default function ({ posts, setPosts, user}) {
 
   const [page, setPage] = useState();
+  const [search, setSearch] = useState({});
 
 
   const getPost = async () => {
@@ -21,6 +23,7 @@ export default function ({ posts, setPosts, user}) {
         url: '/api/v1/posts'
       }).then(resp => {
         setPosts(resp.data);
+        setSearch({category : "ALL" , word : ""})
         setPage(1);
       });
     } catch (err) {
@@ -45,14 +48,16 @@ export default function ({ posts, setPosts, user}) {
 
 
   return (
+    <>
+    {/* <Header></Header> */}
     <div className={`start ${fade}`}>
       <BoardBanner></BoardBanner>
       <div className="d-none d-md-block">
-        <BannerSearch></BannerSearch>
+      <BannerSearch search = {search} setSearch = {setSearch}></BannerSearch>
       </div>
-      <List posts={posts} page={page} setPage={setPage}></List>
-      <Footer></Footer>
+      <List posts={posts} page={page} setPage={setPage} search = {search} ></List>
      { user ? <PostButton></PostButton> : null}
     </div>
+     </>
   )
 }

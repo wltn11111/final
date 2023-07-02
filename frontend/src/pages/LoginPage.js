@@ -7,7 +7,7 @@ export default function () {
   return (
     <>
       <Login></Login>
-      <div style={{marginTop : "100px"}}><Footer></Footer></div>
+      <div style={{marginTop : "100px"}}></div>
     </>
   )
 

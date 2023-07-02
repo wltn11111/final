@@ -14,6 +14,12 @@ function Button({ post, setPosts }) {
   const Navigate = useNavigate();
   const sendPost = async () => {
     console.log(post)
+
+    if (post.category == "") {
+      alert("카테고리를 선택해주세요")
+      return;
+    }
+
     if (post.title == "") {
       alert("제목을 입력해주세요.")
       return;
@@ -30,7 +36,8 @@ function Button({ post, setPosts }) {
       data : post
       }
      ).then((resp)=>{
-      let newpost = {id:resp.data.id , title : post.title, contents : post.contents}
+      let newpost = {id:resp.data.id , title : post.title, contents : post.contents,
+      category : post.category}
       setPosts(prev => [...prev,newpost])
       Navigate(`/post/${resp.data.id}`, {state:{ from : newpost}})
      })
@@ -57,7 +64,8 @@ function Category({ post, setPost }) {
       <select
         style={{ width: "140px", height: "36px" }}
         class="form-select" aria-label="Default select example"
-        defaultValue={"FREEDOM"} onChange={(e) => { setPost(prev => ({ ...prev, category: e.target.value })) }}>
+         onChange={(e) => { setPost(prev => ({ ...prev, category: e.target.value }))}}>
+        <option selected disabled>카테고리</option>
         <option key={"라이프"} value={"FREEDOM"}>자유</option>
         <option key={"스포츠"} value={"IT"}>IT</option>
         <option key={"연예"} value={"SPORTS"}>운동</option>

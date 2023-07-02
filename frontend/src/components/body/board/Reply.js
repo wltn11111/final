@@ -5,16 +5,13 @@ import profile from '../../../assets/images/reply_profile.jpg'
 import axios from 'axios';
 
 
-const Btn = ({ replyView, setReplyView, post_id, replys, setLiked, liked }) => {
+const Btn = ({ replyView, setReplyView, post_id, replys, setLiked, liked, bookMarked, setBookMarked }) => {
 
-  const [bookmarked, setBookMarked] = useState(false);
   const likeHandle = async () => {
-
-
     if (liked.isLike) {
       try {
         await axios.delete(`/api/v1/likes/posts/${post_id}`).then((resp) => {
-          setLiked({isLike : resp.data.isLike, count : resp.data.count})
+          setLiked({ isLike: resp.data.isLike, count: resp.data.count })
         })
       } catch (err) {
         console.log("like delete err : " + err)
@@ -22,7 +19,7 @@ const Btn = ({ replyView, setReplyView, post_id, replys, setLiked, liked }) => {
     } else {
       try {
         await axios.post(`/api/v1/likes/posts/${post_id}`).then((resp) => {
-          setLiked({isLike : resp.data.isLike, count : resp.data.count})
+          setLiked({ isLike: resp.data.isLike, count: resp.data.count })
         })
       } catch (err) {
         console.log("like post err : " + err)
@@ -30,10 +27,26 @@ const Btn = ({ replyView, setReplyView, post_id, replys, setLiked, liked }) => {
     }
   }
 
+  const bookMarkHandle = async () => {
+    if (bookMarked.isSubscribed) {
+      try {
+        await axios.delete(`/api/v1/bookmarks/${post_id}`).then(() => {
+          setBookMarked(false)
+        })
+      } catch (err) {
+        console.log(err)
+      }
+    } else {
+      try {
+        await axios.post(`/api/v1/bookmarks/${post_id}`).then((resp) => {
+          setBookMarked(true)
+        })
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
 
-  useEffect(() => {
-    // bookmarHandle 북마크 함수 기능 구현
-  }, [bookmarked])
   return (
     <div className={style.btn_container}>
       <div style={{ float: "left", marginRight: "10px" }}>
@@ -45,10 +58,8 @@ const Btn = ({ replyView, setReplyView, post_id, replys, setLiked, liked }) => {
       </div>
       <div style={{ float: "left", marginRight: "10px" }}>
         <button className={style.bookmark_btn}
-          onClick={() => {
-            setBookMarked(!bookmarked)
-          }}>
-          <i className="ri-bookmark-fill" style={{ color: bookmarked ? "#FFD228" : "grey", transitionDuration: "1s" }}></i>
+          onClick={bookMarkHandle}>
+          <i className="ri-bookmark-fill" style={{ color: bookMarked ? "#FFD228" : "grey", transitionDuration: "1s" }}></i>
           북마크
         </button>
       </div>
@@ -67,7 +78,8 @@ const Btn = ({ replyView, setReplyView, post_id, replys, setLiked, liked }) => {
   )
 }
 
-const Reply = ({ replys, setReplys, post_id, like }) => {
+const Reply = ({ replys, setReplys, post_id , user }) => {
+
 
   const [reply, setReply] = useState({ contents: "" });
   const handleChange = (e) => {
@@ -86,14 +98,13 @@ const Reply = ({ replys, setReplys, post_id, like }) => {
       data: reply
     }).then((resp) => {
       setReplys(prev => [...prev, resp.data])
-      setReply({ contents: "" });
-      console.log(resp)
+      setReply(prev => ({...prev,contents: "" }));
     })
   }
 
   return (
     <div className={style.reply_list}>
-      {replys != null ? <ReplyList replys={replys} setReplys={setReplys}></ReplyList> : null}
+      {replys != null ? <ReplyList replys={replys} setReplys={setReplys} id = {post_id}></ReplyList> : null}
       <div className={style.reply_container}>
         <div><strong>댓글</strong></div>
         <div><textarea className={style.reply_input} name='contents'
@@ -107,6 +118,7 @@ const Reply = ({ replys, setReplys, post_id, like }) => {
 }
 
 const ReplyList = ({ replys, setReplys }) => {
+
   return (
     <>
       {
@@ -149,10 +161,10 @@ const Comment = ({ reply, setReplys, replys }) => {
         <div className={style.reply_content}>
           <div className={style.content_t}>
             <div className={style.user_info}>
-            <span>user.name</span>
-            <span className={style.reply_like}>
-            <i class={`${style.like_i} ri-chat-heart-line me-1`}/>
-            like_count
+              <span>{reply.author}</span>
+              <span className={style.reply_like}>
+                <i className={`${style.like_i} ri-chat-heart-line me-1`} />
+                like_count
               </span>
             </div>
             <div className={style.mod_btn}>
@@ -277,15 +289,21 @@ const Recomment_list = () => {
   )
 }
 
-export default function ({ replys, setReplys, id, liked, setLiked, likeCount }) {
+export default function ({ replys, setReplys, id, liked, setLiked, bookMarked, setBookMarked , user , setTest}) {
   const [replyView, setReplyView] = useState(false);
+
+  useEffect(()=> {
+    setTest('test')
+  })
 
   return (
     <>
       <Btn replyView={replyView} setReplyView={setReplyView} post_id={id}
-        replys={replys} liked={liked} setLiked={setLiked} likeCount={likeCount} ></Btn>
+        replys={replys} liked={liked} setLiked={setLiked} bookMarked={bookMarked}
+        setBookMarked={setBookMarked} ></Btn>
       {replyView ?
-        <Reply replys={replys} setReplys={setReplys} post_id={id} >
+        <Reply replys={replys} setReplys={setReplys} post_id={id}
+        user = {user}>
         </Reply>
         : null}
     </>

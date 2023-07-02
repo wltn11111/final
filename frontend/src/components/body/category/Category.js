@@ -14,7 +14,6 @@ export default function () {
   }, []);
 
   return (
-
     <div className={`${style.container} container d-flex justify-content-center`}>
       <div data-aos="fade-up"
         data-aos-delay="100"

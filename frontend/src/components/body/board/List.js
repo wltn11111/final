@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 
-export default function List({ posts, page, setPage }) {
+export default function List({ posts, page, setPage, search }) {
 
   const [item, setItem] = useState([]);
   const pageEnd = useRef();
@@ -12,14 +12,29 @@ export default function List({ posts, page, setPage }) {
 
 
   const getItem = (page) => {
-    setItem(posts.slice(0, page))
-  }
+
+
+    if(search.category == 'ALL' && search.word == '') {
+      setItem(posts.slice(0,page));
+      return
+    }
+
+    const item = posts.filter(post => post.category == search.category || search.category == "ALL")
+    .filter(post => post.title.includes(search.word) || post.contents.includes(search.word))
+    setItem(item);
+    }
+
+  useEffect(() => {
+    console.log(posts)
+    getItem(page);
+    setLoading(true);
+  }, [page])
 
   useEffect(() => {
     getItem(page);
-    console.log(item)
     setLoading(true);
-  }, [page])
+  }, [search])
+
 
 
   const loadMore = () => {
@@ -34,23 +49,6 @@ export default function List({ posts, page, setPage }) {
       observer.observe(pageEnd.current);
     }
   }, [loading])
-
-  // useEffect(() => {
-  //   if (loading) {
-  //     console.log("test2");
-  //     const observer = new IntersectionObserver(
-  //       entries => {
-  //         if (entries[0].isIntersecting) {
-  //           console.log("test3")
-  //           loadMore();
-  //         }
-  //       },
-  //       { threshold: 1 }
-  //     );
-  //     observer.observe(pageEnd.current);
-  //   }
-  // }, [loading])
-
 
   return (
     <div className={`${style.container}`}>
@@ -74,7 +72,7 @@ export default function List({ posts, page, setPage }) {
                         좋아요 정보 박스 •
                       </div>
                       <div className={style.author_box}>
-                        by author 정보 •
+                        by {post.author} •
                       </div>
                     </div>
                   </div>

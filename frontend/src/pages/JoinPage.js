@@ -8,7 +8,7 @@ export default function () {
   return (
     <>
       <Join></Join>
-      <div style={{marginTop : "95px"}}><Footer></Footer></div>
+      <div style={{marginTop : "95px"}}></div>
     </>
   )
 

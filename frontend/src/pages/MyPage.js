@@ -17,7 +17,7 @@ export default function () {
             <Outlet></Outlet>
           </div>
         </div>
-      <div style={{marginTop : "70px"}}><Footer></Footer></div>
+      <div style={{marginTop : "80px"}}></div>
       </div>
     </>
   )

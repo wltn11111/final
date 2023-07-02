@@ -10,13 +10,14 @@ import { useEffect } from "react";
 import ListButton from "../components/listButton/ListButton";
 
 
-export default function () {
+export default function ({user}) {
   const location = useLocation();
   const [replys, setReplys] = useState([]);
   const [liked,setLiked ] = useState({isLike : false , count : 0});
-  const [likeCount , setLikeCount] = useState();
-  const [post, setPost] = useState({});
+  const [bookMarked, setBookMarked] = useState();
   const { from } = location.state;
+  const [test,setTest] = useState();
+
 
   const getReply = async () => {
     try {
@@ -36,24 +37,41 @@ export default function () {
       method : "get",
       url : `/api/v1/likes/posts/${from.id}`,
     }).then((resp) => {
-      console.log(resp.data.isLike)
-      console.log(from.id)
       setLiked({isLike : resp.data.isLike , count : resp.data.count })
+    })
+  }
+
+  const getBookMark = () => {
+    axios({
+      method : "get",
+      url : `/api/v1/bookmarks/${from.id}`,
+    }).then((resp) => {
+      console.log(resp.data.isSubscribed)
+      setBookMarked(resp.data.isSubscribed)
     })
   }
 
   useEffect(() => {
     getReply();
     getLike();
+    getBookMark();
   },[])
+
+
+  useEffect(() => {
+    getReply();
+    getLike();
+    getBookMark();
+  },[test])
+
+
 
   return (
     <>
-      <ViewForm post={from}></ViewForm>
-      <Reply replys={replys} setReplys={setReplys} id={from.id} liked = {liked} setLiked = {setLiked} likeCount = {likeCount} ></Reply>
+      <ViewForm post={from} user = {user}></ViewForm>
+      <Reply replys={replys} setReplys={setReplys} id={from.id} liked = {liked} setLiked = {setLiked} bookMarked = {bookMarked} setBookMarked = {setBookMarked} user = {user} test = {test} setTest = {setTest}></Reply>
       <ListButton></ListButton>
-      <div style={{ marginTop: "80px" }}>
-        <Footer></Footer>
+      <div style={{ marginTop: "120px" }}>
       </div>
     </>
   )

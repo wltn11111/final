@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 function Button({ post, setPosts, posts, id }) {
   const Navigate = useNavigate();
   const modPost = async () => {
+    console.log(post);
     try {
       await axios({
         method: "put",
@@ -31,6 +32,11 @@ function Button({ post, setPosts, posts, id }) {
       style={{ width: "800px", height: "40px", margin: "auto", marginTop: "48px", }}>
       <div>
         <Link to={`/post/${post.id}`} state={{ from: post }} onClick={(e) => {
+
+          if (post.category == "") {
+            alert("카테고리를 선택해주세요")
+            e.preventDefault()
+          }
 
           if (post.title == "") {
             alert("제목을 입력해주세요")
@@ -57,25 +63,27 @@ function Button({ post, setPosts, posts, id }) {
 }
 
 function Category({ post, setPost }) {
-  useEffect(() => {
-    setPost(prev => ({ ...prev, category: "자유" }))
-  }, [])
+
   return (
     <div style={{ width: "800px", margin: "auto", marginTop: "10px", marginBottom: "10px" }}>
       <select
         style={{ width: "140px", height: "36px" }}
-        className="form-select" aria-label="Default select example"
-        defaultValue={"자유"} onChange={(e) => { setPost(prev => ({ ...prev, category: e.target.value })) }}>
-        <option key={"라이프"} value={"FREEDOM"}>자유</option>
-        <option key={"스포츠"} value={"IT"}>IT</option>
-        <option key={"연예"} value={"SPORTS"}>운동</option>
-        <option key={"자유"} value={"FASHION"}>패션</option>
+        className="form-select"
+        aria-label="Default select example"
+        defaultValue={post.category} onChange={(e) => {
+          setPost(prev => ({ ...prev, category: e.target.value }))
+        }}>
+        <option selected disabled>카테고리</option>
+        <option key={"라이프"} id = "FREEDOM" value={"FREEDOM"}>자유</option>
+        <option key={"스포츠"} id = "IT" value={"IT"}>IT</option>
+        <option key={"연예"} id = "SPORTS"value={"SPORTS"}>운동</option>
+        <option key={"자유"} id = "FASHOIN" value={"FASHION"}>패션</option>
       </select>
     </div>
   )
 }
 
-function Title({ post, setPost}) {
+function Title({ post, setPost }) {
   return (
     <div style={{ marginBottom: "20px" }}>
       <p className={style.title_p}>
@@ -92,10 +100,9 @@ function Title({ post, setPost}) {
 
 export default function ModForm({ setPosts, posts }) {
   const { id } = useParams();
-  const {state} = useLocation();
-  console.log(state)
+  const { state } = useLocation();
+  const [post, setPost] = useState(state);
 
-  const [post, setPost] = useState(state)
   return (
     <div className="container mt-4">
       <Category post={post} setPost={setPost}></Category>

@@ -4,6 +4,7 @@ import { LogOutIcon, LoginIcon } from './icon/Icon';
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import logo from '../../assets/images/logo.png'
+import Footer from '../footer/Footer'
 
 export default function ({ user }) {
 
@@ -30,6 +31,7 @@ export default function ({ user }) {
     <>
       <Header></Header>
       <Outlet></Outlet>
+      <Footer></Footer>
     </>
   )
 }

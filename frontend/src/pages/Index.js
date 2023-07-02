@@ -52,9 +52,7 @@ export default function ({user, setUser}) {
       <Category></Category>
       {user ? <PostButton></PostButton> : null}
       <div style={{marginTop : "7rem"}}>
-      <Footer></Footer>
       </div>
-
     </>
   )
 }

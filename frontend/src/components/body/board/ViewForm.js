@@ -4,9 +4,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Editor from './Editor';
 import { useNavigate, useParams } from 'react-router-dom';
+import DOMPurify from 'dompurify';
 
 
-const Button = ({post}) => {
+const Button = ({post,user}) => {
   const Navigate = useNavigate();
   const delPost = () => {
     if (window.confirm('정말 삭제하시겠습니까?')){
@@ -17,7 +18,9 @@ const Button = ({post}) => {
   }
 
   return (
-    <div className='d-flex justify-content-end mt-3' style={{ width: "800px", margin: "auto"}}>
+    <>
+    {post.author == user.nickname ?
+      <div className='d-flex justify-content-end mt-3' style={{ width: "800px", margin: "auto"}}>
       <button className={`${style.btn} btn btn-dark`}
         onClick={() => {
           Navigate('/modpost/' + post.id , {state : post})
@@ -26,7 +29,9 @@ const Button = ({post}) => {
       <button className={`${style.btn} btn btn-dark ms-2`}
       onClick={delPost}
       >삭제</button>
-    </div>
+    </div> : null
+}
+    </>
   )
 }
 
@@ -42,10 +47,10 @@ const convertToKorean = (category) => {
 }
 
 
-export default function ViewForm({post}) {
-
+export default function ViewForm({post, user}) {
   return (
     <>
+    {console.log(post)}
       <div className={style.view_container}>
       <div className={style.category_box}>
       <div className={`${style.view_category} d-flex justify-content-start`}>
@@ -56,12 +61,11 @@ export default function ViewForm({post}) {
           {post.title}
         </div>
         <div className={`${style.view_content} mt-4`}>
-           <div dangerouslySetInnerHTML={{ __html:post.contents}}></div>
+           <div dangerouslySetInnerHTML={{ __html:DOMPurify.sanitize(String(post.contents))}}></div>
         </div>
-        <Button post = {post}></Button>
+        {user ? <Button post = {post} user = {user}></Button> : null}
       </div>
     </>
-
   )
 }
 

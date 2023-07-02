@@ -5,16 +5,13 @@ import "react-quill/dist/quill.snow.css";
 
 
 export default class Editor extends React.Component {
-
   constructor(props) {
     super(props)
-    this.state = {}
     this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(html) {
-    this.setState({ editorHtml: html });
-    this.props.setPost(prev => ({ ...prev, contents: this.state.editorHtml }))
+    this.props.setPost(prev => ({ ...prev, contents: html }))
   }
 
   render() {
@@ -22,13 +19,37 @@ export default class Editor extends React.Component {
       <ReactQuill
         style={{ width: "800px", height: "600px", margin: "auto" }}
         onChange={this.handleChange}
-        value={this.state.editorHtml}
         modules={Editor.modules}
         formats={Editor.formats}
       />
     )
   }
 }
+
+
+//   constructor(props) {
+//     super(props)
+//     this.state = {}
+//     this.handleChange = this.handleChange.bind(this)
+//   }
+
+//   handleChange(html) {
+//     this.setState({ editorHtml: html });
+//     this.props.setPost(prev => ({ ...prev, contents: this.state.editorHtml }))
+//   }
+
+//   render() {
+//     return (
+//       <ReactQuill
+//         style={{ width: "800px", height: "600px", margin: "auto" }}
+//         onChange={this.handleChange}
+//         value={this.state.editorHtml}
+//         modules={Editor.modules}
+//         formats={Editor.formats}
+//       />
+//     )
+//   }
+// }
 
 /*
  * Quill modules to attach to editor
