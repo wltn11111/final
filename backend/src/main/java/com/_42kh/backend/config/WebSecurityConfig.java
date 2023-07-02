@@ -34,6 +34,7 @@ public class WebSecurityConfig {
             .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
             .authorizeHttpRequests(requests -> requests
                 .requestMatchers(HttpMethod.GET, "/api/v1/users").authenticated()
+                .requestMatchers("/api/v1/my_page").authenticated()
                 .requestMatchers(HttpMethod.POST, "/api/v1/**").authenticated()
                 .requestMatchers(HttpMethod.PUT, "/api/v1/**").authenticated()
                 .requestMatchers(HttpMethod.DELETE, "/api/v1/**").authenticated()
