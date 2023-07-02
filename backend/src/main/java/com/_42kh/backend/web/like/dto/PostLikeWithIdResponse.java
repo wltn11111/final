@@ -5,16 +5,16 @@ import lombok.Getter;
 @Getter
 public class PostLikeWithIdResponse {
 
-    private final Long id;
+    private final Long postId;
     private final Boolean isLike;
     private final Long count;
 
     public PostLikeWithIdResponse(
-        Long id,
+        Long postId,
         Boolean isLike,
         Long count
     ) {
-        this.id = id;
+        this.postId = postId;
         this.isLike = isLike;
         this.count = count;
     }
