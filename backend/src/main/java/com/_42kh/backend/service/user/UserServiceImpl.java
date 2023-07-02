@@ -1,5 +1,6 @@
 package com._42kh.backend.service.user;
 
+import com._42kh.backend.config.auth.dto.SessionUser;
 import com._42kh.backend.domain.user.User;
 import com._42kh.backend.domain.user.UserRepository;
 import com._42kh.backend.web.user.dto.UserResponse;
@@ -15,8 +16,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public UserResponse findById(Long userId) {
-        User user = userRepository.findById(userId).orElseThrow();
+    public UserResponse getUser(SessionUser sessionUser) {
+        User user = userRepository.findById(sessionUser.getUserId()).orElseThrow();
 
         return new UserResponse(user);
     }

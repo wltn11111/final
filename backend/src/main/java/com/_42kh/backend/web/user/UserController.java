@@ -17,7 +17,7 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    public UserResponse userDetails(@LoginUser SessionUser sessionUser) {
-        return userService.findById(sessionUser.getUserId());
+    public UserResponse getUser(@LoginUser SessionUser sessionUser) {
+        return userService.getUser(sessionUser);
     }
 }
