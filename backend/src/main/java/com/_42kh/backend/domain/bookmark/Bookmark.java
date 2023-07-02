@@ -1,5 +1,6 @@
 package com._42kh.backend.domain.bookmark;
 
+import com._42kh.backend.domain.BaseTime;
 import com._42kh.backend.domain.post.Post;
 import com._42kh.backend.domain.user.User;
 import jakarta.persistence.EmbeddedId;
@@ -12,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @Table(name = "bookmarks")
-public class Bookmark {
+public class Bookmark extends BaseTime {
 
     @EmbeddedId
     private BookmarkId bookmarkId;

@@ -13,6 +13,7 @@ import com._42kh.backend.web.mypage.dto.MyPageBookmarkResponse;
 import com._42kh.backend.web.mypage.dto.MyPageCommentResponse;
 import com._42kh.backend.web.mypage.dto.MyPagePostResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,7 +32,10 @@ public class MyPageServiceImpl implements MyPageService {
     @Transactional(readOnly = true)
     public List<MyPagePostResponse> findPosts(SessionUser sessionUser) {
         User user = userRepository.findById(sessionUser.getUserId()).orElseThrow();
-        List<Post> posts = postRepository.findByUserId(user.getId());
+        List<Post> posts = postRepository.findByUserId(
+            user.getId(),
+            Sort.by(Sort.Direction.DESC, "createdDate")
+        );
 
         return posts.stream()
             .map(MyPagePostResponse::new)
@@ -42,7 +46,10 @@ public class MyPageServiceImpl implements MyPageService {
     @Transactional(readOnly = true)
     public List<MyPageCommentResponse> findComments(SessionUser sessionUser) {
         User user = userRepository.findById(sessionUser.getUserId()).orElseThrow();
-        List<Comment> comments = commentRepository.findByUserId(user.getId());
+        List<Comment> comments = commentRepository.findByUserId(
+            user.getId(),
+            Sort.by(Sort.Direction.DESC, "createdDate")
+        );
 
         return comments.stream()
             .map(MyPageCommentResponse::new)
@@ -53,7 +60,10 @@ public class MyPageServiceImpl implements MyPageService {
     @Transactional(readOnly = true)
     public List<MyPageBookmarkResponse> findBookmarks(SessionUser sessionUser) {
         User user = userRepository.findById(sessionUser.getUserId()).orElseThrow();
-        List<Bookmark> bookmarks = bookmarkRepository.findByBookmarkIdUserId(user.getId());
+        List<Bookmark> bookmarks = bookmarkRepository.findByBookmarkIdUserId(
+            user.getId(),
+            Sort.by(Sort.Direction.DESC, "createdDate")
+        );
 
         return bookmarks.stream()
             .map(MyPageBookmarkResponse::new)

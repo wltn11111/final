@@ -1,5 +1,6 @@
 package com._42kh.backend.domain.bookmark;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -11,5 +12,5 @@ public interface BookmarkRepository extends JpaRepository<Bookmark, BookmarkId>{
 
     Boolean existsByBookmarkIdPostIdAndBookmarkIdUserId(Long postId, Long userId);
 
-    List<Bookmark> findByBookmarkIdUserId(Long userId);
+    List<Bookmark> findByBookmarkIdUserId(Long userId, Sort sort);
 }
