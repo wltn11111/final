@@ -10,6 +10,7 @@ import com._42kh.backend.web.post.dto.PostResponse;
 import com._42kh.backend.web.post.dto.PostSaveResponse;
 import com._42kh.backend.web.post.dto.PostUpdateResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,7 +49,7 @@ public class PostServiceImpl implements PostService {
     @Override
     @Transactional(readOnly = true)
     public List<PostResponse> findAll() {
-        List<Post> posts = postRepository.findAll();
+        List<Post> posts = postRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
 
         return posts.stream()
             .map(PostResponse::new)
