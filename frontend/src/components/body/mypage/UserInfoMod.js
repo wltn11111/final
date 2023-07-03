@@ -3,8 +3,8 @@ import style from './UserInfoMod.module.css';
 
 export default function () {
   return (
-    <div className="container" style={{ margin: "30px", width: "960px" }}>
-      <div style={{ borderBottom: "3px solid black", paddingBottom: "10px", marginBottom: "16px" }}>
+    <div className="container" style={{margin: "30px", width: "960px"}}>
+      <div style={{borderBottom: "3px solid black", paddingBottom: "10px", marginBottom: "16px"}}>
         <h3 className={style.h}>회원정보 수정 </h3>
       </div>
       <div>
@@ -35,8 +35,8 @@ export default function () {
         </ul>
       </div>
       <div className='d-flex justify-content-center'
-        style={{ marginTop: "62px" }}>
-        <button className='btn btn-dark' style={{ paddingLeft: "20px", paddingRight: "20px" }}>변경</button>
+           style={{marginTop: "62px"}}>
+        <button className='btn btn-dark' style={{paddingLeft: "20px", paddingRight: "20px"}}>변경</button>
       </div>
     </div>
   )

@@ -1,11 +1,9 @@
 import style from './Icon.module.css';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
-
-function LogOutIcon () {
- return (
+function LogOutIcon() {
+  return (
     <>
       <div className={`${style.icon} d-none d-sm-block`}>
         <ul className={style.icon_list}>
@@ -25,9 +23,11 @@ function LogOutIcon () {
       </div>
       <div className={`${style.search_icon} d-block d-sm-none`}>
         <ul className={`${style.search_list} mt-3`}>
-          <Link to="/search"> <li>
-            <i className={`${style.search_icon} ri-search-2-line`} />
-          </li></Link>
+          <Link to="/search">
+            <li>
+              <i className={`${style.search_icon} ri-search-2-line`}/>
+            </li>
+          </Link>
         </ul>
       </div>
     </>
@@ -36,7 +36,7 @@ function LogOutIcon () {
 }
 
 
-function LoginIcon () {
+function LoginIcon() {
   return (
     <>
       <div className={`${style.icon} d-none d-sm-block`}>
@@ -62,17 +62,14 @@ function LoginIcon () {
         <ul className={`${style.search_list} mt-3`}>
           <Link to="/search">
             <li>
-            <i className={`${style.search_icon} ri-search-2-line`} />
-              </li>
-              </Link>
-              </ul>
-            </div>
-     </>
+              <i className={`${style.search_icon} ri-search-2-line`}/>
+            </li>
+          </Link>
+        </ul>
+      </div>
+    </>
   )
 }
 
 
-
-
-
-export { LogOutIcon, LoginIcon };
+export {LogOutIcon, LoginIcon};

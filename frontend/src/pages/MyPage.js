@@ -1,8 +1,6 @@
-import Header from '../components/header/Header';
-import Footer from '../components/footer/Footer';
 import Sidebar from '../components/body/mypage/Sidebar'
 import 'bootstrap/dist/css/bootstrap.css';
-import { Outlet } from 'react-router-dom';
+import {Outlet} from 'react-router-dom';
 
 export default function () {
 
@@ -17,7 +15,7 @@ export default function () {
             <Outlet></Outlet>
           </div>
         </div>
-      <div style={{marginTop : "80px"}}></div>
+        <div style={{marginTop: "80px"}}></div>
       </div>
     </>
   )

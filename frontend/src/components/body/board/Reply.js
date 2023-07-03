@@ -1,17 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import style from './Reply.module.css'
-import { useEffect, useState } from 'react';
+import {useState} from 'react';
 import profile from '../../../assets/images/reply_profile.jpg'
 import axios from 'axios';
 
 
-const Btn = ({ replyView, setReplyView, post_id, replys, setLiked, liked, bookMarked, setBookMarked }) => {
+const Btn = ({replyView, setReplyView, post_id, replys, setLiked, liked, bookMarked, setBookMarked}) => {
 
   const likeHandle = async () => {
     if (liked.isLike) {
       try {
         await axios.delete(`/api/v1/likes/posts/${post_id}`).then((resp) => {
-          setLiked({ isLike: resp.data.isLike, count: resp.data.count })
+          setLiked({isLike: resp.data.isLike, count: resp.data.count})
         })
       } catch (err) {
         console.log("like delete err : " + err)
@@ -19,7 +19,7 @@ const Btn = ({ replyView, setReplyView, post_id, replys, setLiked, liked, bookMa
     } else {
       try {
         await axios.post(`/api/v1/likes/posts/${post_id}`).then((resp) => {
-          setLiked({ isLike: resp.data.isLike, count: resp.data.count })
+          setLiked({isLike: resp.data.isLike, count: resp.data.count})
         })
       } catch (err) {
         console.log("like post err : " + err)
@@ -49,23 +49,26 @@ const Btn = ({ replyView, setReplyView, post_id, replys, setLiked, liked, bookMa
 
   return (
     <div className={style.btn_container}>
-      <div style={{ float: "left", marginRight: "10px" }}>
+      <div style={{float: "left", marginRight: "10px"}}>
         <button className={style.reply_btn}
-          onClick={() => { setReplyView(!replyView) }}>
+                onClick={() => {
+                  setReplyView(!replyView)
+                }}>
           <i className="ri-message-3-line me-1"></i>
-          댓글 <span style={{ fontSize: "14px" }}>{replys.length}</span>
+          댓글 <span style={{fontSize: "14px"}}>{replys.length}</span>
         </button>
       </div>
-      <div style={{ float: "left", marginRight: "10px" }}>
+      <div style={{float: "left", marginRight: "10px"}}>
         <button className={style.bookmark_btn}
-          onClick={bookMarkHandle}>
-          <i className="ri-bookmark-fill" style={{ color: bookMarked.isSubscribed ? "#FFD228" : "grey", transitionDuration: "1s" }}></i>
+                onClick={bookMarkHandle}>
+          <i className="ri-bookmark-fill"
+             style={{color: bookMarked.isSubscribed ? "#FFD228" : "grey", transitionDuration: "1s"}}></i>
           북마크
         </button>
       </div>
       <div>
         <button className={style.like_btn}
-          onClick={likeHandle}>
+                onClick={likeHandle}>
           <i className="ri-heart-3-fill me-1 like_i" style={{
             color: liked.isLike ? "#9B111E" : "grey",
             transitionDuration: "1s"
@@ -78,13 +81,13 @@ const Btn = ({ replyView, setReplyView, post_id, replys, setLiked, liked, bookMa
   )
 }
 
-const Reply = ({ replys, setReplys, post_id , user }) => {
+const Reply = ({replys, setReplys, post_id, user}) => {
 
 
-  const [reply, setReply] = useState({ contents: "" });
+  const [reply, setReply] = useState({contents: ""});
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setReply(prev => ({ ...prev, [name]: value }))
+    const {name, value} = e.target
+    setReply(prev => ({...prev, [name]: value}))
   }
 
   const sendReply = async () => {
@@ -98,19 +101,19 @@ const Reply = ({ replys, setReplys, post_id , user }) => {
       data: reply
     }).then((resp) => {
       console.log(user)
-      resp.data = { ...resp.data, author: user.nickname }
+      resp.data = {...resp.data, author: user.nickname}
       setReplys(prev => [...prev, resp.data])
-      setReply(prev => ({...prev,contents: "" }));
+      setReply(prev => ({...prev, contents: ""}));
     })
   }
 
   return (
     <div className={style.reply_list}>
-      {replys != null ? <ReplyList replys={replys} setReplys={setReplys} id = {post_id}></ReplyList> : null}
+      {replys != null ? <ReplyList replys={replys} setReplys={setReplys} id={post_id}></ReplyList> : null}
       <div className={style.reply_container}>
         <div><strong>댓글</strong></div>
         <div><textarea className={style.reply_input} name='contents'
-          onChange={handleChange} value={reply.contents}></textarea></div>
+                       onChange={handleChange} value={reply.contents}></textarea></div>
         <div className={style.submit_btn_box}>
           <button className={style.submit_btn} onClick={sendReply}>확인</button>
         </div>
@@ -119,7 +122,7 @@ const Reply = ({ replys, setReplys, post_id , user }) => {
   )
 }
 
-const ReplyList = ({ replys, setReplys }) => {
+const ReplyList = ({replys, setReplys}) => {
 
   return (
     <>
@@ -141,7 +144,7 @@ const ReplyList = ({ replys, setReplys }) => {
   )
 }
 
-const Comment = ({ reply, setReplys, replys }) => {
+const Comment = ({reply, setReplys, replys}) => {
   const [recommentView, setRecommentView] = useState(false);
   const [replyModView, setReplyModView] = useState(false);
 
@@ -157,7 +160,7 @@ const Comment = ({ reply, setReplys, replys }) => {
       <div className={style.replys}>
         <div className={style.profile_box}>
           <div className={style.profile}>
-            <img src={profile} style={{ width: "100%", height: "100%" }}></img>
+            <img src={profile} style={{width: "100%", height: "100%"}}></img>
           </div>
         </div>
         <div className={style.reply_content}>
@@ -165,7 +168,7 @@ const Comment = ({ reply, setReplys, replys }) => {
             <div className={style.user_info}>
               <span>{reply.author}</span>
               <span className={style.reply_like}>
-                <i className={`${style.like_i} ri-chat-heart-line me-1`} />
+                <i className={`${style.like_i} ri-chat-heart-line me-1`}/>
                 like_count
               </span>
             </div>
@@ -173,7 +176,8 @@ const Comment = ({ reply, setReplys, replys }) => {
               <ul className={style.ul}>
                 <li className={style.li} onClick={() => {
                   setReplyModView(!replyModView);
-                }}>수정</li>
+                }}>수정
+                </li>
                 <li className={style.li} onClick={delReply}>삭제</li>
               </ul>
             </div>
@@ -184,7 +188,7 @@ const Comment = ({ reply, setReplys, replys }) => {
                 }}>댓글 달기</span></div>
           </div>
           {replyModView ? <ReplyMod setReplyModView={setReplyModView}
-            replys={replys} reply={reply} setReplys={setReplys} ></ReplyMod> :
+                                    replys={replys} reply={reply} setReplys={setReplys}></ReplyMod> :
             <div className={style.content_b}>
               {reply.contents}
             </div>
@@ -198,11 +202,11 @@ const Comment = ({ reply, setReplys, replys }) => {
 }
 
 
-const ReplyMod = ({ setReplyModView, setReplys, reply, replys }) => {
+const ReplyMod = ({setReplyModView, setReplys, reply, replys}) => {
   const [modReply, setModReply] = useState({});
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setModReply({ [name]: value })
+    const {name, value} = e.target
+    setModReply({[name]: value})
   }
 
   const Modreply = async () => {
@@ -218,7 +222,7 @@ const ReplyMod = ({ setReplyModView, setReplys, reply, replys }) => {
       }).then((resp) => {
         let copy = [...replys];
         let findIndex = replys.findIndex(e => e.id == reply.id);
-        let sendModReply = ({ id: reply.id, contents: resp.data.contents });
+        let sendModReply = ({id: reply.id, contents: resp.data.contents});
         copy[findIndex] = sendModReply;
         setReplys(copy);
         setReplyModView(false);
@@ -233,23 +237,25 @@ const ReplyMod = ({ setReplyModView, setReplys, reply, replys }) => {
       <div className={style.replymod_title}
       ><strong>댓글수정</strong></div>
       <div><textarea className={style.replymod_input}
-        name='contents'
-        onChange={handleChange}></textarea></div>
+                     name='contents'
+                     onChange={handleChange}></textarea></div>
       <div className={style.submit_btn_box}>
         <button className={style.submit_btn}
-          onClick={Modreply}
-        >수정</button>
+                onClick={Modreply}
+        >수정
+        </button>
         <button className={style.cancel_btn}
-          onClick={() => {
-            setReplyModView(false);
-          }}
-        >수정 취소</button>
+                onClick={() => {
+                  setReplyModView(false);
+                }}
+        >수정 취소
+        </button>
       </div>
     </div>
   )
 }
 
-const Recomment = ({ setRecommentView }) => {
+const Recomment = ({setRecommentView}) => {
   return (
     <div className={style.recomment_container}>
       <div><i className="ri-corner-down-right-line"></i>댓글</div>
@@ -258,9 +264,10 @@ const Recomment = ({ setRecommentView }) => {
       <div className={style.submit_btn_box}>
         <button className={style.submit_btn}>확인</button>
         <button className={style.submit_btn}
-          onClick={() => {
-            setRecommentView(false)
-          }}>취소</button>
+                onClick={() => {
+                  setRecommentView(false)
+                }}>취소
+        </button>
       </div>
     </div>
   )
@@ -268,7 +275,7 @@ const Recomment = ({ setRecommentView }) => {
 
 const Recomment_list = () => {
   return (
-    <div className={style.replys} style={{ margin: "0px", borderTop: "none" }}>
+    <div className={style.replys} style={{margin: "0px", borderTop: "none"}}>
       <div className={style.icon_box}>
         <i className="ri-corner-down-right-line"></i>
       </div>
@@ -290,17 +297,17 @@ const Recomment_list = () => {
   )
 }
 
-export default function ({ replys, setReplys, id, liked, setLiked, bookMarked, setBookMarked , user }) {
+export default function ({replys, setReplys, id, liked, setLiked, bookMarked, setBookMarked, user}) {
   const [replyView, setReplyView] = useState(false);
 
   return (
     <>
       <Btn replyView={replyView} setReplyView={setReplyView} post_id={id}
-        replys={replys} liked={liked} setLiked={setLiked} bookMarked={bookMarked}
-        setBookMarked={setBookMarked} ></Btn>
+           replys={replys} liked={liked} setLiked={setLiked} bookMarked={bookMarked}
+           setBookMarked={setBookMarked}></Btn>
       {replyView ?
         <Reply replys={replys} setReplys={setReplys} post_id={id}
-        user = {user}>
+               user={user}>
         </Reply>
         : null}
     </>

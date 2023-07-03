@@ -1,5 +1,3 @@
-import Header from "../components/header/Header";
-import Footer from "../components/footer/Footer";
 import Login from "../components/body/login/Login";
 
 export default function () {
@@ -7,7 +5,7 @@ export default function () {
   return (
     <>
       <Login></Login>
-      <div style={{marginTop : "100px"}}></div>
+      <div style={{marginTop: "100px"}}></div>
     </>
   )
 

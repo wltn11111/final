@@ -55,8 +55,8 @@
   transform: scale(0.9);
 }
 
-.like_btn:hover .like_btn i{
-    color: black;
+.like_btn:hover .like_btn i {
+  color: black;
 }
 
 
@@ -108,8 +108,7 @@
   height: auto;
   border: 1px solid #d4d4d4;
   display: flex;
-  background-color: #f9f8f3;
-  ;
+  background-color: #f9f8f3;;
 }
 
 .profile_box {
@@ -144,11 +143,11 @@
   font-size: 13px;
 }
 
-.reply_like{
+.reply_like {
   margin-left: 0.6rem;
 }
 
-.like_i:hover{
+.like_i:hover {
   cursor: pointer;
 }
 

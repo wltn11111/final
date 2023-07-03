@@ -1,12 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navi from './navi/Navi';
-import { LogOutIcon, LoginIcon } from './icon/Icon';
-import { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import {LoginIcon, LogOutIcon} from './icon/Icon';
+import {useEffect} from 'react';
+import {Outlet} from 'react-router-dom';
 import logo from '../../assets/images/logo.png'
 import Footer from '../footer/Footer'
 
-export default function ({ user }) {
+export default function ({user}) {
 
   useEffect(() => {
     console.log(user);
@@ -14,9 +14,9 @@ export default function ({ user }) {
 
   const Header = () => {
     return (
-      <div className="row sticky-top header" style={{ margin: "0px", backgroundColor: "white" }}>
-        <div className="col-6 col-md-2 mt-2" style={{ margin: "auto", width: "7rem", height: "5rem"}}>
-          <img src = {logo}style={{ width: "100%", height: "100%" }} className='d-none d-md-block' />
+      <div className="row sticky-top header" style={{margin: "0px", backgroundColor: "white"}}>
+        <div className="col-6 col-md-2 mt-2" style={{margin: "auto", width: "7rem", height: "5rem"}}>
+          <img src={logo} style={{width: "100%", height: "100%"}} className='d-none d-md-block'/>
         </div>
         <div className="d-none d-md-block col-md-8">
           <Navi></Navi>

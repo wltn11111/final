@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import React, { Component, useState } from "react";
-import ReactQuill, { Quill } from "react-quill";
+import React from "react";
+import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 
@@ -11,13 +11,13 @@ export default class Editor extends React.Component {
   }
 
   handleChange(html) {
-    this.props.setPost(prev => ({ ...prev, contents: html }))
+    this.props.setPost(prev => ({...prev, contents: html}))
   }
 
   render() {
     return (
       <ReactQuill
-        style={{ width: "800px", height: "600px", margin: "auto" }}
+        style={{width: "800px", height: "600px", margin: "auto"}}
         onChange={this.handleChange}
         value={this.props.post.contents}
         modules={Editor.modules}
@@ -59,11 +59,11 @@ export default class Editor extends React.Component {
 Editor.modules = {
 
   toolbar: [
-    [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
-    [{ size: [] }],
+    [{'header': '1'}, {'header': '2'}, {'font': []}],
+    [{size: []}],
     ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-    [{ 'list': 'ordered' }, { 'list': 'bullet' },
-    { 'indent': '-1' }, { 'indent': '+1' }],
+    [{'list': 'ordered'}, {'list': 'bullet'},
+      {'indent': '-1'}, {'indent': '+1'}],
     ['link', 'image'],
     ['clean']
   ],

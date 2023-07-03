@@ -20,7 +20,7 @@
 
 
 .text1 {
-  width:auto;
+  width: auto;
   height: 60px;
   position: absolute;
   z-index: 100;
@@ -70,7 +70,6 @@
   background-color: #ffff;
   color: black;
 }
-
 
 
 /*

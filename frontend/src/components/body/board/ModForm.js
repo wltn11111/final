@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import {useState} from "react";
 import Editor from "./Editor";
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import {Link, useLocation, useNavigate, useParams} from 'react-router-dom';
 import axios from "axios";
 import style from "./ModForm.module.css"
 import 'bootstrap/dist/css/bootstrap.css';
 
-function Button({ post, setPosts, posts, id }) {
+function Button({post, setPosts, posts, id}) {
   const Navigate = useNavigate();
   const modPost = async () => {
     console.log(post);
@@ -19,7 +19,7 @@ function Button({ post, setPosts, posts, id }) {
           console.log(resp.data);
           let copy = [...posts];
           let findIndex = posts.findIndex(post => post.id == id);
-          let modPost = ({ id: id, title: resp.data.title, contents: resp.data.contents });
+          let modPost = ({id: id, title: resp.data.title, contents: resp.data.contents});
           copy[findIndex] = modPost;
           setPosts(copy);
         })
@@ -29,9 +29,9 @@ function Button({ post, setPosts, posts, id }) {
   }
   return (
     <div className="d-flex justify-content-end"
-      style={{ width: "800px", height: "40px", margin: "auto", marginTop: "48px", }}>
+         style={{width: "800px", height: "40px", margin: "auto", marginTop: "48px",}}>
       <div>
-        <Link to={`/post/${post.id}`} state={{ from: post }} onClick={(e) => {
+        <Link to={`/post/${post.id}`} state={{from: post}} onClick={(e) => {
 
           if (post.category == "") {
             alert("카테고리를 선택해주세요")
@@ -48,7 +48,8 @@ function Button({ post, setPosts, posts, id }) {
           }
         }}>
           <button className={style.custom_btn}
-            onClick={modPost}>수정 완료</button>
+                  onClick={modPost}>수정 완료
+          </button>
         </Link>
       </div>
       <button
@@ -62,45 +63,45 @@ function Button({ post, setPosts, posts, id }) {
   )
 }
 
-function Category({ post, setPost }) {
+function Category({post, setPost}) {
 
   return (
-    <div style={{ width: "800px", margin: "auto", marginTop: "10px", marginBottom: "10px" }}>
+    <div style={{width: "800px", margin: "auto", marginTop: "10px", marginBottom: "10px"}}>
       <select
-        style={{ width: "140px", height: "36px" }}
+        style={{width: "140px", height: "36px"}}
         className="form-select"
         aria-label="Default select example"
         defaultValue={post.category} onChange={(e) => {
-          setPost(prev => ({ ...prev, category: e.target.value }))
-        }}>
+        setPost(prev => ({...prev, category: e.target.value}))
+      }}>
         <option selected disabled>카테고리</option>
-        <option key={"라이프"} id = "FREEDOM" value={"FREEDOM"}>자유</option>
-        <option key={"스포츠"} id = "IT" value={"IT"}>IT</option>
-        <option key={"연예"} id = "SPORTS"value={"SPORTS"}>운동</option>
-        <option key={"자유"} id = "FASHOIN" value={"FASHION"}>패션</option>
+        <option key={"라이프"} id="FREEDOM" value={"FREEDOM"}>자유</option>
+        <option key={"스포츠"} id="IT" value={"IT"}>IT</option>
+        <option key={"연예"} id="SPORTS" value={"SPORTS"}>운동</option>
+        <option key={"자유"} id="FASHOIN" value={"FASHION"}>패션</option>
       </select>
     </div>
   )
 }
 
-function Title({ post, setPost }) {
+function Title({post, setPost}) {
   return (
-    <div style={{ marginBottom: "20px" }}>
+    <div style={{marginBottom: "20px"}}>
       <p className={style.title_p}>
         <input type="text"
-          placeholder="글 제목"
-          className={style.title_input}
-          value={post.title}
-          onChange={(e) => {
-            setPost(prev => ({ ...prev, title: e.target.value }))
-          }}></input></p>
+               placeholder="글 제목"
+               className={style.title_input}
+               value={post.title}
+               onChange={(e) => {
+                 setPost(prev => ({...prev, title: e.target.value}))
+               }}></input></p>
     </div>
   )
 }
 
-export default function ModForm({ setPosts, posts }) {
-  const { id } = useParams();
-  const { state } = useLocation();
+export default function ModForm({setPosts, posts}) {
+  const {id} = useParams();
+  const {state} = useLocation();
   const [post, setPost] = useState(state);
 
   return (

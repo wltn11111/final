@@ -1,15 +1,12 @@
-import { useState, useEffect } from "react";
+import {useState} from "react";
 import Editor from "./Editor";
 import axios from "axios";
 import style from "./WriteForm.module.css"
 import 'bootstrap/dist/css/bootstrap.css';
-import { useNavigate, Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
-
-
-
-function Button({ post, setPosts, user }) {
+function Button({post, setPosts, user}) {
 
   const Navigate = useNavigate();
 
@@ -34,14 +31,20 @@ function Button({ post, setPosts, user }) {
 
     try {
       await axios({
-        method: "post",
-        url: "/api/v1/posts",
-        data: post
-      }
+          method: "post",
+          url: "/api/v1/posts",
+          data: post
+        }
       ).then((resp) => {
-        let newPost = { id: resp.data.id, author : user.nickname ,title: post.title, contents: post.contents, category: post.category }
+        let newPost = {
+          id: resp.data.id,
+          author: user.nickname,
+          title: post.title,
+          contents: post.contents,
+          category: post.category
+        }
         setPosts(prev => [...prev, newPost])
-        Navigate(`/post/${newPost.id}`, {state : {from : newPost}})
+        Navigate(`/post/${newPost.id}`, {state: {from: newPost}})
       })
     } catch (err) {
       console.log(err);
@@ -50,24 +53,27 @@ function Button({ post, setPosts, user }) {
 
   return (
     <div className="d-flex justify-content-end"
-      style={{ width: "800px", height: "40px", margin: "auto", marginTop: "60px", }}>
+         style={{width: "800px", height: "40px", margin: "auto", marginTop: "60px",}}>
       <div>
-          <button className="btn btn-dark"
-          onClick={sendPost}>글 작성</button>
+        <button className="btn btn-dark"
+                onClick={sendPost}>글 작성
+        </button>
       </div>
     </div>
 
   )
 }
 
-function Category({ post, setPost }) {
+function Category({post, setPost}) {
 
   return (
-    <div style={{ width: "800px", margin: "auto", marginTop: "10px", marginBottom: "10px" }}>
+    <div style={{width: "800px", margin: "auto", marginTop: "10px", marginBottom: "10px"}}>
       <select
-        style={{ width: "140px", height: "36px" }}
+        style={{width: "140px", height: "36px"}}
         class="form-select" aria-label="Default select example"
-        onChange={(e) => { setPost(prev => ({ ...prev, category: e.target.value })) }}>
+        onChange={(e) => {
+          setPost(prev => ({...prev, category: e.target.value}))
+        }}>
         <option selected disabled>카테고리</option>
         <option key={"라이프"} value={"FREEDOM"}>자유</option>
         <option key={"스포츠"} value={"IT"}>IT</option>
@@ -78,25 +84,25 @@ function Category({ post, setPost }) {
   )
 }
 
-function Title({ post, setPost }) {
+function Title({post, setPost}) {
   return (
-    <div style={{ marginBottom: "20px" }}>
+    <div style={{marginBottom: "20px"}}>
       <p className={style.title_p}>
         <input type="text"
-          placeholder="글 제목"
-          className={style.title_input}
-          value={post.title}
-          onChange={(e) => {
-            setPost(prev => ({ ...prev, title: e.target.value }))
-          }}></input></p>
+               placeholder="글 제목"
+               className={style.title_input}
+               value={post.title}
+               onChange={(e) => {
+                 setPost(prev => ({...prev, title: e.target.value}))
+               }}></input></p>
     </div>
 
   )
 }
 
 
-export default function WriteForm({ setPosts,user }) {
-  const [post, setPost] = useState({ title: "", contents: "", category: "" })
+export default function WriteForm({setPosts, user}) {
+  const [post, setPost] = useState({title: "", contents: "", category: ""})
   return (
     <div className="container mt-4">
       <Category post={post} setPost={setPost}></Category>

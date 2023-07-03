@@ -8,19 +8,19 @@ a {
   margin-top: 3rem;
 }
 
-.icon_list{
+.icon_list {
   margin-left: 30px;
   padding: 0px;
 }
 
-.icon_list li{
+.icon_list li {
   margin-left: 20px;
   float: left;
   list-style: none;
   color: black;
 }
 
-.icon_text{
+.icon_text {
   margin-left: 6px;
   font-size: 0.76em;
 }

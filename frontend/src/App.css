@@ -9,22 +9,22 @@ input {
   outline: none;
 }
 
-.start{
+.start {
   opacity: 1;
-  }
+}
 
 
-.end{
+.end {
   opacity: 1;
   transition: opacity 2s;
-  }
+}
 
-  a {
-    margin: 0px;
-    padding: 0px;
-  }
+a {
+  margin: 0px;
+  padding: 0px;
+}
 
-  /* div {
-    border: 1px solid black;
-    box-sizing: border-box;
-  } */
+/* div {
+  border: 1px solid black;
+  box-sizing: border-box;
+} */

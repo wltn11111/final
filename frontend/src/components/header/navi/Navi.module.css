@@ -3,7 +3,7 @@
   margin-top: 2.4rem;
 }
 
-.circle{
+.circle {
   position: absolute;
   margin-top: 5px;
   margin-left: 120px;
@@ -17,7 +17,7 @@
 }
 
 
-.circle2{
+.circle2 {
   position: absolute;
   margin-top: 5px;
   margin-left: 73px;
@@ -30,11 +30,11 @@
   transition-duration: 1s;
 }
 
-.first_navi:hover .circle{
+.first_navi:hover .circle {
   opacity: 100;
 }
 
 
-.second_navi:hover .circle2{
+.second_navi:hover .circle2 {
   opacity: 100;
 }

@@ -15,9 +15,9 @@
   background-color: black;
 }
 
-.list:hover{
+.list:hover {
   cursor: pointer;
-  background-color:  #f9f8f3;
+  background-color: #f9f8f3;
   color: black;
 }
 

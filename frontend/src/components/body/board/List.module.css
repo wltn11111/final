@@ -4,7 +4,7 @@
   padding-bottom: 90px;
 }
 
-.content{
+.content {
   width: 60%;
   margin: auto;
   height: 200px;
@@ -14,10 +14,9 @@
 }
 
 .content:hover {
-    cursor: pointer;
-    box-shadow: 10px 10px 20px rgb(209, 208, 208);
-  }
-
+  cursor: pointer;
+  box-shadow: 10px 10px 20px rgb(209, 208, 208);
+}
 
 
 .content_box {
@@ -36,7 +35,7 @@
 
 .title:hover {
   cursor: pointer;
-  text-decoration : underline;
+  text-decoration: underline;
 }
 
 
@@ -44,7 +43,7 @@
   height: 30%;
 }
 
-.sub_content p{
+.sub_content p {
   text-align: start;
   padding: 0px;
   margin: 0px;

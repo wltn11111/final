@@ -5,7 +5,7 @@
   }
 } */
 
-@media (max-width : 1030px) {
+@media (max-width: 1030px) {
   .banner_img1 {
     display: none;
   }
@@ -47,7 +47,7 @@
   } */
 }
 
-@media (max-width : 1045px) {
+@media (max-width: 1045px) {
   .men {
     display: none;
   }

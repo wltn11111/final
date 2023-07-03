@@ -1,15 +1,12 @@
-import logo from './logo.svg';
 import 'remixicon/fonts/remixicon.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import axios from 'axios';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {Route, Routes} from 'react-router-dom';
 import BoardWritePage from './pages/BoardWritePage';
 import BoardViewPage from './pages/BoardViewPage';
 import BoardListPage from './pages/BoardListPage';
 import Index from './pages/Index';
-// import Search from './pages/Search';
 import Search from './components/header/navi/Search'
 import LoginPage from './pages/LoginPage';
 import JoinPage from './pages/JoinPage';
@@ -23,8 +20,6 @@ import BoardModPage from './pages/BoardModPage';
 import ScrollToTop from './ScrollToTop';
 import BookMark from './components/body/mypage/BookMark';
 import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
-import userEvent from '@testing-library/user-event';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -39,15 +34,16 @@ function App() {
 
   return (
     <div className="container-flud">
-      <ScrollToTop />
+      <ScrollToTop/>
       <Routes>
         <Route element={<Header user={user}/>}>
-          <Route path="/" element={<Index user={user} setUser={setUser} />} />
-          <Route path="/posts" element={<BoardListPage posts={posts} setPosts={setPosts} user = {user}></BoardListPage>}></Route>
-          <Route path='/newpost' element={<BoardWritePage setPosts={setPosts} user = {user}></BoardWritePage>} />
-          <Route path='/post/:id' element={<BoardViewPage user = {user}></BoardViewPage>} />
+          <Route path="/" element={<Index user={user} setUser={setUser}/>}/>
+          <Route path="/posts"
+                 element={<BoardListPage posts={posts} setPosts={setPosts} user={user}></BoardListPage>}></Route>
+          <Route path='/newpost' element={<BoardWritePage setPosts={setPosts} user={user}></BoardWritePage>}/>
+          <Route path='/post/:id' element={<BoardViewPage user={user}></BoardViewPage>}/>
           <Route path='/modpost/:id' element={<BoardModPage
-          setPosts={setPosts} posts={posts}></BoardModPage>}></Route>
+            setPosts={setPosts} posts={posts}></BoardModPage>}></Route>
           <Route path="/login" element={<LoginPage></LoginPage>}></Route>
           <Route path="/join" element={<JoinPage></JoinPage>}></Route>
           <Route path="/mypage" element={<MyPage></MyPage>}>
@@ -60,7 +56,7 @@ function App() {
           </Route>
         </Route>
         {/* 헤더 적용 페이지 끝  */}
-         <Route path="/search" element={<Search></Search>}></Route>
+        <Route path="/search" element={<Search></Search>}></Route>
       </Routes>
     </div>
   );

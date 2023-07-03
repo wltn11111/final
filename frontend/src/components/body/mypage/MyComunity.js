@@ -1,15 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import style from './MyComunity.module.css'
-import { useEffect, useState } from 'react';
-import { Nav } from 'react-bootstrap';
+import {useState} from 'react';
+import {Nav} from 'react-bootstrap';
 import Paging from '../../../ utils/Paging';
-import Pagination from 'react-js-pagination'
 import styled from 'styled-components'
-
-
-
-
-
 
 
 export default function () {
@@ -17,13 +11,13 @@ export default function () {
   return (
     <div className={style.container}>
       <div>
-        <Nav variant="tabs" defaultActiveKey="link0" >
-          <Nav.Item style={{ width: "45%" }} className={style.nav}>
+        <Nav variant="tabs" defaultActiveKey="link0">
+          <Nav.Item style={{width: "45%"}} className={style.nav}>
             <Nav.Link eventKey="link0" onClick={() => {
               setTab(0);
             }}><span className={style.navi_item}>작성글</span></Nav.Link>
           </Nav.Item>
-          <Nav.Item style={{ width: "45%" }} className={style.nav}>
+          <Nav.Item style={{width: "45%"}} className={style.nav}>
             <Nav.Link eventKey="link1" onClick={() => {
               setTab(1);
             }}><span className={style.navi_item}>작성 댓글 </span></Nav.Link>
@@ -60,18 +54,25 @@ const Post = () => {
           )
         })
       }
-      <div className={style.page_box} >
-      <Paging page = {page} limit = {limit} arr={arr} handlePageChange={handlePageChange}></Paging>
+      <div className={style.page_box}>
+        <Paging page={page} limit={limit} arr={arr} handlePageChange={handlePageChange}></Paging>
       </div>
     </div>
   )
 }
 
 const PaginationBox = styled.div`
-  .pagination { margin-top: 80px;  padding-left: 20px ;
+  .pagination {
+    margin-top: 80px;
+    padding-left: 20px;
   }
-  ul { list-style: none; padding: 0;  }
-  ul.pagination li{
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul.pagination li {
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -81,13 +82,37 @@ const PaginationBox = styled.div`
     align-items: center;
     font-size: 9px;
   }
-  ul.pagination li:first-child{ border-radius: 10px 0 0 10px; }
-  ul.pagination li:last-child{ border-radius: 0 10px 10px 0; }
-  ul.pagination li a { text-decoration: none; color: black; font-size: 10px; }
-  ul.pagination li.active a { color: white; }
-  ul.pagination li.active { background-color: #337ab7; }
-  ul.pagination li a:hover { color: black; }
-  ul.pagination li a.active { color: black; font-weight: bold; }
+
+  ul.pagination li:first-child {
+    border-radius: 10px 0 0 10px;
+  }
+
+  ul.pagination li:last-child {
+    border-radius: 0 10px 10px 0;
+  }
+
+  ul.pagination li a {
+    text-decoration: none;
+    color: black;
+    font-size: 10px;
+  }
+
+  ul.pagination li.active a {
+    color: white;
+  }
+
+  ul.pagination li.active {
+    background-color: #337ab7;
+  }
+
+  ul.pagination li a:hover {
+    color: black;
+  }
+
+  ul.pagination li a.active {
+    color: black;
+    font-weight: bold;
+  }
 `
 
 const Reply = () => {
@@ -113,7 +138,7 @@ function Tab(props) {
   return (
     <div>
       {[<Post></Post>,
-      <Reply></Reply>][props.tab]}
+        <Reply></Reply>][props.tab]}
     </div>
   )
 }

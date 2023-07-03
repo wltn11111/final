@@ -14,7 +14,7 @@
   overflow: hidden;
 }
 
-.category:hover img{
+.category:hover img {
   cursor: pointer;
   transition-duration: 0.9s;
   transform: scale(1.15);

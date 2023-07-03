@@ -1,16 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import List from "../components/body/board/List";
-import Footer from "../components/footer/Footer";
 import BoardBanner from "../components/body/banner/BoardBanner";
 import BannerSearch from "../components/body/banner/BannerSearch";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import PostButton from "../components/postButton/PostButton";
 import axios from "axios";
 
 
-
-
-export default function ({ posts, setPosts, user}) {
+export default function ({posts, setPosts, user}) {
 
   const [page, setPage] = useState();
   const [search, setSearch] = useState({});
@@ -23,7 +20,7 @@ export default function ({ posts, setPosts, user}) {
         url: '/api/v1/posts'
       }).then(resp => {
         setPosts(resp.data);
-        setSearch({category : "ALL" , word : ""})
+        setSearch({category: "ALL", word: ""})
         setPage(1);
       });
     } catch (err) {
@@ -49,15 +46,15 @@ export default function ({ posts, setPosts, user}) {
 
   return (
     <>
-    {/* <Header></Header> */}
-    <div className={`start ${fade}`}>
-      <BoardBanner user = {user}></BoardBanner>
-      <div className="d-none d-md-block">
-      <BannerSearch search = {search} setSearch = {setSearch}></BannerSearch>
+      {/* <Header></Header> */}
+      <div className={`start ${fade}`}>
+        <BoardBanner user={user}></BoardBanner>
+        <div className="d-none d-md-block">
+          <BannerSearch search={search} setSearch={setSearch}></BannerSearch>
+        </div>
+        <List posts={posts} page={page} setPage={setPage} search={search}></List>
+        {user ? <PostButton></PostButton> : null}
       </div>
-      <List posts={posts} page={page} setPage={setPage} search = {search} ></List>
-     { user ? <PostButton></PostButton> : null}
-    </div>
-     </>
+    </>
   )
 }

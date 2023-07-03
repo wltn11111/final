@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import style from './Search.module.css';
 
 export default function () {
@@ -12,17 +11,17 @@ export default function () {
           <input type='text' className={style.search_input} placeholder='Search'></input>
           <i class={`${style.search_icon} ri-search-line`}></i>
           <i class={`${style.search_close} ri-close-fill`}
-            onClick={() => {
-              Navigate(-1)
-            }} ></i>
+             onClick={() => {
+               Navigate(-1)
+             }}></i>
         </div>
         <div className={style.search_text}>
           <span>관심사를 검색해보세요</span>
-          <div style={{ marginTop: "2rem"}}>
+          <div style={{marginTop: "2rem"}}>
             <ul className={style.search_word_list}>
               <li>패션 👚👕👙</li>
               <li>운동 🏃🏻‍♀️</li>
-              <li>자유 👀 </li>
+              <li>자유 👀</li>
               <li>IT 👩‍💻</li>
             </ul>
           </div>
@@ -32,12 +31,13 @@ export default function () {
       <div className={`${style.search_md_area} d-none d-md-block`}>
         <div className={style.search_md_top}>
           <div className={style.input_box}>
-            <span style={{ borderBottom: "solid 2px black" }}><input type='text' placeholder='Whats your interests?'></input> </span>
+            <span style={{borderBottom: "solid 2px black"}}><input type='text'
+                                                                   placeholder='Whats your interests?'></input> </span>
             <i class={`${style.search_md_icon} ri-search-line`}></i>
             <i class={`${style.search_md_close} ri-close-fill`}
-              onClick={() => {
-                Navigate(-1)
-              }}></i>
+               onClick={() => {
+                 Navigate(-1)
+               }}></i>
 
 
           </div>
