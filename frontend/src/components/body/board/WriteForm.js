@@ -3,15 +3,17 @@ import Editor from "./Editor";
 import axios from "axios";
 import style from "./WriteForm.module.css"
 import 'bootstrap/dist/css/bootstrap.css';
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 
 
 
 
-function Button({ post, setPosts }) {
+function Button({ post, setPosts, user }) {
 
   const Navigate = useNavigate();
+
+
   const sendPost = async () => {
     console.log(post)
 
@@ -30,18 +32,18 @@ function Button({ post, setPosts }) {
       return;
     }
 
-    try {await axios({
-      method : "post",
-      url : "/api/v1/posts",
-      data : post
+    try {
+      await axios({
+        method: "post",
+        url: "/api/v1/posts",
+        data: post
       }
-     ).then((resp)=>{
-      let newpost = {id:resp.data.id , title : post.title, contents : post.contents,
-      category : post.category}
-      setPosts(prev => [...prev,newpost])
-      Navigate(`/post/${resp.data.id}`, {state:{ from : newpost}})
-     })
-    } catch(err) {
+      ).then((resp) => {
+        let newPost = { id: resp.data.id, author : user.nickname ,title: post.title, contents: post.contents, category: post.category }
+        setPosts(prev => [...prev, newPost])
+        Navigate(`/post/${newPost.id}`, {state : {from : newPost}})
+      })
+    } catch (err) {
       console.log(err);
     }
   }
@@ -49,11 +51,12 @@ function Button({ post, setPosts }) {
   return (
     <div className="d-flex justify-content-end"
       style={{ width: "800px", height: "40px", margin: "auto", marginTop: "60px", }}>
-        <div>
-      <button className="btn btn-dark"
-        onClick={sendPost}>글 작성</button>
-        </div>
-        </div>
+      <div>
+          <button className="btn btn-dark"
+          onClick={sendPost}>글 작성</button>
+      </div>
+    </div>
+
   )
 }
 
@@ -64,7 +67,7 @@ function Category({ post, setPost }) {
       <select
         style={{ width: "140px", height: "36px" }}
         class="form-select" aria-label="Default select example"
-         onChange={(e) => { setPost(prev => ({ ...prev, category: e.target.value }))}}>
+        onChange={(e) => { setPost(prev => ({ ...prev, category: e.target.value })) }}>
         <option selected disabled>카테고리</option>
         <option key={"라이프"} value={"FREEDOM"}>자유</option>
         <option key={"스포츠"} value={"IT"}>IT</option>
@@ -92,14 +95,14 @@ function Title({ post, setPost }) {
 }
 
 
-export default function WriteForm({setPosts}) {
-  const [post, setPost] = useState({ title: "", contents: "", category : ""})
+export default function WriteForm({ setPosts,user }) {
+  const [post, setPost] = useState({ title: "", contents: "", category: "" })
   return (
     <div className="container mt-4">
       <Category post={post} setPost={setPost}></Category>
       <Title post={post} setPost={setPost}></Title>
       <Editor post={post} setPost={setPost}></Editor>
-      <Button post={post} setPosts={setPosts}></Button>
+      <Button post={post} setPosts={setPosts} user={user}></Button>
     </div>
   )
 }

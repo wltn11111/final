@@ -39,12 +39,16 @@
   text-decoration : underline;
 }
 
+
 .sub_content {
+  height: 30%;
+}
+
+.sub_content p{
   text-align: start;
   padding: 0px;
   margin: 0px;
   width: 100%;
-  height: 30%;
   color: black;
   text-overflow: ellipsis;
   overflow: hidden;

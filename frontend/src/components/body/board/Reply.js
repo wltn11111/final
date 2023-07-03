@@ -266,7 +266,6 @@ const Recomment = ({ setRecommentView }) => {
   )
 }
 
-
 const Recomment_list = () => {
   return (
     <div className={style.replys} style={{ margin: "0px", borderTop: "none" }}>
@@ -291,12 +290,8 @@ const Recomment_list = () => {
   )
 }
 
-export default function ({ replys, setReplys, id, liked, setLiked, bookMarked, setBookMarked , user , setTest}) {
+export default function ({ replys, setReplys, id, liked, setLiked, bookMarked, setBookMarked , user }) {
   const [replyView, setReplyView] = useState(false);
-
-  useEffect(()=> {
-    setTest('test')
-  })
 
   return (
     <>

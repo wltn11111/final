@@ -6,12 +6,22 @@ import Aos from 'aos';
 import { useNavigate } from 'react-router-dom';
 
 
-export default function () {
+export default function ({user}) {
   useEffect(() => {
     Aos.init();
   }, []);
-
   const Navigate = useNavigate();
+
+  const handleBtn = (e) => {
+
+      if(!user) {
+       alert ("로그인한 회원만 이용할 수 있습니다")
+        e.preventDefault();
+        return;
+      }
+      Navigate("/newpost")
+  }
+
   return (
     <>
       <div className={`${style.banner_container} d-flex justify-content-center`}>
@@ -42,10 +52,7 @@ export default function () {
           data-aos-delay="1600"
           data-aos-duration="900">
           <button className={`${style.btn} d-none d-md-block`}
-            onClick={() => {
-              Navigate("/newpost")
-              }
-            }>글쓰러 가기</button>
+            onClick={handleBtn}>글쓰러 가기</button>
         </div>
       </div>
     </>

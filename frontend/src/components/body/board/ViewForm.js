@@ -8,6 +8,7 @@ import DOMPurify from 'dompurify';
 
 
 const Button = ({post,user}) => {
+
   const Navigate = useNavigate();
   const delPost = () => {
     if (window.confirm('정말 삭제하시겠습니까?')){
@@ -19,6 +20,7 @@ const Button = ({post,user}) => {
 
   return (
     <>
+    {/* {post.email == user.email ? */}
     {post.author == user.nickname ?
       <div className='d-flex justify-content-end mt-3' style={{ width: "800px", margin: "auto"}}>
       <button className={`${style.btn} btn btn-dark`}
@@ -50,7 +52,6 @@ const convertToKorean = (category) => {
 export default function ViewForm({post, user}) {
   return (
     <>
-    {console.log(post)}
       <div className={style.view_container}>
       <div className={style.category_box}>
       <div className={`${style.view_category} d-flex justify-content-start`}>

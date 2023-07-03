@@ -51,7 +51,7 @@ export default function ({ posts, setPosts, user}) {
     <>
     {/* <Header></Header> */}
     <div className={`start ${fade}`}>
-      <BoardBanner></BoardBanner>
+      <BoardBanner user = {user}></BoardBanner>
       <div className="d-none d-md-block">
       <BannerSearch search = {search} setSearch = {setSearch}></BannerSearch>
       </div>

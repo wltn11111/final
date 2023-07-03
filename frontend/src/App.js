@@ -24,6 +24,7 @@ import ScrollToTop from './ScrollToTop';
 import BookMark from './components/body/mypage/BookMark';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import userEvent from '@testing-library/user-event';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -43,7 +44,7 @@ function App() {
         <Route element={<Header user={user}/>}>
           <Route path="/" element={<Index user={user} setUser={setUser} />} />
           <Route path="/posts" element={<BoardListPage posts={posts} setPosts={setPosts} user = {user}></BoardListPage>}></Route>
-          <Route path='/newpost' element={<BoardWritePage setPosts={setPosts}></BoardWritePage>} />
+          <Route path='/newpost' element={<BoardWritePage setPosts={setPosts} user = {user}></BoardWritePage>} />
           <Route path='/post/:id' element={<BoardViewPage user = {user}></BoardViewPage>} />
           <Route path='/modpost/:id' element={<BoardModPage
           setPosts={setPosts} posts={posts}></BoardModPage>}></Route>

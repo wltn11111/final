@@ -16,7 +16,6 @@ export default function ({user}) {
   const [liked,setLiked ] = useState({isLike : false , count : 0});
   const [bookMarked, setBookMarked] = useState({isSubscribed: false});
   const { from } = location.state;
-  const [test,setTest] = useState();
 
 
   const getReply = async () => {
@@ -58,12 +57,10 @@ export default function ({user}) {
   },[])
 
 
-
-
   return (
     <>
       <ViewForm post={from} user = {user}></ViewForm>
-      <Reply replys={replys} setReplys={setReplys} id={from.id} liked = {liked} setLiked = {setLiked} bookMarked = {bookMarked} setBookMarked = {setBookMarked} user = {user} test = {test} setTest = {setTest}></Reply>
+      <Reply replys={replys} setReplys={setReplys} id={from.id} liked = {liked} setLiked = {setLiked} bookMarked = {bookMarked} setBookMarked = {setBookMarked} user = {user} ></Reply>
       <ListButton></ListButton>
       <div style={{ marginTop: "120px" }}>
       </div>
