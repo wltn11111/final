@@ -58,12 +58,6 @@ export default function ({user}) {
   },[])
 
 
-  useEffect(() => {
-    getReply();
-    getLike();
-    getBookMark();
-  },[test])
-
 
 
   return (
