@@ -14,6 +14,7 @@ public class PostResponse {
     private final String contents;
     private final Category category;
     private final String author;
+    private final String email;
     private final LocalDateTime createdDate;
     private final LocalDateTime modifiedDate;
 
@@ -23,6 +24,7 @@ public class PostResponse {
         this.contents = post.getContents();
         this.category = post.getCategory();
         this.author = post.getUser().getNickname();
+        this.email = post.getUser().getEmail();
         this.createdDate = post.getCreatedDate();
         this.modifiedDate = post.getModifiedDate();
     }

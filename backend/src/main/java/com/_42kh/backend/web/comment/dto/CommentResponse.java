@@ -11,6 +11,7 @@ public class CommentResponse {
 	private final Long id;
 	private final String contents;
 	private final String author;
+    private final String email;
 	private final LocalDateTime createdDate;
 	private final LocalDateTime modifiedDate;
 
@@ -18,6 +19,7 @@ public class CommentResponse {
 		id = comment.getId();
 		contents = comment.getContents();
 		author = comment.getUser().getNickname();
+        email = comment.getUser().getEmail();
 		createdDate = comment.getCreatedDate();
 		modifiedDate = comment.getModifiedDate();
 	}
