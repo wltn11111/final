@@ -9,8 +9,6 @@ export default function ({user, setUser}) {
 
   let [searchParams, setSearchParams] = useSearchParams();
   const success = searchParams.get("success");
-  // let users = null;
-
 
   const getUser = () => {
     axios({
@@ -29,6 +27,7 @@ export default function ({user, setUser}) {
     }
   }, [])
 
+
   useEffect(() => {
     console.log(user);
   }, [user])
@@ -43,6 +42,7 @@ export default function ({user, setUser}) {
       setFade('')
     })
   }, [])
+
 
   return (
     <>

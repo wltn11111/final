@@ -1,9 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import style from './List.module.css';
-import {useEffect, useRef, useState} from "react";
-import {Link} from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 
-export default function List({posts, page, setPage, search}) {
+export default function List({ posts, page, setPage, search }) {
 
   const [item, setItem] = useState([]);
   const pageEnd = useRef();
@@ -13,15 +14,15 @@ export default function List({posts, page, setPage, search}) {
   const getItem = (page) => {
 
 
-    if (search.category == 'ALL' && search.word == '') {
-      setItem(posts.slice(0, page));
+    if(search.category == 'ALL' && search.word == '') {
+      setItem(posts.slice(0,page));
       return
     }
 
     const item = posts.filter(post => post.category == search.category || search.category == "ALL")
-      .filter(post => post.title.includes(search.word) || post.contents.includes(search.word))
+    .filter(post => post.title.includes(search.word) || post.contents.includes(search.word))
     setItem(item);
-  }
+    }
 
   useEffect(() => {
     console.log(posts)
@@ -33,6 +34,7 @@ export default function List({posts, page, setPage, search}) {
     getItem(page);
     setLoading(true);
   }, [search])
+
 
 
   const loadMore = () => {
@@ -54,18 +56,18 @@ export default function List({posts, page, setPage, search}) {
         return (
           <>
             <div>
-              <Link to={`/post/${post.id}`} state={{from: post}}>
+              <Link to={`/post/${post.id}`} state={{ from: post }}>
                 <div className={`${style.content} mt-4`}
-                     key={i}>
+                  key={i}>
                   <div className={`${style.content_box} mt-4`}>
-                    <div className={`${style.title} d-flex justify-content-start mt-3`}>
-                      <strong>{post.title}</strong>
+                    <div className={`${style.title_box} d-flex justify-content-start mt-3`}>
+                      <strong className = {style.title}>{post.title}</strong>
                     </div>
                     <div className={`${style.sub_content} d-flex justify-content-start mt-3`}>
-                      <p dangerouslySetInnerHTML={{__html: post.contents}}>
+                      <p dangerouslySetInnerHTML={{ __html: post.contents }}>
                       </p>
                     </div>
-                    <div className={`${style.content_info} d-flex justify-content-start`}>
+                    <div className={`${style.content_info} d-flex justify-content-start`} >
                       <div className={style.like_box}>
                         좋아요 정보 박스 •
                       </div>
@@ -80,7 +82,7 @@ export default function List({posts, page, setPage, search}) {
           </>
         )
       })}
-      <div ref={pageEnd}/>
+    <div ref={pageEnd} />
     </div>
   )
 }

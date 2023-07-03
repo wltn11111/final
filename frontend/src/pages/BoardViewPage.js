@@ -11,21 +11,34 @@ export default function ({user}) {
   const location = useLocation();
   const [replys, setReplys] = useState([]);
   const [liked, setLiked] = useState({isLike: false, count: 0});
+  const [replyLike, setReplyLike] = useState([]);
   const [bookMarked, setBookMarked] = useState({isSubscribed: false});
   const {from} = location.state;
 
 
   const getReply = async () => {
+    let comments = null;
     try {
       await axios({
         method: "get",
         url: `/api/v1/comments/${from.id}`,
       }).then((resp) => {
-        setReplys(resp.data)
+        comments = resp.data;
       })
     } catch (err) {
       console.log(err)
     }
+
+    axios({
+      method: "get",
+      url: `/api/v1/likes/comments/${from.id}`
+    }).then((resp) => {
+      comments.map((comment, i) => {
+        comment.count = resp.data[i].count;
+        comment.isLike = resp.data[i].isLike;
+      })
+      setReplys(comments);
+    });
   }
 
   const getLike = async () => {
@@ -57,8 +70,16 @@ export default function ({user}) {
   return (
     <>
       <ViewForm post={from} user={user}></ViewForm>
-      <Reply replys={replys} setReplys={setReplys} id={from.id} liked={liked} setLiked={setLiked}
-             bookMarked={bookMarked} setBookMarked={setBookMarked} user={user}></Reply>
+      <Reply
+      replys={replys}
+      setReplys={setReplys}
+      id={from.id} liked={liked}
+      setLiked={setLiked}
+      bookMarked={bookMarked}
+      setBookMarked={setBookMarked}
+      replyLike = {replyLike}
+      setReplyLike = {setReplyLike}
+      user={user}></Reply>
       <ListButton></ListButton>
       <div style={{marginTop: "120px"}}>
       </div>

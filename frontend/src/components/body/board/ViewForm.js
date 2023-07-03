@@ -18,11 +18,15 @@ const Button = ({post, user}) => {
 
   return (
     <>
-      {/* {post.email == user.email ? */}
-      {post.author == user.nickname ?
+      {console.log(post.email)
+      }
+      {
+        console.log(user.email)
+      }
+      {post.email == user.email ?
         <div className='d-flex justify-content-end mt-3' style={{width: "800px", margin: "auto"}}>
           <button className={`${style.btn} btn btn-dark`}
-                  onClick={() => {
+            onClick={() => {
                     Navigate('/modpost/' + post.id, {state: post})
                   }}
           >수정

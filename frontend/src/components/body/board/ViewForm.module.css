@@ -23,6 +23,11 @@
 .view_title {
   border-bottom: 1px solid #ccc;
   width: 800px;
+  overflow: hidden;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   margin: auto;
   font-size: 32px;
 }

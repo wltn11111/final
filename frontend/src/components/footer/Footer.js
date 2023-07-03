@@ -1,9 +1,19 @@
 import style from './Footer.module.css';
 import logo from '../../assets/images/footer_logo.png'
 
-function Footer() {
-  return (
+function Footer({user}) {
 
+  const MemberFooter = () => {
+
+  }
+
+  const GuestFooter = () => {
+    
+  }
+
+
+
+  return (
     <>
       <div className={`${style.footer} d-none d-md-block`}>
         <div className={`${style.footer_t} row`}>
@@ -35,7 +45,6 @@ function Footer() {
           <div className="col-4">Mypage</div>
           <div className="col-4">글 작성</div>
         </div>
-
       </div>
     </>
 

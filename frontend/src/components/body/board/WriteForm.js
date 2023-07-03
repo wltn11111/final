@@ -36,15 +36,9 @@ function Button({post, setPosts, user}) {
           data: post
         }
       ).then((resp) => {
-        let newPost = {
-          id: resp.data.id,
-          author: user.nickname,
-          title: post.title,
-          contents: post.contents,
-          category: post.category
-        }
-        setPosts(prev => [...prev, newPost])
-        Navigate(`/post/${newPost.id}`, {state: {from: newPost}})
+        resp.data = {...resp.data, email: user.email}
+        setPosts(prev => [...prev, resp.data])
+        Navigate(`/post/${resp.data.id}`, {state: {from: resp.data}})
       })
     } catch (err) {
       console.log(err);
@@ -56,7 +50,7 @@ function Button({post, setPosts, user}) {
          style={{width: "800px", height: "40px", margin: "auto", marginTop: "60px",}}>
       <div>
         <button className="btn btn-dark"
-                onClick={sendPost}>글 작성
+          onClick={sendPost}>글 작성
         </button>
       </div>
     </div>
@@ -94,7 +88,7 @@ function Title({post, setPost}) {
                value={post.title}
                onChange={(e) => {
                  setPost(prev => ({...prev, title: e.target.value}))
-               }}></input></p>
+              }}></input></p>
     </div>
 
   )
