@@ -47,7 +47,10 @@ function LoginIcon () {
               <span className={style.icon_text}>Mypage</span>
             </li>
           </Link>
-          <Link to="/">
+          <Link to="http://localhost:8080/logout" onClick={() => {
+            localStorage.removeItem("isLoggedIn")
+            localStorage.removeItem("user")
+          }}>
             <li className='mt-2'>
               <i className="ri-user-4-line"></i>
               <span className={style.icon_text}>Logout</span>

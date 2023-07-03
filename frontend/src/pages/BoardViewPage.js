@@ -14,7 +14,7 @@ export default function ({user}) {
   const location = useLocation();
   const [replys, setReplys] = useState([]);
   const [liked,setLiked ] = useState({isLike : false , count : 0});
-  const [bookMarked, setBookMarked] = useState();
+  const [bookMarked, setBookMarked] = useState({isSubscribed: false});
   const { from } = location.state;
   const [test,setTest] = useState();
 
@@ -47,7 +47,7 @@ export default function ({user}) {
       url : `/api/v1/bookmarks/${from.id}`,
     }).then((resp) => {
       console.log(resp.data.isSubscribed)
-      setBookMarked(resp.data.isSubscribed)
+      setBookMarked(prev => ({isSubscribed : resp.data.isSubscribed}))
     })
   }
 

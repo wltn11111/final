@@ -29,6 +29,12 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState();
 
+  useEffect(() => {
+    const loggedInStatus = localStorage.getItem("isLoggedIn");
+    if (loggedInStatus === "true") {
+      setUser(JSON.parse(localStorage.getItem("user")));
+    }
+  }, []);
 
   return (
     <div className="container-flud">

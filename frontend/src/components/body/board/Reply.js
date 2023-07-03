@@ -31,7 +31,7 @@ const Btn = ({ replyView, setReplyView, post_id, replys, setLiked, liked, bookMa
     if (bookMarked.isSubscribed) {
       try {
         await axios.delete(`/api/v1/bookmarks/${post_id}`).then(() => {
-          setBookMarked(false)
+          setBookMarked({isSubscribed: false})
         })
       } catch (err) {
         console.log(err)
@@ -39,7 +39,7 @@ const Btn = ({ replyView, setReplyView, post_id, replys, setLiked, liked, bookMa
     } else {
       try {
         await axios.post(`/api/v1/bookmarks/${post_id}`).then((resp) => {
-          setBookMarked(true)
+          setBookMarked({isSubscribed: true})
         })
       } catch (err) {
         console.log(err)
@@ -59,7 +59,7 @@ const Btn = ({ replyView, setReplyView, post_id, replys, setLiked, liked, bookMa
       <div style={{ float: "left", marginRight: "10px" }}>
         <button className={style.bookmark_btn}
           onClick={bookMarkHandle}>
-          <i className="ri-bookmark-fill" style={{ color: bookMarked ? "#FFD228" : "grey", transitionDuration: "1s" }}></i>
+          <i className="ri-bookmark-fill" style={{ color: bookMarked.isSubscribed ? "#FFD228" : "grey", transitionDuration: "1s" }}></i>
           북마크
         </button>
       </div>
@@ -97,6 +97,8 @@ const Reply = ({ replys, setReplys, post_id , user }) => {
       url: `/api/v1/comments/${post_id}`,
       data: reply
     }).then((resp) => {
+      console.log(user)
+      resp.data = { ...resp.data, author: user.nickname }
       setReplys(prev => [...prev, resp.data])
       setReply(prev => ({...prev,contents: "" }));
     })

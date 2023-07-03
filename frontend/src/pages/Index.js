@@ -21,6 +21,8 @@ export default function ({user, setUser}) {
       method: "get"
     }).then((resp)=>{
       setUser(resp.data);
+      localStorage.setItem("isLoggedIn", "true")
+      localStorage.setItem("user", JSON.stringify(resp.data))
     })
   }
 

@@ -19,6 +19,7 @@ export default class Editor extends React.Component {
       <ReactQuill
         style={{ width: "800px", height: "600px", margin: "auto" }}
         onChange={this.handleChange}
+        value={this.props.post.contents}
         modules={Editor.modules}
         formats={Editor.formats}
       />
